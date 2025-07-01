@@ -26,6 +26,7 @@ export default function Home() {
     { key: 7, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/shreepech.png" },
     { key: 8, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/tapobhumi.png" },
     { key: 9, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/vantuff.png" },
+    { key: 10, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/iapb.png" },
   ]
 
   const services = [
@@ -183,6 +184,7 @@ export default function Home() {
         <div className="text-center mb-12 mt-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Clients</h2>
           <p className="text-gray-400 max-w-2xl mx-auto">Trusted by businesses and organizations across the world</p>
+          <p className="text-gray-500 max-w-1xl mx-auto">Our Founder/ Director has proudly worked with them.</p>
         </div>
 
         <div className={styles.carouselWrapper}>

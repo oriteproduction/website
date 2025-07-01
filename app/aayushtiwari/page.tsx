@@ -147,7 +147,7 @@ export default function AayushTiwariPage() {
             AAYUSH TIWARI
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] bg-clip-text text-transparent font-light mb-3 sm:mb-4">
-            Creative Director • Video Editor • Visual Storyteller
+            Creative Director • Visual Storyteller
           </p>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-6 sm:mb-8 px-2">
             Over 7 years of experience in directing, editing, and producing high-end commercial and narrative content.
@@ -181,7 +181,7 @@ export default function AayushTiwariPage() {
               Creative Vision
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed mb-8 sm:mb-12 px-2">
-              As Creative Director at Orite Production, I lead a team of passionate storytellers in creating compelling
+              As Creative Director at Orite Production, I lead a team of passionate freelance storytellers in creating compelling
               visual narratives that resonate with audiences worldwide. My expertise spans from conceptualization to
               final delivery, ensuring every project meets the highest standards of cinematic excellence.
             </p>
@@ -223,6 +223,23 @@ export default function AayushTiwariPage() {
                   style={{ border: "none" }}
                 />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Aston Band Advertisement */}
+      <section className="py-8 bg-black">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center">
+            <div className="w-full max-w-[1536px] h-[50px] sm:h-[200px] lg:h-[200px] relative overflow-hidden">
+              <video autoPlay muted loop playsInline className="w-full h-full object-cover" style={{ border: "none" }}>
+                <source
+                  src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/astonband1.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
@@ -622,8 +639,59 @@ export default function AayushTiwariPage() {
             Reels
           </h2>
 
-          {/* Horizontal Slideshow Container */}
-          <div className="max-w-7xl mx-auto">
+          {/* Mobile: Single Reel View */}
+          <div className="block sm:hidden">
+            <div className="relative max-w-sm mx-auto">
+              <div className="aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
+                {[
+                  { id: "Tq7_CQjI64c", title: "Camera Roll" },
+                  { id: "jw69BdTThwI", title: "Welcome to Nepal" },
+                  { id: "OD0gZ_HKheg", title: "Behind the Scenes" },
+                  { id: "ykDCqKcU9tg", title: "Vivid Janakpurdham" },
+                  { id: "3GD8AX6l0mw", title: "Electronics Showcase" },
+                  { id: "5TbFq_22jVk", title: "Aesthetic Corner" },
+                  { id: "0KySQrt3jog", title: "Fashion Styling" },
+                  { id: "cjgHAlRMsJk", title: "Himalayas" },
+                  { id: "zhI46-nV_0c", title: "Year Review" },
+                  { id: "KhdktxGwXJk", title: "BYD Dolphin - Winner video" },
+                  { id: "-vYGxYm1ZMg", title: "Daraz Influencer" },
+                  { id: "SZznqbt87hM", title: "Daraz Product" },
+                ].map((reel, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-500 ${
+                      index === currentSlide ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    <iframe
+                      src={`https://www.youtube.com/embed/${reel.id}?autoplay=1&controls=0&mute=1&loop=1&playlist=${reel.id}&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title={reel.title}
+                      className="w-full h-full"
+                      style={{ border: "none" }}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Mobile Navigation */}
+              <div className="flex justify-center mt-6 space-x-2">
+                {Array.from({ length: 12 }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      currentSlide === index ? "bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] scale-125" : "bg-white/20"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop: Horizontal Slideshow Container */}
+          <div className="hidden sm:block max-w-7xl mx-auto">
             <div className="relative">
               {/* Slideshow Wrapper */}
               <div className="overflow-hidden rounded-2xl">
@@ -841,10 +909,11 @@ export default function AayushTiwariPage() {
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
                       <div>
                         <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">Founder</h3>
-                        <p className="text-lg sm:text-xl text-gray-300 font-medium">Orite Production – Self-employed</p>
+                        <p className="text-lg sm:text-xl text-gray-300 font-medium">Orite Production – Creative Director</p>
+                        <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
                       </div>
                       <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
-                        Aug 2024 – Present
+                        July 2024 – Present
                       </div>
                     </div>
                     <p className="text-gray-300 leading-relaxed text-sm sm:text-base lg:text-lg">
@@ -880,10 +949,11 @@ export default function AayushTiwariPage() {
                       </div>
                     </div>
                     <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
-                      <p>• Produced major campaigns (Daraz 11.11, Nepali New Year, Free Delivery Festival)</p>
-                      <p>• Directed/shot a brand documentary "The Journey"</p>
-                      <p>• Shot over 100 videos for Daraz Nepal's social media platforms</p>
+                      <p>• Produced upto 4 DVC (Digital Video Commercial for Nepali New Year campaign, PayDay ko Jhatka campaign, Daraz 11.11 - The biggest sale of the year campaign and Daraz Free Delivery Festival campaign)</p>
+                      <p>• Directed and shot a documentary for Daraz Nepal - The Journey (Documentary)</p>
+                      <p>• Shot over 100 videos for Daraz Nepal social media content. (Paid promotions for Instagram, YouTube, Facebook)</p>
                       <p>• Created paid promotional content for Instagram, Facebook, and YouTube</p>
+                      <p>• Shot a series of 6 videos for Daraz 11.11 Campaign (Documentary style)</p>
                     </div>
                     <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
                       <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
@@ -906,7 +976,7 @@ export default function AayushTiwariPage() {
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
                       <div>
                         <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">
-                          Freelance Filmmaker
+                          Contract Filmmaker
                         </h3>
                         <p className="text-lg sm:text-xl text-gray-300 font-medium">Dopper</p>
                         <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
@@ -966,39 +1036,6 @@ export default function AayushTiwariPage() {
                   </div>
                 </div>
 
-                {/* Assistant Director - The Monk */}
-                <div className="relative flex items-start group">
-                  <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
-                  <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">
-                          Assistant Director
-                        </h3>
-                        <p className="text-lg sm:text-xl text-gray-300 font-medium">Short Film: The Monk</p>
-                        <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
-                      </div>
-                      <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
-                        2019
-                      </div>
-                    </div>
-                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                      Assistant cinematographer for the short film "The Monk", directed by Roel van
-                    </p>
-                    <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Assistant Direction
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Cinematography
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Short Film
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Videographer - Red Circle Creative Solutions */}
                 <div className="relative flex items-start group">
                   <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
@@ -1018,6 +1055,9 @@ export default function AayushTiwariPage() {
                     <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
                       <p>• Shot an episode of "The Next Venture Corp"</p>
                       <p>• Covered an interview highlighting Nepal's Intersex Community</p>
+                      <p>• Assistant cinematographer for the short film "The Monk", directed by Roel van</p>
+                      <p>• Worked as a Cinematographer for a social media advertisement video for JEEP</p>
+
                     </div>
                     <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
                       <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
@@ -1052,6 +1092,11 @@ export default function AayushTiwariPage() {
                     <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
                       <p>• Event photography for the "Key-handing Ceremony" between EICHER and Silk Group</p>
                       <p>• Captured corporate meetings and branding moments</p>
+                      <p>• Photographed Silk Transport x MUSA Logistics meeting at Tatopani Customs Office</p>
+                      <p>
+                        • Captured agreement signing event at Hotel Radisson between Silk Transport and MUSA Logistics
+                        (China)
+                      </p>
                     </div>
                     <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
                       <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
@@ -1065,44 +1110,7 @@ export default function AayushTiwariPage() {
                       </span>
                     </div>
                   </div>
-                </div>
-
-                {/* Professional Photographer - Silk Transport */}
-                <div className="relative flex items-start group">
-                  <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
-                  <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">
-                          Professional Photographer
-                        </h3>
-                        <p className="text-lg sm:text-xl text-gray-300 font-medium">Silk Transport (Freelance)</p>
-                        <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
-                      </div>
-                      <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
-                        2018 – 2019
-                      </div>
-                    </div>
-                    <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
-                      <p>• Photographed Silk Transport x MUSA Logistics meeting at Tatopani Customs Office</p>
-                      <p>
-                        • Captured agreement signing event at Hotel Radisson between Silk Transport and MUSA Logistics
-                        (China)
-                      </p>
-                    </div>
-                    <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Corporate Photography
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Business Events
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        International
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                </div> 
               </div>
             </div>
           </div>
