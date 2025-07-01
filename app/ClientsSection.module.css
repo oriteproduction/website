@@ -1,0 +1,53 @@
+.carouselWrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 2rem 0;
+
+  /* Smooth and consistent scroll speed */
+  --scroll-speed: 25s;
+}
+
+.carouselTrack {
+  display: flex;
+  width: max-content;
+  animation: scroll var(--scroll-speed) linear infinite;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .carouselWrapper {
+    --scroll-speed: 25s;
+  }
+}
+
+.carouselItem {
+  flex: 0 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px; /* slightly taller */
+}
+
+/* Bigger logos by default */
+.carouselItem img {
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Simple scale-up on hover */
+.carouselItem img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
