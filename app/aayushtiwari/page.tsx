@@ -84,8 +84,7 @@ const LazyYouTubeIframe = ({
       autoplay: autoplay ? "1" : "0",
       controls: controls ? "1" : "0",
       mute: muted ? "1" : "0",
-      loop: loop ? "1" : "0",
-      playlist: loop ? videoId : "",
+      loop: loop ? videoId : "",
       showinfo: "0",
       rel: "0",
       modestbranding: "1",
@@ -830,32 +829,6 @@ export default function AayushTiwariPage() {
                   )
                 })}
             </div>
-
-            {/* Custom Scrollbar */}
-            <style jsx>{`
-        #colorGradingContainer::-webkit-scrollbar {
-          height: 8px;
-          margin-top: 12px;
-        }
-        #colorGradingContainer::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 4px;
-          margin: 0 16px;
-        }
-        #colorGradingContainer::-webkit-scrollbar-thumb {
-          background: linear-gradient(to right, #6E3D1B, #F7BD3A, #FCE2A6);
-          border-radius: 4px;
-          border: 1px solid rgba(0, 0, 0, 0.2);
-        }
-        #colorGradingContainer::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(to right, #FCE2A6, #F7BD3A, #6E3D1B);
-        }
-        @media (max-width: 640px) {
-          #colorGradingContainer::-webkit-scrollbar {
-            height: 6px;
-          }
-        }
-      `}</style>
           </div>
         </div>
       </section>
@@ -1755,6 +1728,30 @@ export default function AayushTiwariPage() {
         .text-clamp-5xl { font-size: clamp(3rem, 8vw, 3.75rem); }
         .text-clamp-6xl { font-size: clamp(3.75rem, 9vw, 4.5rem); }
         
+        /* moved -- Color Grading scrollbar styles */
+        #colorGradingContainer::-webkit-scrollbar {
+          height: 8px;
+          margin-top: 12px;
+        }
+        #colorGradingContainer::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 4px;
+          margin: 0 16px;
+        }
+        #colorGradingContainer::-webkit-scrollbar-thumb {
+          background: linear-gradient(to right, #6E3D1B, #F7BD3A, #FCE2A6);
+          border-radius: 4px;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        #colorGradingContainer::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(to right, #FCE2A6, #F7BD3A, #6E3D1B);
+        }
+        @media (max-width: 640px) {
+          #colorGradingContainer::-webkit-scrollbar {
+            height: 6px;
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           * {
             animation-duration: 0.01ms !important;
