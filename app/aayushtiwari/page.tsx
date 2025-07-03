@@ -13,6 +13,14 @@ export default function AayushTiwariPage() {
   const [isVisible, setIsVisible] = useState(false)
   const [hoveredReel, setHoveredReel] = useState<number | null>(null)
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768)
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   // Refs for color grading sections with manual sliders
   const colorGrading1Ref = useRef<HTMLDivElement>(null)
@@ -105,6 +113,32 @@ export default function AayushTiwariPage() {
     { id: "GD0VFTc8Bac", title: "Documentary Style" },
   ]
 
+  // Mobile reels data - 12 reels total, 2 per slide for first 3 slides, 1 for last slide
+  const mobileReelsData = [
+    { id: "Tq7_CQjI64c", title: "Camera Roll" },
+    { id: "jw69BdTThwI", title: "Welcome to Nepal" },
+    { id: "OD0gZ_HKheg", title: "Behind the Scenes" },
+    { id: "ykDCqKcU9tg", title: "Vivid Janakpurdham" },
+    { id: "3GD8AX6l0mw", title: "Electronics Showcase" },
+    { id: "5TbFq_22jVk", title: "Aesthetic Corner" },
+    { id: "0KySQrt3jog", title: "Fashion Styling" },
+    { id: "cjgHAlRMsJk", title: "Himalayas" },
+    { id: "zhI46-nV_0c", title: "Year Review" },
+    { id: "KhdktxGwXJk", title: "BYD Dolphin - Winner video" },
+    { id: "-vYGxYm1ZMg", title: "Daraz Influencer" },
+    { id: "SZznqbt87hM", title: "Daraz Product" },
+  ]
+
+  const getMobileReelsForSlide = (slideIndex: number) => {
+    if (slideIndex === 3) {
+      // Last slide has only 1 reel (centered)
+      return [mobileReelsData[10]]
+    }
+    // First 3 slides have 2 reels each
+    const startIndex = slideIndex * 2
+    return mobileReelsData.slice(startIndex, startIndex + 2)
+  }
+
   return (
     <main className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Hero Section */}
@@ -181,9 +215,10 @@ export default function AayushTiwariPage() {
               Creative Vision
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed mb-8 sm:mb-12 px-2">
-              As Creative Director at Orite Production, I lead a team of passionate freelance storytellers in creating compelling
-              visual narratives that resonate with audiences worldwide. My expertise spans from conceptualization to
-              final delivery, ensuring every project meets the highest standards of cinematic excellence.
+              As Creative Director at Orite Production, I lead a team of passionate freelance storytellers in creating
+              compelling visual narratives that resonate with audiences worldwide. My expertise spans from
+              conceptualization to final delivery, ensuring every project meets the highest standards of cinematic
+              excellence.
             </p>
           </div>
 
@@ -227,7 +262,7 @@ export default function AayushTiwariPage() {
           </div>
         </div>
       </section>
-      
+
       {/* Aston Band Advertisement */}
       <section className="py-8 bg-black">
         <div className="container mx-auto px-4">
@@ -253,7 +288,45 @@ export default function AayushTiwariPage() {
           </h2>
 
           <div className="space-y-12 sm:space-y-16 lg:space-y-20">
-            
+            {/* Project 1 - Daraz Nepal Campaign Series */}
+            <div className="hidden md:grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+              <div className="space-y-4 sm:space-y-6">
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#F7BD3A]">Daraz Nepal Campaign Series</h3>
+                <p className="text-base sm:text-lg text-gray-300">
+                  Directed and produced a series of high-impact video commercials for Daraz Nepal, focusing on key
+                  campaigns such as Nepali New Year, PayDay ko Jhatka, Daraz 11.11, and Daraz Free Delivery Festival.
+                  Expertise in creating engaging content that drives brand awareness and sales conversion.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-[#F7BD3A] rounded-full"></div>
+                    <span className="text-sm sm:text-base text-gray-300">
+                      High-Impact Commercial Production & Direction
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-[#F7BD3A] rounded-full"></div>
+                    <span className="text-sm sm:text-base text-gray-300">Brand Awareness & Sales Conversion</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-[#F7BD3A] rounded-full"></div>
+                    <span className="text-sm sm:text-base text-gray-300">
+                      Multi-Platform Content Optimization & Distribution
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="aspect-video rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
+                <iframe
+                  src="https://www.youtube.com/embed/Tq7_CQjI64c?autoplay=1&controls=0&mute=1&loop=1&playlist=Tq7_CQjI64c&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title="Daraz Nepal Campaign Series"
+                  className="w-full h-full"
+                  style={{ border: "none" }}
+                />
+              </div>
+            </div>
 
             {/* Project 2 - Documentary Work */}
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
@@ -417,7 +490,7 @@ export default function AayushTiwariPage() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 lg:py-20 relative bg-[#0F0F0F]">
+      <section className="hidden md:block py-12 sm:py-16 lg:py-20 relative bg-[#0F0F0F]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] bg-clip-text text-transparent mb-4 sm:mb-6">
@@ -605,50 +678,89 @@ export default function AayushTiwariPage() {
             Reels
           </h2>
 
-          {/* Mobile: Single Reel View */}
-          <div className="block sm:hidden">
+          {/* Mobile: 2 Reels per slide */}
+          <div className="block md:hidden">
             <div className="relative max-w-sm mx-auto">
-              <div className="aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
-                {[
-                  { id: "Tq7_CQjI64c", title: "Camera Roll" },
-                  { id: "jw69BdTThwI", title: "Welcome to Nepal" },
-                  { id: "OD0gZ_HKheg", title: "Behind the Scenes" },
-                  { id: "ykDCqKcU9tg", title: "Vivid Janakpurdham" },
-                  { id: "3GD8AX6l0mw", title: "Electronics Showcase" },
-                  { id: "5TbFq_22jVk", title: "Aesthetic Corner" },
-                  { id: "0KySQrt3jog", title: "Fashion Styling" },
-                  { id: "cjgHAlRMsJk", title: "Himalayas" },
-                  { id: "zhI46-nV_0c", title: "Year Review" },
-                  { id: "KhdktxGwXJk", title: "BYD Dolphin - Winner video" },
-                  { id: "-vYGxYm1ZMg", title: "Daraz Influencer" },
-                  { id: "SZznqbt87hM", title: "Daraz Product" },
-                ].map((reel, index) => (
-                  <div
-                    key={index}
-                    className={`absolute inset-0 transition-opacity duration-500 ${
-                      index === currentSlide ? "opacity-100" : "opacity-0"
-                    }`}
-                  >
-                    <iframe
-                      src={`https://www.youtube.com/embed/${reel.id}?autoplay=1&controls=0&mute=1&loop=1&playlist=${reel.id}&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      title={reel.title}
-                      className="w-full h-full"
-                      style={{ border: "none" }}
-                    />
-                  </div>
-                ))}
+              <div
+                className="overflow-hidden rounded-2xl"
+                style={{
+                  WebkitOverflowScrolling: "touch",
+                }}
+              >
+                <div
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {/* 4 slides total */}
+                  {[0, 1, 2, 3].map((slideIndex) => {
+                    const reelsForSlide = getMobileReelsForSlide(slideIndex)
+                    const isLastSlide = slideIndex === 3
+
+                    return (
+                      <div key={slideIndex} className="w-full flex-shrink-0">
+                        <div className={`flex ${isLastSlide ? "justify-center" : "space-x-2"} h-[400px]`}>
+                          {reelsForSlide.map((reel, reelIndex) => (
+                            <div
+                              key={reel.id}
+                              className={`${isLastSlide ? "w-[180px]" : "w-1/2"} aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl relative`}
+                            >
+                              <iframe
+                                src={`https://www.youtube.com/embed/${reel.id}?autoplay=${currentSlide === slideIndex ? 1 : 0}&controls=0&mute=1&loop=1&playlist=${reel.id}&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                title={reel.title}
+                                className="w-full h-full"
+                                style={{ border: "none" }}
+                              />
+                              {/* Overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <div className="absolute bottom-2 left-2 right-2">
+                                  <h3 className="text-white font-semibold text-xs">{reel.title}</h3>
+                                </div>
+                                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                  <div className="w-8 h-8 bg-[#F7BD3A]/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                                    <Play className="h-4 w-4 text-[#F7BD3A] fill-current" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
 
-              {/* Mobile Navigation */}
+              {/* Mobile Navigation Arrows */}
+              <button
+                onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
+                disabled={currentSlide === 0}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10 touch-manipulation"
+              >
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              <button
+                onClick={() => setCurrentSlide(Math.min(3, currentSlide + 1))}
+                disabled={currentSlide === 3}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10 touch-manipulation"
+              >
+                <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              {/* Mobile Pagination */}
               <div className="flex justify-center mt-6 space-x-2">
-                {Array.from({ length: 12 }).map((_, index) => (
+                {[0, 1, 2, 3].map((slide) => (
                   <button
-                    key={index}
-                    onClick={() => setCurrentSlide(index)}
+                    key={slide}
+                    onClick={() => setCurrentSlide(slide)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      currentSlide === index ? "bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] scale-125" : "bg-white/20"
+                      currentSlide === slide ? "bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] scale-125" : "bg-white/20"
                     }`}
                   />
                 ))}
@@ -875,7 +987,9 @@ export default function AayushTiwariPage() {
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
                       <div>
                         <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">Founder</h3>
-                        <p className="text-lg sm:text-xl text-gray-300 font-medium">Orite Production – Creative Director</p>
+                        <p className="text-lg sm:text-xl text-gray-300 font-medium">
+                          Orite Production – Creative Director
+                        </p>
                         <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
                       </div>
                       <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
@@ -915,9 +1029,16 @@ export default function AayushTiwariPage() {
                       </div>
                     </div>
                     <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
-                      <p>• Produced upto 4 DVC (Digital Video Commercial for Nepali New Year campaign, PayDay ko Jhatka campaign, Daraz 11.11 - The biggest sale of the year campaign and Daraz Free Delivery Festival campaign)</p>
+                      <p>
+                        • Produced upto 4 DVC (Digital Video Commercial for Nepali New Year campaign, PayDay ko Jhatka
+                        campaign, Daraz 11.11 - The biggest sale of the year campaign and Daraz Free Delivery Festival
+                        campaign)
+                      </p>
                       <p>• Directed and shot a documentary for Daraz Nepal - The Journey (Documentary)</p>
-                      <p>• Shot over 100 videos for Daraz Nepal social media content. (Paid promotions for Instagram, YouTube, Facebook)</p>
+                      <p>
+                        • Shot over 100 videos for Daraz Nepal social media content. (Paid promotions for Instagram,
+                        YouTube, Facebook)
+                      </p>
                       <p>• Created paid promotional content for Instagram, Facebook, and YouTube</p>
                       <p>• Shot a series of 6 videos for Daraz 11.11 Campaign (Documentary style)</p>
                     </div>
@@ -1023,7 +1144,6 @@ export default function AayushTiwariPage() {
                       <p>• Covered an interview highlighting Nepal's Intersex Community</p>
                       <p>• Assistant cinematographer for the short film "The Monk", directed by Roel van</p>
                       <p>• Worked as a Cinematographer for a social media advertisement video for JEEP</p>
-
                     </div>
                     <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
                       <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
@@ -1076,7 +1196,7 @@ export default function AayushTiwariPage() {
                       </span>
                     </div>
                   </div>
-                </div> 
+                </div>
               </div>
             </div>
           </div>
