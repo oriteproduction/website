@@ -253,41 +253,7 @@ export default function AayushTiwariPage() {
           </h2>
 
           <div className="space-y-12 sm:space-y-16 lg:space-y-20">
-            {/* Project 1 - Daraz Campaign */}
-            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-              <div className="space-y-4 sm:space-y-6">
-                <h3 className="text-2xl sm:text-3xl font-bold text-[#F7BD3A]">Daraz Nepal Campaign Series</h3>
-                <p className="text-base sm:text-lg text-gray-300">
-                  Led the creative direction for Daraz Nepal's major campaign series, including the 11.11 sale campaign
-                  and brand storytelling videos. Managed a team of 8+ creatives to deliver high-impact commercial
-                  content that drove significant engagement and sales.
-                </p>
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-[#F7BD3A] rounded-full"></div>
-                    <span className="text-sm sm:text-base text-gray-300">Creative Direction & Concept Development</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-[#F7BD3A] rounded-full"></div>
-                    <span className="text-sm sm:text-base text-gray-300">Multi-platform Content Strategy</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-[#F7BD3A] rounded-full"></div>
-                    <span className="text-sm sm:text-base text-gray-300">Team Leadership & Production Management</span>
-                  </div>
-                </div>
-              </div>
-              <div className="aspect-video rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
-                <iframe
-                  src="https://www.youtube.com/embed/_oiVSMmS8d0?autoplay=1&controls=0&mute=1&loop=1&playlist=_oiVSMmS8d0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Daraz Campaign"
-                  className="w-full h-full"
-                  style={{ border: "none" }}
-                />
-              </div>
-            </div>
+            
 
             {/* Project 2 - Documentary Work */}
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
@@ -1290,7 +1256,7 @@ export default function AayushTiwariPage() {
           {/* Social Media Links */}
           <div className="flex justify-center space-x-4 sm:space-x-6">
             <Link
-              href="https://www.instagram.com/aayushtiwari.np/"
+              href="https://www.instagram.com/utdaayush_/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 max-[768px]:w-8 max-[768px]:h-8 sm:w-12 sm:h-12 bg-gradient-to-r from-[#E4405F] to-[#F56040] rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -1305,7 +1271,7 @@ export default function AayushTiwariPage() {
             </Link>
 
             <Link
-              href="https://www.facebook.com/aayushtiwari.np"
+              href="https://www.facebook.com/utdaayush"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 max-[768px]:w-8 max-[768px]:h-8 sm:w-12 sm:h-12 bg-gradient-to-r from-[#1877F2] to-[#42A5F5] rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -1320,7 +1286,7 @@ export default function AayushTiwariPage() {
             </Link>
 
             <Link
-              href="https://www.linkedin.com/in/aayushtiwari-np/"
+              href="https://www.linkedin.com/in/utdaayush/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 max-[768px]:w-8 max-[768px]:h-8 sm:w-12 sm:h-12 bg-gradient-to-r from-[#0077B5] to-[#00A0DC] rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"

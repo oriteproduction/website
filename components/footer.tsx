@@ -40,7 +40,7 @@ export default function Footer() {
                 <Youtube className="h-5 w-5" />
               </Link>
               <Link
-                href="https://www.linkedin.com/in/utdaayush/"
+                href="https://www.linkedin.com/company/oriteproduction/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-red-500 transition-colors"
