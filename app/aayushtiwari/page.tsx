@@ -318,7 +318,7 @@ export default function AayushTiwariPage() {
               </div>
               <div className="aspect-video rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
                 <iframe
-                  src="https://www.youtube.com/embed/Tq7_CQjI64c?autoplay=1&controls=0&mute=1&loop=1&playlist=Tq7_CQjI64c&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                  src="https://www.youtube.com/embed/_oiVSMmS8d0?autoplay=1&controls=0&mute=1&loop=1&playlist=_oiVSMmS8d0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   title="Daraz Nepal Campaign Series"
