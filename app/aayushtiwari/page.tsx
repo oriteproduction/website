@@ -5,7 +5,7 @@ import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Award, Film, Eye, Calendar, MapPin, Play, Download } from "lucide-react"
+import { Award, Film, Eye, Calendar, MapPin, Play, Download, ChevronDown, ChevronUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function AayushTiwariPage() {
@@ -14,6 +14,8 @@ export default function AayushTiwariPage() {
   const [hoveredReel, setHoveredReel] = useState<number | null>(null)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [isJourneyExpanded, setIsJourneyExpanded] = useState(false)
+  const [showAllExperiences, setShowAllExperiences] = useState(false)
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768)
@@ -137,6 +139,17 @@ export default function AayushTiwariPage() {
     // First 3 slides have 2 reels each
     const startIndex = slideIndex * 2
     return mobileReelsData.slice(startIndex, startIndex + 2)
+  }
+
+  const toggleJourneySection = () => {
+    setIsJourneyExpanded(!isJourneyExpanded)
+    if (!isJourneyExpanded) {
+      setShowAllExperiences(false) // Reset to show limited experiences when expanding
+    }
+  }
+
+  const toggleShowAllExperiences = () => {
+    setShowAllExperiences(!showAllExperiences)
   }
 
   return (
@@ -293,9 +306,9 @@ export default function AayushTiwariPage() {
               <div className="space-y-4 sm:space-y-6">
                 <h3 className="text-2xl sm:text-3xl font-bold text-[#F7BD3A]">Daraz Nepal Campaign Series</h3>
                 <p className="text-base sm:text-lg text-gray-300">
-                  Directed and produced a series of high-impact video commercials for Daraz Nepal, focusing on key
-                  campaigns such as Nepali New Year, PayDay ko Jhatka, Daraz 11.11, and Daraz Free Delivery Festival.
-                  Expertise in creating engaging content that drives brand awareness and sales conversion.
+                  Worked on a series of high-impact video commercials for Daraz Nepal, focusing on key campaigns such as
+                  Nepali New Year, PayDay ko Jhatka, Daraz 11.11, and Daraz Free Delivery Festival. Expertise in
+                  creating engaging content that drives brand awareness and sales conversion.
                 </p>
                 <div className="space-y-2">
                   <div className="flex items-center space-x-3">
@@ -949,256 +962,329 @@ export default function AayushTiwariPage() {
         </div>
       </section>
 
-      {/* My Creative Journey Section */}
+      {/* My Creative Journey Section - Collapsible */}
       <section className="py-12 sm:py-16 lg:py-20 relative bg-[#0D0D0D]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] bg-clip-text text-transparent mb-4 sm:mb-6">
-              My Creative Journey
-            </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-2">
-              A comprehensive timeline of professional growth, creative milestones, and industry impact
-            </p>
-            <div className="flex justify-center mb-6 sm:mb-8">
-              <Link
-                href="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/aayushcv1.jpg"
-                target="_blank"
-              >
-                <Button className="bg-gradient-to-r from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] hover:from-[#FCE2A6] hover:via-[#F7BD3A] hover:to-[#6E3D1B] text-black font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-full transition-all duration-300 hover:scale-105 text-sm sm:text-base">
-                  <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
-                  Download Full CV
-                </Button>
-              </Link>
-            </div>
+          {/* Section Header with Toggle */}
+          <div className="text-center mb-8 sm:mb-12">
+            <button
+              onClick={toggleJourneySection}
+              className="group w-full max-w-4xl mx-auto flex flex-col items-center justify-center space-y-4 sm:space-y-6 hover:scale-105 transition-all duration-300 cursor-pointer"
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] bg-clip-text text-transparent">
+                My Creative Journey
+              </h2>
+              <div className="flex items-center space-x-3 text-[#F7BD3A] group-hover:text-[#FCE2A6] transition-colors duration-300">
+                <span className="text-base sm:text-lg font-medium">
+                  {isJourneyExpanded ? "Hide Creative Journey" : "View Creative Journey"}
+                </span>
+                {isJourneyExpanded ? (
+                  <ChevronUp className="h-5 w-5 sm:h-6 sm:w-6" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6" />
+                )}
+              </div>
+            </button>
+
+            {!isJourneyExpanded && (
+              <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mt-4 sm:mt-6 px-2">
+                A comprehensive timeline of professional growth, creative milestones, and industry impact
+              </p>
+            )}
           </div>
 
-          {/* Professional Timeline */}
-          <div className="max-w-5xl mx-auto">
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] hidden md:block"></div>
-
-              {/* Experience Items */}
-              <div className="space-y-8 sm:space-y-12">
-                {/* Founder - Orite Production */}
-                <div className="relative flex items-start group">
-                  <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
-                  <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">Founder</h3>
-                        <p className="text-lg sm:text-xl text-gray-300 font-medium">
-                          Orite Production – Creative Director
-                        </p>
-                        <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
-                      </div>
-                      <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
-                        July 2024 – Present
-                      </div>
-                    </div>
-                    <p className="text-gray-300 leading-relaxed text-sm sm:text-base lg:text-lg">
-                      Founder and creative lead of a production company specializing in cinematic storytelling for
-                      commercials, documentaries, and branded content.
-                    </p>
-                    <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Leadership
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Business Development
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Creative Direction
-                      </span>
-                    </div>
+          {/* Collapsible Content */}
+          <div
+            className={`transition-all duration-500 ease-in-out overflow-hidden ${
+              isJourneyExpanded ? "max-h-none opacity-100" : "max-h-0 opacity-0"
+            }`}
+          >
+            {isJourneyExpanded && (
+              <div>
+                <div className="text-center mb-6 sm:mb-8">
+                  <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 px-2">
+                    A comprehensive timeline of professional growth, creative milestones, and industry impact
+                  </p>
+                  <div className="flex justify-center mb-6 sm:mb-8">
+                    <Link
+                      href="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/aayushcv1.jpg"
+                      target="_blank"
+                    >
+                      <Button className="bg-gradient-to-r from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] hover:from-[#FCE2A6] hover:via-[#F7BD3A] hover:to-[#6E3D1B] text-black font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-full transition-all duration-300 hover:scale-105 text-sm sm:text-base">
+                        <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
+                        Download Full CV
+                      </Button>
+                    </Link>
                   </div>
                 </div>
 
-                {/* Videographer - Daraz */}
-                <div className="relative flex items-start group">
-                  <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
-                  <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">Videographer</h3>
-                        <p className="text-lg sm:text-xl text-gray-300 font-medium">Daraz (Full-time)</p>
-                        <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
-                      </div>
-                      <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
-                        Mar 2023 – Mar 2024
-                      </div>
-                    </div>
-                    <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
-                      <p>
-                        • Produced upto 4 DVC (Digital Video Commercial for Nepali New Year campaign, PayDay ko Jhatka
-                        campaign, Daraz 11.11 - The biggest sale of the year campaign and Daraz Free Delivery Festival
-                        campaign)
-                      </p>
-                      <p>• Directed and shot a documentary for Daraz Nepal - The Journey (Documentary)</p>
-                      <p>
-                        • Shot over 100 videos for Daraz Nepal social media content. (Paid promotions for Instagram,
-                        YouTube, Facebook)
-                      </p>
-                      <p>• Created paid promotional content for Instagram, Facebook, and YouTube</p>
-                      <p>• Shot a series of 6 videos for Daraz 11.11 Campaign (Documentary style)</p>
-                    </div>
-                    <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Campaign Production
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Social Media
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Documentary
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                {/* Professional Timeline */}
+                <div className="max-w-5xl mx-auto">
+                  <div className="relative">
+                    {/* Timeline Line */}
+                    <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] hidden md:block"></div>
 
-                {/* Freelance Filmmaker - Dopper */}
-                <div className="relative flex items-start group">
-                  <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
-                  <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">
-                          Contract Filmmaker
-                        </h3>
-                        <p className="text-lg sm:text-xl text-gray-300 font-medium">Dopper</p>
-                        <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
+                    {/* Experience Items */}
+                    <div className="space-y-8 sm:space-y-12">
+                      {/* Founder - Orite Production */}
+                      <div className="relative flex items-start group">
+                        <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
+                        <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
+                          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
+                            <div>
+                              <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">Founder</h3>
+                              <p className="text-lg sm:text-xl text-gray-300 font-medium">
+                                Orite Production – Creative Director
+                              </p>
+                              <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
+                            </div>
+                            <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
+                              July 2024 – Present
+                            </div>
+                          </div>
+                          <p className="text-gray-300 leading-relaxed text-sm sm:text-base lg:text-lg">
+                            Founder and creative lead of a production company specializing in cinematic storytelling for
+                            commercials, documentaries, and branded content.
+                          </p>
+                          <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
+                            <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                              Leadership
+                            </span>
+                            <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                              Business Development
+                            </span>
+                            <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                              Creative Direction
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
-                        Dec 2019 – Feb 2020
-                      </div>
-                    </div>
-                    <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
-                      <p>• Cinematographer for 3+ documentary-style videos</p>
-                      <p>• Changemaker Challenge Winner videos (Nepal and Germany)</p>
-                      <p>• Documentary shoot at Excelsior School in association with Karkhana</p>
-                      <p>• Event photography at Himalayan Climate Initiative for Dopper meetup</p>
-                    </div>
-                    <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Cinematography
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Documentary
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Event Photography
-                      </span>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Videographer - Paradygm TV */}
-                <div className="relative flex items-start group">
-                  <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
-                  <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">Videographer</h3>
-                        <p className="text-lg sm:text-xl text-gray-300 font-medium">Paradygm TV (Part-time)</p>
-                        <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
+                      {/* Videographer - Daraz */}
+                      <div className="relative flex items-start group">
+                        <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
+                        <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
+                          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
+                            <div>
+                              <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">
+                                Videographer
+                              </h3>
+                              <p className="text-lg sm:text-xl text-gray-300 font-medium">Daraz (Full-time)</p>
+                              <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
+                            </div>
+                            <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
+                              Mar 2023 – Mar 2024
+                            </div>
+                          </div>
+                          <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
+                            <p>
+                              • Produced upto 4 DVC (Digital Video Commercial for Nepali New Year campaign, PayDay ko
+                              Jhatka campaign, Daraz 11.11 - The biggest sale of the year campaign and Daraz Free
+                              Delivery Festival campaign)
+                            </p>
+                            <p>• Directed and shot a documentary for Daraz Nepal - The Journey (Documentary)</p>
+                            <p>
+                              • Shot over 100 videos for Daraz Nepal social media content. (Paid promotions for
+                              Instagram, YouTube, Facebook)
+                            </p>
+                            <p>• Created paid promotional content for Instagram, Facebook, and YouTube</p>
+                            <p>• Shot a series of 6 videos for Daraz 11.11 Campaign (Documentary style)</p>
+                          </div>
+                          <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
+                            <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                              Campaign Production
+                            </span>
+                            <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                              Social Media
+                            </span>
+                            <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                              Documentary
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
-                        Jan 2019 – Apr 2019
-                      </div>
-                    </div>
-                    <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                      Shot and edited the first episode of "We Asked: Season 1"
-                    </p>
-                    <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Video Production
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Editing
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        TV Production
-                      </span>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Videographer - Red Circle Creative Solutions */}
-                <div className="relative flex items-start group">
-                  <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
-                  <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">Videographer</h3>
-                        <p className="text-lg sm:text-xl text-gray-300 font-medium">
-                          Red Circle Creative Solutions (Part-time)
-                        </p>
-                        <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
+                      {/* Freelance Filmmaker - Dopper */}
+                      <div className="relative flex items-start group">
+                        <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
+                        <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
+                          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
+                            <div>
+                              <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">
+                                Contract Filmmaker
+                              </h3>
+                              <p className="text-lg sm:text-xl text-gray-300 font-medium">Dopper</p>
+                              <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
+                            </div>
+                            <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
+                              Dec 2019 – Feb 2020
+                            </div>
+                          </div>
+                          <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
+                            <p>• Cinematographer for 3+ documentary-style videos</p>
+                            <p>• Changemaker Challenge Winner videos (Nepal and Germany)</p>
+                            <p>• Documentary shoot at Excelsior School in association with Karkhana</p>
+                            <p>• Event photography at Himalayan Climate Initiative for Dopper meetup</p>
+                          </div>
+                          <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
+                            <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                              Cinematography
+                            </span>
+                            <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                              Documentary
+                            </span>
+                            <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                              Event Photography
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
-                        2019
-                      </div>
-                    </div>
-                    <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
-                      <p>• Shot an episode of "The Next Venture Corp"</p>
-                      <p>• Covered an interview highlighting Nepal's Intersex Community</p>
-                      <p>• Assistant cinematographer for the short film "The Monk", directed by Roel van</p>
-                      <p>• Worked as a Cinematographer for a social media advertisement video for JEEP</p>
-                    </div>
-                    <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Interview Production
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Social Impact
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Documentary
-                      </span>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Professional Photographer - Silk Group */}
-                <div className="relative flex items-start group">
-                  <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
-                  <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">
-                          Professional Photographer
-                        </h3>
-                        <p className="text-lg sm:text-xl text-gray-300 font-medium">Silk Group (Freelance)</p>
-                        <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
-                      </div>
-                      <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
-                        2018 – 2019
-                      </div>
-                    </div>
-                    <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
-                      <p>• Event photography for the "Key-handing Ceremony" between EICHER and Silk Group</p>
-                      <p>• Captured corporate meetings and branding moments</p>
-                      <p>• Photographed Silk Transport x MUSA Logistics meeting at Tatopani Customs Office</p>
-                      <p>
-                        • Captured agreement signing event at Hotel Radisson between Silk Transport and MUSA Logistics
-                        (China)
-                      </p>
-                    </div>
-                    <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Event Photography
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Corporate
-                      </span>
-                      <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                        Branding
-                      </span>
+                      {/* See More Button */}
+                      {!showAllExperiences && (
+                        <div className="flex justify-center">
+                          <button
+                            onClick={toggleShowAllExperiences}
+                            className="inline-flex items-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] hover:from-[#FCE2A6] hover:via-[#F7BD3A] hover:to-[#6E3D1B] text-black font-semibold rounded-full transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+                          >
+                            <span>See More</span>
+                            <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5" />
+                          </button>
+                        </div>
+                      )}
+
+                      {/* Additional Experiences - Hidden by default */}
+                      {showAllExperiences && (
+                        <>
+                          {/* Videographer - Paradygm TV */}
+                          <div className="relative flex items-start group">
+                            <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
+                            <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
+                              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
+                                <div>
+                                  <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">
+                                    Videographer
+                                  </h3>
+                                  <p className="text-lg sm:text-xl text-gray-300 font-medium">
+                                    Paradygm TV (Part-time)
+                                  </p>
+                                  <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
+                                </div>
+                                <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
+                                  Jan 2019 – Apr 2019
+                                </div>
+                              </div>
+                              <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                                Shot and edited the first episode of "We Asked: Season 1"
+                              </p>
+                              <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
+                                <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                                  Video Production
+                                </span>
+                                <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                                  Editing
+                                </span>
+                                <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                                  TV Production
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Videographer - Red Circle Creative Solutions */}
+                          <div className="relative flex items-start group">
+                            <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
+                            <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
+                              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
+                                <div>
+                                  <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">
+                                    Videographer
+                                  </h3>
+                                  <p className="text-lg sm:text-xl text-gray-300 font-medium">
+                                    Red Circle Creative Solutions (Part-time)
+                                  </p>
+                                  <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
+                                </div>
+                                <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
+                                  2019
+                                </div>
+                              </div>
+                              <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
+                                <p>• Shot an episode of "The Next Venture Corp"</p>
+                                <p>• Covered an interview highlighting Nepal's Intersex Community</p>
+                                <p>• Assistant cinematographer for the short film "The Monk", directed by Roel van</p>
+                                <p>• Worked as a Cinematographer for a social media advertisement video for JEEP</p>
+                              </div>
+                              <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
+                                <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                                  Interview Production
+                                </span>
+                                <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                                  Social Impact
+                                </span>
+                                <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                                  Documentary
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Professional Photographer - Silk Group */}
+                          <div className="relative flex items-start group">
+                            <div className="absolute left-4 sm:left-6 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-300 hidden md:block"></div>
+                            <div className="md:ml-12 lg:ml-16 w-full bg-white/5 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#F7BD3A]/20 hover:border-[#F7BD3A]/50 transition-all duration-300 hover:transform hover:scale-105">
+                              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6">
+                                <div>
+                                  <h3 className="text-xl sm:text-2xl font-bold text-[#F7BD3A] mb-1 sm:mb-2">
+                                    Professional Photographer
+                                  </h3>
+                                  <p className="text-lg sm:text-xl text-gray-300 font-medium">Silk Group (Freelance)</p>
+                                  <p className="text-sm sm:text-base text-gray-400">Kathmandu, Nepal</p>
+                                </div>
+                                <div className="text-xs sm:text-sm text-gray-400 bg-[#F7BD3A]/10 px-3 sm:px-4 py-1 sm:py-2 rounded-full mt-2 lg:mt-0 w-fit">
+                                  2018 – 2019
+                                </div>
+                              </div>
+                              <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
+                                <p>• Event photography for the "Key-handing Ceremony" between EICHER and Silk Group</p>
+                                <p>• Captured corporate meetings and branding moments</p>
+                                <p>• Photographed Silk Transport x MUSA Logistics meeting at Tatopani Customs Office</p>
+                                <p>
+                                  • Captured agreement signing event at Hotel Radisson between Silk Transport and MUSA
+                                  Logistics (China)
+                                </p>
+                              </div>
+                              <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
+                                <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                                  Event Photography
+                                </span>
+                                <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                                  Corporate
+                                </span>
+                                <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                                  Branding
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Show Less Button */}
+                          <div className="flex justify-center">
+                            <button
+                              onClick={toggleShowAllExperiences}
+                              className="inline-flex items-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] hover:from-[#FCE2A6] hover:via-[#F7BD3A] hover:to-[#6E3D1B] text-black font-semibold rounded-full transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+                            >
+                              <span>Show Less</span>
+                              <ChevronUp className="h-4 w-4 sm:h-5 sm:w-5" />
+                            </button>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
@@ -1316,35 +1402,6 @@ export default function AayushTiwariPage() {
           </div>
         </div>
       </section>
-
-      {/* Contact & Collaboration */}
-      <section className="py-12 sm:py-16 lg:py-20 relative bg-[#131313]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] bg-clip-text text-transparent mb-6 sm:mb-8">
-            Let's Create Together
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-8 sm:mb-12 px-2">
-            Ready to bring your vision to life? Let's collaborate on your next cinematic project and create something
-            extraordinary that resonates with your audience and drives meaningful impact.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Link href="/contact">
-              <Button className="bg-gradient-to-r from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] hover:from-[#FCE2A6] hover:via-[#F7BD3A] hover:to-[#6E3D1B] text-black font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 hover:scale-105 text-sm sm:text-base">
-                Start a Project
-              </Button>
-            </Link>
-            <Link href="/portfolio">
-              <Button
-                variant="outline"
-                className="border-[#F7BD3A] text-[#F7BD3A] hover:bg-gradient-to-r hover:from-[#6E3D1B] hover:via-[#F7BD3A] hover:to-[#FCE2A6] hover:text-black px-6 sm:px-8 py-2 sm:py-3 rounded-full transition-all duration-300 hover:scale-105 bg-transparent text-sm sm:text-base"
-              >
-                View Portfolio
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Connect with Me Section */}
       <section className="py-12 sm:py-16 lg:py-20 relative bg-[#0F0F0F]">
         <div className="container mx-auto px-4 max-[768px]:px-3 sm:px-6 lg:px-8 relative z-10">
