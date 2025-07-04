@@ -148,17 +148,17 @@ export default function AboutPageClient() {
                   link: "/aayushtiwari",
                 },
                 {
-                  name: "Shishir Thapa",
-                  role: "Lead Videographer",
-                  image:
-                    "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/shishir.png?height=400&width=400",
-                  bio: "Shishir's exceptional cinematography skills and attention to detail bring a unique visual style to every project.",
-                },
-                {
                   name: "Roshan Thapa",
                   role: "Post-Production Manager",
-                  image: "/placeholder.svg?height=400&width=400",
+                  image:
+                    "/placeholder.svg?height=400&width=400",
                   bio: "Roshan's technical expertise and creative approach ensure that every project is polished to perfection.",
+                },
+                {
+                  name: "Sijan Khadka",
+                  role: "Freelance Editor",
+                  image: "/placeholder.svg?height=400&width=400",
+                  bio: "Sijan Khadka combines expert video editing with dynamic animation to craft visually engaging stories that captivate and communicate.",
                 },
               ].map((member, index) => (
                 <div key={index} className="text-center">
