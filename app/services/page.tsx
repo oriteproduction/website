@@ -9,8 +9,7 @@ import { useSearchParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
-import ServicesVideoHero from "@/components/services-video-hero"
-import { Video, Film, FileVideo, Plane, Camera, Palette, Play, CheckCircle } from "lucide-react"
+import { Video, Film, FileVideo, Plane, Camera, Palette, Play, CheckCircle, ChevronDown, ChevronUp } from "lucide-react"
 
 interface ServiceContentProps {
   id: string
@@ -388,6 +387,7 @@ export default function ServicesPage() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [activeTab, setActiveTab] = useState("video-production")
+  const [showTestimonials, setShowTestimonials] = useState(false)
 
   const services = [
     {
@@ -762,66 +762,236 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Hero After Process Section */}
-      <section>
-        <ServicesVideoHero videoId="cMFjniTQBBA" />
+      {/* Behind the Scenes Section */}
+      <section className="py-12 sm:py-16 lg:py-20 relative bg-black">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-12 sm:mb-16">
+            Behind the Scenes
+          </h2>
+
+          <div className="space-y-12 sm:space-y-16 lg:space-y-20">
+            {/* Behind the Scenes Video 1 */}
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+              <div className="space-y-4 sm:space-y-6">
+                <h3 className="text-2xl sm:text-3xl font-bold text-red-500">Our Creative Process</h3>
+                <p className="text-base sm:text-lg text-gray-300">
+                  Get an exclusive look at how we bring ideas to life. From initial concept development to final
+                  execution, witness the dedication and creativity that goes into every project we deliver.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-sm sm:text-base text-gray-300">
+                      Pre-production planning and storyboarding
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-sm sm:text-base text-gray-300">Professional equipment setup and testing</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-sm sm:text-base text-gray-300">
+                      Collaborative team approach to filmmaking
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="aspect-video rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl cursor-pointer"
+                onClick={() => window.open("https://www.youtube.com/watch?v=cMFjniTQBBA", "_blank")}
+              >
+                <iframe
+                  src="https://www.youtube.com/embed/cMFjniTQBBA?autoplay=1&controls=0&mute=1&loop=1&playlist=cMFjniTQBBA&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title="Behind the Scenes - Creative Process"
+                  className="w-full h-full"
+                  style={{ border: "none" }}
+                />
+              </div>
+            </div>
+
+            {/* Behind the Scenes Video 2 */}
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+              <div
+                className="order-2 lg:order-1 aspect-video rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl cursor-pointer"
+                onClick={() => window.open("https://www.youtube.com/watch?v=TDdW2nJ0bw8", "_blank")}
+              >
+                <iframe
+                  src="https://www.youtube.com/embed/TDdW2nJ0bw8?autoplay=1&controls=0&mute=1&loop=1&playlist=TDdW2nJ0bw8&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title="Behind the Scenes - Production Excellence"
+                  className="w-full h-full"
+                  style={{ border: "none" }}
+                />
+              </div>
+              <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
+                <h3 className="text-2xl sm:text-3xl font-bold text-red-500">Production Excellence</h3>
+                <p className="text-base sm:text-lg text-gray-300">
+                  Experience the precision and attention to detail that defines our production standards. See how our
+                  team coordinates seamlessly to deliver exceptional results on every shoot.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-sm sm:text-base text-gray-300">Advanced cinematography techniques</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-sm sm:text-base text-gray-300">Real-time problem solving and adaptation</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-sm sm:text-base text-gray-300">
+                      Quality control and continuous improvement
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
+      {/* Reels Section 1 */}
+      <section className="py-12 sm:py-16 bg-zinc-900">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Reel 1 */}
+            <div
+              className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 max-w-[300px] mx-auto"
+              onClick={() => window.open("https://www.youtube.com/watch?v=Tq7_CQjI64c", "_blank")}
+            >
+              <iframe
+                src="https://www.youtube.com/embed/Tq7_CQjI64c?autoplay=1&controls=0&mute=1&loop=1&playlist=Tq7_CQjI64c&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Camera Roll Showcase"
+                className="w-full h-full"
+                style={{ border: "none" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-3 left-3 right-3">
+                  <h3 className="text-white font-semibold text-sm">Camera Roll Showcase</h3>
+                </div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <Play className="h-6 w-6 text-red-500 fill-current" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Reel 2 */}
+            <div
+              className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 max-w-[300px] mx-auto"
+              onClick={() => window.open("https://www.youtube.com/watch?v=jw69BdTThwI", "_blank")}
+            >
+              <iframe
+                src="https://www.youtube.com/embed/jw69BdTThwI?autoplay=1&controls=0&mute=1&loop=1&playlist=jw69BdTThwI&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Welcome to Nepal"
+                className="w-full h-full"
+                style={{ border: "none" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-3 left-3 right-3">
+                  <h3 className="text-white font-semibold text-sm">Welcome to Nepal</h3>
+                </div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <Play className="h-6 w-6 text-red-500 fill-current" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+     
       {/* Testimonials Section */}
-      <section className="py-16 bg-black">
+      <section className="py-16 relative bg">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">What Our Clients Say</h2>
-            <p className="text-gray-400">
+            <p className="text-gray-400 mb-8">
               Don't just take our word for it. Here's what our clients have to say about our services.
             </p>
+
+            {!showTestimonials && (
+              <button
+                onClick={() => setShowTestimonials(true)}
+                className="inline-flex items-center space-x-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-all duration-300"
+              >
+                <span>See more</span>
+                <ChevronDown className="h-4 w-4" />
+              </button>
+            )}
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Saurav Dhungana",
-                company: "Playbox Arena",
-                quote:
-                  "\"Partnering with Orite Production for our TV commercial and Aston ad was an outstanding experience. Their team brought a sharp creative vision, technical excellence, and a strong understanding of our brand. The final outputs were dynamic, high-impact, and perfectly aligned with our marketing goals. We're thrilled with the results and confident in Orite as a go-to creative partner for future campaigns",
-                image:
-                  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/playbox.png?height=600&width=800?height=100&width=100",
-              },
-              {
-                name: "Rijesh Uparkoti",
-                company: "Gandaki Gaupalika",
-                quote:
-                  "Throughout the project, Orite Production exhibited a high level of professionalism, creativity, and dedication. We collaborated on three informative short films aimed at raising awareness across Gandaki Gaupalika, and their contributions significantly enhanced both the impact and reach of our campaign. Their team's ability to translate complex messages into compelling visual stories was instrumental in the project's success.",
-                image:
-                  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/GON.png?height=600&width=800?height=100&width=100",
-              },
-              {
-                name: "Nimesh Sitaula",
-                company: "Tapobhumi Travel and Tours",
-                quote:
-                  "Working with Orite Production has been a game-changer for our brand. Their team brought our travel stories to life with visually stunning videos, seamless edits, and captivating animations. The creativity and professionalism they brought to the table made the entire process effortless and effective. We're proud to have partnered with Orite and look forward to creating more magic together.",
-                image:
-                  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/tapobhumi.png?height=600&width=800?height=100&width=100",
-              },
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-zinc-900 p-6 rounded-lg">
-                <div className="flex items-center mb-4">
-                  <Image
-                    src={testimonial.image || "/placeholder.svg"}
-                    alt={testimonial.name}
-                    width={60}
-                    height={60}
-                    className="rounded-full mr-4"
-                  />
-                  <div>
-                    <h4 className="font-semibold">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-400">{testimonial.company}</p>
+          {showTestimonials && (
+            <div className="space-y-8">
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    name: "Saurav Dhungana",
+                    company: "Playbox Arena",
+                    quote:
+                      "\"Partnering with Orite Production for our TV commercial and Aston ad was an outstanding experience. Their team brought a sharp creative vision, technical excellence, and a strong understanding of our brand. The final outputs were dynamic, high-impact, and perfectly aligned with our marketing goals. We're thrilled with the results and confident in Orite as a go-to creative partner for future campaigns",
+                    image:
+                      "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/playbox.png?height=600&width=800?height=100&width=100",
+                  },
+                  {
+                    name: "Rijesh Uparkoti",
+                    company: "Gandaki Gaupalika",
+                    quote:
+                      "Throughout the project, Orite Production exhibited a high level of professionalism, creativity, and dedication. We collaborated on three informative short films aimed at raising awareness across Gandaki Gaupalika, and their contributions significantly enhanced both the impact and reach of our campaign. Their team's ability to translate complex messages into compelling visual stories was instrumental in the project's success.",
+                    image:
+                      "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/GON.png?height=600&width=800?height=100&width=100",
+                  },
+                  {
+                    name: "Nimesh Sitaula",
+                    company: "Tapobhumi Travel and Tours",
+                    quote:
+                      "Working with Orite Production has been a game-changer for our brand. Their team brought our travel stories to life with visually stunning videos, seamless edits, and captivating animations. The creativity and professionalism they brought to the table made the entire process effortless and effective. We're proud to have partnered with Orite and look forward to creating more magic together.",
+                    image:
+                      "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/tapobhumi.png?height=600&width=800?height=100&width=100",
+                  },
+                ].map((testimonial, index) => (
+                  <div key={index} className="bg-black p-6 rounded-lg border border-zinc-800">
+                    <div className="flex items-center mb-4">
+                      <Image
+                        src={testimonial.image || "/placeholder.svg"}
+                        alt={testimonial.name}
+                        width={60}
+                        height={60}
+                        className="rounded-full mr-4"
+                      />
+                      <div>
+                        <h4 className="font-semibold">{testimonial.name}</h4>
+                        <p className="text-sm text-gray-400">{testimonial.company}</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-300 italic">"{testimonial.quote}"</p>
                   </div>
-                </div>
-                <p className="text-gray-300 italic">"{testimonial.quote}"</p>
+                ))}
               </div>
-            ))}
-          </div>
+
+              <div className="text-center">
+                <button
+                  onClick={() => setShowTestimonials(false)}
+                  className="inline-flex items-center space-x-2 px-6 py-3 bg-zinc-800 hover:bg-zinc-700 text-white font-semibold rounded-lg transition-all duration-300"
+                >
+                  <span>See less</span>
+                  <ChevronUp className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
