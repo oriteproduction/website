@@ -34,102 +34,7 @@ function getImageName(serviceId: string): string {
 }
 
 const exampleService = [
-  {
-    id: "video-production",
-    title: "Video Production",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/shoot1.jpg?height=600&width=800",
-  },
-  {
-    id: "video-production",
-    title: "Video Production",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/shoot2.jpg?height=600&width=800",
-  },
-  {
-    id: "video-production",
-    title: "Video Production",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/shoot3.jpg?height=600&width=800",
-  },
-  {
-    id: "post-production",
-    title: "Post Production",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/edit1.jpg?height=600&width=800",
-  },
-  {
-    id: "post-production",
-    title: "Post Production",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/edit2.jpg?height=600&width=800",
-  },
-  {
-    id: "post-production",
-    title: "Post Production",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/edit3.jpg?height=600&width=800",
-  },
-  {
-    id: "content-creation",
-    title: "Content Creation",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/content1.jpg?height=600&width=800",
-  },
-  {
-    id: "content-creation",
-    title: "Content Creation",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/content2.jpg?height=600&width=800",
-  },
-  {
-    id: "content-creation",
-    title: "Content Creation",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/content3.jpg?height=600&width=800",
-  },
-  {
-    id: "content-creation",
-    title: "Content Creation",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/content4.jpg?height=600&width=800",
-  },
-  {
-    id: "content-creation",
-    title: "Content Creation",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/content5.jpg?height=600&width=800",
-  },
-  {
-    id: "content-creation",
-    title: "Content Creation",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/content6.jpg?height=600&width=800",
-  },
+
   {
     id: "aerial-videography",
     title: "Aerial Visuals",
@@ -862,19 +767,19 @@ export default function ServicesPage() {
             {/* Reel 1 */}
             <div
               className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 max-w-[300px] mx-auto"
-              onClick={() => window.open("https://www.youtube.com/watch?v=Tq7_CQjI64c", "_blank")}
+              onClick={() => window.open("https://www.youtube.com/watch?v=E8CGm2s2g_Q", "_blank")}
             >
               <iframe
-                src="https://www.youtube.com/embed/Tq7_CQjI64c?autoplay=1&controls=0&mute=1&loop=1&playlist=Tq7_CQjI64c&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                src="https://www.youtube.com/embed/E8CGm2s2g_Q?autoplay=1&controls=0&mute=1&loop=1&playlist=E8CGm2s2g_Q&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                title="Camera Roll Showcase"
+                title="Behind the scenes at SecurityPal"
                 className="w-full h-full"
                 style={{ border: "none" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-3 left-3 right-3">
-                  <h3 className="text-white font-semibold text-sm">Camera Roll Showcase</h3>
+                  <h3 className="text-white font-semibold text-sm">Behind the scenes at SecurityPal</h3>
                 </div>
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                   <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
@@ -887,19 +792,19 @@ export default function ServicesPage() {
             {/* Reel 2 */}
             <div
               className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 max-w-[300px] mx-auto"
-              onClick={() => window.open("https://www.youtube.com/watch?v=jw69BdTThwI", "_blank")}
+              onClick={() => window.open("https://www.youtube.com/watch?v=OD0gZ_HKheg", "_blank")}
             >
               <iframe
-                src="https://www.youtube.com/embed/jw69BdTThwI?autoplay=1&controls=0&mute=1&loop=1&playlist=jw69BdTThwI&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                src="https://www.youtube.com/embed/OD0gZ_HKheg?autoplay=1&controls=0&mute=1&loop=1&playlist=OD0gZ_HKheg&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                title="Welcome to Nepal"
+                title="Behind the scenes for BYD Contest"
                 className="w-full h-full"
                 style={{ border: "none" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-3 left-3 right-3">
-                  <h3 className="text-white font-semibold text-sm">Welcome to Nepal</h3>
+                  <h3 className="text-white font-semibold text-sm">Behind the scenes for BYD Contest</h3>
                 </div>
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                   <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
@@ -914,7 +819,7 @@ export default function ServicesPage() {
 
      
       {/* Testimonials Section */}
-      <section className="py-16 relative bg">
+      <section className="py-16 relative bg-black">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">What Our Clients Say</h2>
