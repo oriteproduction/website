@@ -34,7 +34,6 @@ function getImageName(serviceId: string): string {
 }
 
 const exampleService = [
-
   {
     id: "aerial-videography",
     title: "Aerial Visuals",
@@ -130,62 +129,6 @@ const exampleService = [
     features: ["abc", "def", "ghi"],
     videoId: "ywwFNXo4uUo",
     image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/drone12.jpg?height=600&width=800",
-  },
-  {
-    id: "photography",
-    title: "Photography",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/sanphoto.jpg?height=600&width=800",
-  },
-  {
-    id: "branding",
-    title: "Branding",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/branding1.jpg?height=600&width=800",
-  },
-  {
-    id: "branding",
-    title: "Branding",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/branding2.jpg?height=600&width=800",
-  },
-  {
-    id: "branding",
-    title: "Branding",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/branding3.jpg?height=600&width=800",
-  },
-  {
-    id: "branding",
-    title: "Branding",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/branding4.jpg?height=600&width=800",
-  },
-  {
-    id: "branding",
-    title: "Branding",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/branding5.jpg?height=600&width=800",
-  },
-  {
-    id: "branding",
-    title: "Branding",
-    description: "We create compelling brand identities",
-    features: ["abc", "def", "ghi"],
-    videoId: "ywwFNXo4uUo",
-    image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/branding6.jpg?height=600&width=800",
   },
 ]
 
@@ -283,6 +226,21 @@ function ServiceContent({ id, title, description, features, videoId, icon }: Ser
               </div>
             ))}
         </div>
+
+        {/* Add View Full Portfolio button for specific services */}
+        {(id === "video-production" ||
+          id === "post-production" ||
+          id === "content-creation" ||
+          id === "photography" ||
+          id === "branding") && (
+          <div className="text-center mt-8">
+            <Link href="/portfolio">
+              <Button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
+                View Full Portfolio
+              </Button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   )
@@ -735,8 +693,7 @@ export default function ServicesPage() {
               <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
                 <h3 className="text-2xl sm:text-3xl font-bold text-red-500">Production Excellence</h3>
                 <p className="text-base sm:text-lg text-gray-300">
-                  Experience the precision and attention to detail that defines our production standards. See how our
-                  team coordinates seamlessly to deliver exceptional results on every shoot.
+                  Experience the precision and attention to detail that defines our production standards.
                 </p>
                 <div className="space-y-2">
                   <div className="flex items-center space-x-3">
@@ -817,7 +774,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-     
       {/* Testimonials Section */}
       <section className="py-16 relative bg-black">
         <div className="container mx-auto px-4">
