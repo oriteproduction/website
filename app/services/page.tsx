@@ -251,6 +251,7 @@ export default function ServicesPage() {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState("video-production")
   const [showTestimonials, setShowTestimonials] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   const services = [
     {
@@ -717,13 +718,21 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Reels Section 1 */}
+      {/* Reels Section */}
       <section className="py-12 sm:py-16 bg-zinc-900">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl font-semibold mb-4">Dive into Behind the Scenes at Orite Production</h3>
+            <p className="text-gray-400 text-base max-w-2xl mx-auto">
+              A glimpse into the passion, process, and creativity that drive our work every day.
+            </p>
+          </div>
+
+          {/* Desktop: 4 reels in a row */}
+          <div className="hidden md:grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {/* Reel 1 */}
             <div
-              className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 max-w-[300px] mx-auto"
+              className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105"
               onClick={() => window.open("https://www.youtube.com/watch?v=E8CGm2s2g_Q", "_blank")}
             >
               <iframe
@@ -736,11 +745,11 @@ export default function ServicesPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-3 left-3 right-3">
-                  <h3 className="text-white font-semibold text-sm">Behind the scenes at SecurityPal</h3>
+                  <h4 className="text-white font-semibold text-sm">Behind the scenes at SecurityPal</h4>
                 </div>
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <Play className="h-6 w-6 text-red-500 fill-current" />
+                  <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <Play className="h-6 w-6 text-yellow-500 fill-current" />
                   </div>
                 </div>
               </div>
@@ -748,7 +757,7 @@ export default function ServicesPage() {
 
             {/* Reel 2 */}
             <div
-              className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 max-w-[300px] mx-auto"
+              className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105"
               onClick={() => window.open("https://www.youtube.com/watch?v=OD0gZ_HKheg", "_blank")}
             >
               <iframe
@@ -761,12 +770,210 @@ export default function ServicesPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-3 left-3 right-3">
-                  <h3 className="text-white font-semibold text-sm">Behind the scenes for BYD Contest</h3>
+                  <h4 className="text-white font-semibold text-sm">Behind the scenes for BYD Contest</h4>
                 </div>
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <Play className="h-6 w-6 text-red-500 fill-current" />
+                  <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <Play className="h-6 w-6 text-yellow-500 fill-current" />
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Reel 3 */}
+            <div
+              className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105"
+              onClick={() => window.open("https://www.youtube.com/watch?v=vTkV8ZQLgg0", "_blank")}
+            >
+              <iframe
+                src="https://www.youtube.com/embed/vTkV8ZQLgg0?autoplay=1&controls=0&mute=1&loop=1&playlist=vTkV8ZQLgg0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Creative Process Behind the Scenes"
+                className="w-full h-full"
+                style={{ border: "none" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-3 left-3 right-3">
+                  <h4 className="text-white font-semibold text-sm">Creative Process Behind the Scenes</h4>
+                </div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <Play className="h-6 w-6 text-yellow-500 fill-current" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Reel 4 */}
+            <div
+              className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105"
+              onClick={() => window.open("https://www.youtube.com/watch?v=jJkanUwojYs", "_blank")}
+            >
+              <iframe
+                src="https://www.youtube.com/embed/jJkanUwojYs?autoplay=1&controls=0&mute=1&loop=1&playlist=jJkanUwojYs&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Production Excellence"
+                className="w-full h-full"
+                style={{ border: "none" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-3 left-3 right-3">
+                  <h4 className="text-white font-semibold text-sm">Production Excellence</h4>
+                </div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <Play className="h-6 w-6 text-yellow-500 fill-current" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile: 2 reels per slide with navigation */}
+          <div className="md:hidden">
+            <div className="relative max-w-lg mx-auto">
+              <div className="overflow-hidden rounded-2xl">
+                <div
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {/* Slide 1: Reels 1 & 2 */}
+                  <div className="w-full flex-shrink-0 flex space-x-4 px-4">
+                    <div
+                      className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 w-1/2"
+                      onClick={() => window.open("https://www.youtube.com/watch?v=E8CGm2s2g_Q", "_blank")}
+                    >
+                      <iframe
+                        src="https://www.youtube.com/embed/E8CGm2s2g_Q?autoplay=1&controls=0&mute=1&loop=1&playlist=E8CGm2s2g_Q&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title="Behind the scenes at SecurityPal"
+                        className="w-full h-full"
+                        style={{ border: "none" }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute bottom-2 left-2 right-2">
+                          <h4 className="text-white font-semibold text-xs">Behind the scenes at SecurityPal</h4>
+                        </div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                          <div className="w-8 h-8 bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <Play className="h-4 w-4 text-yellow-500 fill-current" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 w-1/2"
+                      onClick={() => window.open("https://www.youtube.com/watch?v=OD0gZ_HKheg", "_blank")}
+                    >
+                      <iframe
+                        src="https://www.youtube.com/embed/OD0gZ_HKheg?autoplay=1&controls=0&mute=1&loop=1&playlist=OD0gZ_HKheg&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title="Behind the scenes for BYD Contest"
+                        className="w-full h-full"
+                        style={{ border: "none" }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute bottom-2 left-2 right-2">
+                          <h4 className="text-white font-semibold text-xs">Behind the scenes for BYD Contest</h4>
+                        </div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                          <div className="w-8 h-8 bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <Play className="h-4 w-4 text-yellow-500 fill-current" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Slide 2: Reels 3 & 4 */}
+                  <div className="w-full flex-shrink-0 flex space-x-4 px-4">
+                    <div
+                      className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 w-1/2"
+                      onClick={() => window.open("https://www.youtube.com/watch?v=vTkV8ZQLgg0", "_blank")}
+                    >
+                      <iframe
+                        src="https://www.youtube.com/embed/vTkV8ZQLgg0?autoplay=1&controls=0&mute=1&loop=1&playlist=vTkV8ZQLgg0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title="Creative Process Behind the Scenes"
+                        className="w-full h-full"
+                        style={{ border: "none" }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute bottom-2 left-2 right-2">
+                          <h4 className="text-white font-semibold text-xs">Creative Process Behind the Scenes</h4>
+                        </div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                          <div className="w-8 h-8 bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <Play className="h-4 w-4 text-yellow-500 fill-current" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      className="relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 w-1/2"
+                      onClick={() => window.open("https://www.youtube.com/watch?v=jJkanUwojYs", "_blank")}
+                    >
+                      <iframe
+                        src="https://www.youtube.com/embed/jJkanUwojYs?autoplay=1&controls=0&mute=1&loop=1&playlist=jJkanUwojYs&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title="Production Excellence"
+                        className="w-full h-full"
+                        style={{ border: "none" }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute bottom-2 left-2 right-2">
+                          <h4 className="text-white font-semibold text-xs">Production Excellence</h4>
+                        </div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                          <div className="w-8 h-8 bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <Play className="h-4 w-4 text-yellow-500 fill-current" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile Navigation Arrows */}
+                <button
+                  onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
+                  disabled={currentSlide === 0}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-yellow-500/80 rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
+                >
+                  <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={() => setCurrentSlide(Math.min(1, currentSlide + 1))}
+                  disabled={currentSlide === 1}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-yellow-500/80 rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
+                >
+                  <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* Mobile Pagination Dots */}
+                <div className="flex justify-center mt-6 space-x-2">
+                  {[0, 1].map((slide) => (
+                    <button
+                      key={slide}
+                      onClick={() => setCurrentSlide(slide)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        currentSlide === slide ? "bg-yellow-500 scale-125" : "bg-white/20"
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
