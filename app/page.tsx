@@ -178,7 +178,6 @@ export default function Home() {
         </div>
       </section>
 
-      
       {/* Clients Section */}
       <section className="bg-black text-white">
         <div className="text-center mb-12 mt-12">
@@ -222,6 +221,17 @@ export default function Home() {
             <p className="text-gray-400 text-lg md:text-xl mt-8 max-w-2xl mx-auto leading-relaxed">
               Discover the breathtaking landscapes and rich culture of Nepal through our cinematic lens
             </p>
+            <div className="flex flex-col items-center space-y-4 mt-8">
+              <Link href="/documentaryproduction">
+                <Button size="lg" className="bg-red-600 hover:bg-red-700">
+                  Documentary Production
+                </Button>
+              </Link>
+              <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto text-center leading-relaxed">
+                Start your documentary shoot in Nepal with Orite Production. From logistics to post-production, we make
+                your film journey seamless.
+              </p>
+            </div>
           </div>
         </div>
 

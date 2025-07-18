@@ -37,6 +37,12 @@ export default function Footer() {
               >
                 Portfolio
               </Link>
+              <Link
+                href="/documentaryproduction"
+                className="block text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+              >
+                Documentary Production
+              </Link>
             </nav>
           </div>
 

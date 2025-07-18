@@ -1402,6 +1402,7 @@ export default function AayushTiwariPage() {
           </div>
         </div>
       </section>
+      
       {/* Connect with Me Section */}
       <section className="py-12 sm:py-16 lg:py-20 relative bg-[#0F0F0F]">
         <div className="container mx-auto px-4 max-[768px]:px-3 sm:px-6 lg:px-8 relative z-10">
@@ -1417,7 +1418,7 @@ export default function AayushTiwariPage() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 lg:space-x-8 mb-8 sm:mb-12">
             <Link
-              href="mailto:aayush@oriteproduction.com"
+              href="mailto:info@oriteproductions.com"
               className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] text-black font-bold rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
             >
               Get in Touch
