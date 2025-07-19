@@ -32,6 +32,10 @@ const behindScenesImages = [
   "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic12.jpg",
   "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic4.jpg",
   "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic3.jpg",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic13.jpg",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic14.jpg",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic15.jpg",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic16.jpg",
 ]
 
 function PhotographyContent() {
@@ -435,7 +439,7 @@ export default function PortfolioPage() {
           }
         }
         .animate-marquee {
-          width: 200%;
+          width: 1100%;
           animation: marquee 30s linear infinite;
         }
       `}</style>

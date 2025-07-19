@@ -70,37 +70,37 @@ export default function DocumentaryProductionPage() {
 
   const services = [
     {
-      icon: <MapPin className="h-8 w-8 text-yellow-500" />,
+      icon: <MapPin className="h-8 w-8 text-red-500" />,
       title: "Location Scouting",
       description:
         "Expert guidance to Nepal's most cinematic locations, from hidden valleys to iconic peaks. We know the terrain and can access places others can't.",
     },
     {
-      icon: <FileText className="h-8 w-8 text-yellow-500" />,
+      icon: <FileText className="h-8 w-8 text-red-500" />,
       title: "Filming Permits & Authorizations",
       description:
         "Navigate Nepal's bureaucracy with ease. We handle all permits, government approvals, and legal requirements for hassle-free filming.",
     },
     {
-      icon: <Camera className="h-8 w-8 text-yellow-500" />,
+      icon: <Camera className="h-8 w-8 text-red-500" />,
       title: "Camera Gears & Crew",
       description:
         "Professional equipment and experienced local crew members who understand both international standards and local conditions.",
     },
     {
-      icon: <Settings className="h-8 w-8 text-yellow-500" />,
+      icon: <Settings className="h-8 w-8 text-red-500" />,
       title: "Pre-Production & Research Support",
       description:
         "Comprehensive research, cultural consultation, and pre-production planning to ensure your story is told authentically and effectively.",
     },
     {
-      icon: <Film className="h-8 w-8 text-yellow-500" />,
+      icon: <Film className="h-8 w-8 text-red-500" />,
       title: "Full Production & Post-Production",
       description:
         "End-to-end production services from filming to final edit, with international quality standards and local expertise.",
     },
     {
-      icon: <Users className="h-8 w-8 text-yellow-500" />,
+      icon: <Users className="h-8 w-8 text-red-500" />,
       title: "Local Expertise & Cultural Bridge",
       description:
         "Our team serves as your cultural bridge, ensuring respectful storytelling while accessing authentic local perspectives and stories.",
@@ -160,14 +160,14 @@ export default function DocumentaryProductionPage() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-yellow-200 to-yellow-500 bg-clip-text text-transparent">
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white">
             Documentary Production in Nepal
           </h1>
-          <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed">
             Your trusted partner for documentary filmmaking in the Himalayas
           </p>
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
             From the peaks of Everest to the jungles of Chitwan, we provide comprehensive production services for
             filmmakers, producers, and directors seeking to tell authentic stories in Nepal.
           </p>
@@ -176,7 +176,7 @@ export default function DocumentaryProductionPage() {
             <Link href="/contact">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold px-8 py-4 text-lg"
+                className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold px-8 py-4 text-lg"
               >
                 Start Your Project
               </Button>
@@ -185,7 +185,7 @@ export default function DocumentaryProductionPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black px-8 py-4 text-lg bg-transparent"
+                className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white px-8 py-4 text-lg bg-transparent"
               >
                 Meet Creative Director
               </Button>
@@ -195,8 +195,8 @@ export default function DocumentaryProductionPage() {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="w-6 h-10 border-2 border-yellow-500 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-gradient-to-b from-yellow-500 to-yellow-600 rounded-full mt-2 animate-bounce"></div>
+          <div className="w-6 h-10 border-2 border-red-500 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-gradient-to-b from-red-500 to-red-600 rounded-full mt-2 animate-bounce"></div>
           </div>
         </div>
       </section>
@@ -205,7 +205,7 @@ export default function DocumentaryProductionPage() {
       <section className="py-16 sm:py-20 lg:py-24 bg-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-yellow-500 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">
               Your Complete Filmmaking Partner in Nepal
             </h2>
             <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
@@ -219,11 +219,11 @@ export default function DocumentaryProductionPage() {
             <div className="space-y-8">
               {services.map((service, index) => (
                 <div key={index} className="flex items-start space-x-4 group">
-                  <div className="flex-shrink-0 p-3 bg-yellow-500/10 rounded-xl border border-yellow-500/20 group-hover:bg-yellow-500/20 transition-all duration-300">
+                  <div className="flex-shrink-0 p-3 bg-red-500/10 rounded-xl border border-red-500/20 group-hover:bg-red-500/20 transition-all duration-300">
                     {service.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-yellow-500 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors duration-300">
                       {service.title}
                     </h3>
                     <p className="text-gray-400 leading-relaxed">{service.description}</p>
@@ -234,7 +234,7 @@ export default function DocumentaryProductionPage() {
 
             {/* Visual Content */}
             <div className="space-y-6">
-              <div className="aspect-video rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl">
+              <div className="aspect-video rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl">
                 <div
                   className="w-full h-full cursor-pointer"
                   onClick={() => window.open("https://www.youtube.com/watch?v=GD0VFTc8Bac", "_blank")}
@@ -251,7 +251,7 @@ export default function DocumentaryProductionPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="aspect-square rounded-xl overflow-hidden border border-yellow-500/20">
+                <div className="aspect-square rounded-xl overflow-hidden border border-red-500/20">
                   <Image
                     src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic5.jpg"
                     alt="Nepal Production"
@@ -260,7 +260,7 @@ export default function DocumentaryProductionPage() {
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <div className="aspect-square rounded-xl overflow-hidden border border-yellow-500/20">
+                <div className="aspect-square rounded-xl overflow-hidden border border-red-500/20">
                   <Image
                     src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic7.jpg"
                     alt="Nepal Filming"
@@ -279,7 +279,7 @@ export default function DocumentaryProductionPage() {
       <section className="py-16 sm:py-20 lg:py-24 bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-yellow-500 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">
               Discover Nepal's Cinematic Landscapes
             </h2>
             <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
@@ -293,7 +293,7 @@ export default function DocumentaryProductionPage() {
             {nepalVideos.map((video, index) => (
               <div
                 key={index}
-                className="group relative aspect-video rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl cursor-pointer transition-all duration-300 hover:scale-105 hover:border-yellow-500/60"
+                className="group relative aspect-video rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl cursor-pointer transition-all duration-300 hover:scale-105 hover:border-red-500/60"
                 onClick={() => window.open(`https://www.youtube.com/watch?v=${video.id}`, "_blank")}
               >
                 <iframe
@@ -309,11 +309,11 @@ export default function DocumentaryProductionPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-white font-bold text-lg mb-1">{video.title}</h3>
-                    <p className="text-yellow-500 text-sm font-medium">{video.region}</p>
+                    <p className="text-red-500 text-sm font-medium">{video.region}</p>
                   </div>
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                      <Play className="h-8 w-8 text-yellow-500 fill-current" />
+                    <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                      <Play className="h-8 w-8 text-red-500 fill-current" />
                     </div>
                   </div>
                 </div>
@@ -332,7 +332,7 @@ export default function DocumentaryProductionPage() {
                   {nepalVideos.map((video, index) => (
                     <div key={index} className="w-full flex-shrink-0 px-2">
                       <div
-                        className="group relative aspect-video rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl cursor-pointer"
+                        className="group relative aspect-video rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl cursor-pointer"
                         onClick={() => window.open(`https://www.youtube.com/watch?v=${video.id}`, "_blank")}
                       >
                         <iframe
@@ -347,11 +347,11 @@ export default function DocumentaryProductionPage() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <div className="absolute bottom-4 left-4 right-4">
                             <h3 className="text-white font-bold text-lg mb-1">{video.title}</h3>
-                            <p className="text-yellow-500 text-sm font-medium">{video.region}</p>
+                            <p className="text-red-500 text-sm font-medium">{video.region}</p>
                           </div>
                           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                            <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                              <Play className="h-6 w-6 text-yellow-500 fill-current" />
+                            <div className="w-12 h-12 bg-red-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                              <Play className="h-6 w-6 text-red-500 fill-current" />
                             </div>
                           </div>
                         </div>
@@ -365,17 +365,17 @@ export default function DocumentaryProductionPage() {
               <button
                 onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
                 disabled={currentSlide === 0}
-                className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-yellow-500/80 rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-red-500/80 rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
               >
-                <ChevronLeft className="w-5 h-5 text-black" />
+                <ChevronLeft className="w-5 h-5 text-white" />
               </button>
 
               <button
                 onClick={() => setCurrentSlide(Math.min(nepalVideos.length - 1, currentSlide + 1))}
                 disabled={currentSlide === nepalVideos.length - 1}
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-yellow-500/80 rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-red-500/80 rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
               >
-                <ChevronRight className="w-5 h-5 text-black" />
+                <ChevronRight className="w-5 h-5 text-white" />
               </button>
 
               {/* Mobile Pagination */}
@@ -385,7 +385,7 @@ export default function DocumentaryProductionPage() {
                     key={index}
                     onClick={() => setCurrentSlide(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      currentSlide === index ? "bg-yellow-500 scale-125" : "bg-white/20"
+                      currentSlide === index ? "bg-red-500 scale-125" : "bg-white/20"
                     }`}
                   />
                 ))}
@@ -399,7 +399,7 @@ export default function DocumentaryProductionPage() {
       <section className="py-16 sm:py-20 lg:py-24 bg-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-yellow-500 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">
               Why Film with Orite Production in Nepal?
             </h2>
             <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
@@ -411,12 +411,12 @@ export default function DocumentaryProductionPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             {whyChoosePoints.map((point, index) => (
               <div key={index} className="group">
-                <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-yellow-500/20 hover:border-yellow-500/50 transition-all duration-300 hover:transform hover:scale-105 h-full">
+                <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-red-500/20 hover:border-red-500/50 transition-all duration-300 hover:transform hover:scale-105 h-full">
                   <div className="flex items-center mb-4">
-                    <div className="w-8 h-8 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full flex items-center justify-center text-black font-bold text-lg mr-4">
+                    <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
                       {index + 1}
                     </div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-yellow-500 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white group-hover:text-red-500 transition-colors duration-300">
                       {point.title}
                     </h3>
                   </div>
@@ -435,9 +435,7 @@ export default function DocumentaryProductionPage() {
               { number: "100%", label: "Permit Success Rate" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-2">
-                  {stat.number}
-                </div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-500 mb-2">{stat.number}</div>
                 <div className="text-sm sm:text-base text-gray-400">{stat.label}</div>
               </div>
             ))}
@@ -449,9 +447,7 @@ export default function DocumentaryProductionPage() {
       <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-black via-zinc-900 to-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white to-yellow-500 bg-clip-text text-transparent">
-              Ready to Film in Nepal?
-            </h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">Ready to Film in Nepal?</h2>
             <p className="text-lg sm:text-xl text-gray-400 mb-12 max-w-3xl mx-auto">
               Let's bring your documentary vision to life in one of the world's most spectacular and culturally rich
               countries. Contact us to start planning your Nepal production today.
@@ -459,25 +455,25 @@ export default function DocumentaryProductionPage() {
 
             <div className="grid md:grid-cols-2 gap-8 lg:gap-12 mb-12">
               {/* Contact Information */}
-              <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-yellow-500/20">
-                <h3 className="text-2xl font-bold text-yellow-500 mb-6">Get in Touch</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-4">
-                    <Mail className="h-6 w-6 text-yellow-500" />
+              <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-red-500/20">
+                <h3 className="text-2xl font-bold text-red-500 mb-6">Get in Touch</h3>
+                <div className="space-y-4 text-left">
+                  <div className="flex items-start space-x-4">
+                    <Mail className="h-6 w-6 text-red-500 mt-1" />
                     <div>
                       <p className="text-white font-medium">Email</p>
                       <p className="text-gray-400">info@oriteproductions.com</p>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-4">
-                    <Phone className="h-6 w-6 text-yellow-500" />
+                  <div className="flex items-start space-x-4">
+                    <Phone className="h-6 w-6 text-red-500 mt-1" />
                     <div>
                       <p className="text-white font-medium">Phone</p>
                       <p className="text-gray-400">+977 9843821246</p>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-4">
-                    <MapPin className="h-6 w-6 text-yellow-500" />
+                  <div className="flex items-start space-x-4">
+                    <MapPin className="h-6 w-6 text-red-500 mt-1" />
                     <div>
                       <p className="text-white font-medium">Location</p>
                       <p className="text-gray-400">Kathmandu, Nepal</p>
@@ -487,21 +483,21 @@ export default function DocumentaryProductionPage() {
               </div>
 
               {/* Quick Contact Form */}
-              <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-yellow-500/20">
-                <h3 className="text-2xl font-bold text-yellow-500 mb-6">Quick Inquiry</h3>
+              <div className="bg-black/50 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-red-500/20">
+                <h3 className="text-2xl font-bold text-red-500 mb-6">Quick Inquiry</h3>
                 <p className="text-gray-400 mb-6">
                   Tell us about your documentary project and we'll get back to you within 24 hours.
                 </p>
                 <div className="space-y-4">
                   <Link href="/contact">
-                    <Button className="w-full bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold py-3">
+                    <Button className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-3">
                       Contact Us for Filming
                     </Button>
                   </Link>
                   <Link href="/aayushtiwari">
                     <Button
                       variant="outline"
-                      className="w-full border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black py-3 bg-transparent"
+                      className="w-full border-red-500 text-red-500 hover:bg-red-500 hover:text-white py-3 bg-transparent"
                     >
                       Contact Creative Director
                     </Button>
@@ -518,7 +514,7 @@ export default function DocumentaryProductionPage() {
               <Link href="/portfolio">
                 <Button
                   variant="outline"
-                  className="border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black px-8 py-3 bg-transparent"
+                  className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white px-8 py-3 bg-transparent"
                 >
                   View Our Portfolio
                 </Button>
