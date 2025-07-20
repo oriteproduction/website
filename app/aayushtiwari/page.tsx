@@ -159,7 +159,7 @@ export default function AayushTiwariPage() {
         {/* Background Video */}
         <div className="absolute inset-0 z-0">
           <iframe
-            src="https://www.youtube.com/embed/fZvXPYsBnz0?autoplay=1&controls=0&mute=1&loop=1&playlist=fZvXPYsBnz0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+            src="https://www.youtube.com/embed/59D0A7C0SUY?autoplay=1&controls=0&mute=1&loop=1&playlist=59D0A7C0SUY&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             title="Background Video"
@@ -263,7 +263,7 @@ export default function AayushTiwariPage() {
             <div className="relative">
               <div className="aspect-video rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
                 <iframe
-                  src="https://www.youtube.com/embed/TDdW2nJ0bw8?autoplay=1&controls=0&mute=1&loop=1&playlist=TDdW2nJ0bw8&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                  src="https://www.youtube.com/embed/32Bjl84gkz0?autoplay=1&controls=0&mute=1&loop=1&playlist=32Bjl84gkz0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   title="Creative Showcase"
@@ -1316,7 +1316,7 @@ export default function AayushTiwariPage() {
             <div className="relative">
               <div className="aspect-video rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
                 <iframe
-                  src="https://www.youtube.com/embed/pJcnBuKA_gA?autoplay=1&controls=0&mute=1&loop=1&playlist=pJcnBuKA_gA&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                  src="https://www.youtube.com/embed/6tkONV3yq60?autoplay=1&controls=0&mute=1&loop=1&playlist=6tkONV3yq60&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   title="Creative Philosophy"
@@ -1338,8 +1338,8 @@ export default function AayushTiwariPage() {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
             {[
-              { number: "150+", label: "Projects Directed", icon: <Film className="h-6 w-6 sm:h-8 sm:w-8" /> },
-              { number: "75+", label: "Satisfied Clients", icon: <Award className="h-6 w-6 sm:h-8 sm:w-8" /> },
+              { number: "100+", label: "Projects Directed", icon: <Film className="h-6 w-6 sm:h-8 sm:w-8" /> },
+              { number: "15+", label: "Satisfied Clients", icon: <Award className="h-6 w-6 sm:h-8 sm:w-8" /> },
               { number: "7+", label: "Years Experience", icon: <Calendar className="h-6 w-6 sm:h-8 sm:w-8" /> },
               { number: "2M+", label: "Views Generated", icon: <Eye className="h-6 w-6 sm:h-8 sm:w-8" /> },
             ].map((stat, index) => (

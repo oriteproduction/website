@@ -43,28 +43,28 @@ export default function DocumentaryProductionPage() {
       thumbnail: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/kalinchowkyt.jpg",
     },
     {
-      id: "cjgHAlRMsJk",
-      title: "Himalayas",
-      region: "North Nepal",
-      thumbnail: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic3.jpg",
+      id: "LR_SjW0YyR0",
+      title: "Chandragiri Hills",
+      region: "Kathmandu",
+      thumbnail: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/drone8.jpg",
     },
     {
-      id: "jw69BdTThwI",
-      title: "Welcome to Nepal",
-      region: "West Nepal",
-      thumbnail: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic9.jpg",
+      id: "LrgqHFF6MGw",
+      title: "Pokhara",
+      region: "Gandaki Region",
+      thumbnail: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/drone4.jpg",
     },
     {
-      id: "ykDCqKcU9tg",
-      title: "Janakpurdham",
-      region: "South Nepal",
-      thumbnail: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic6.jpg",
+      id: "59D0A7C0SUY",
+      title: "Rara Lake",
+      region: "Mugu District",
+      thumbnail: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/rarathumbnail.png",
     },
     {
-      id: "Tq7_CQjI64c",
-      title: "Nepal Landscapes",
-      region: "Various Regions",
-      thumbnail: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic8.jpg",
+      id: "H2SkHAVj7ho",
+      title: "Janaki Mandir",
+      region: "Janakpur",
+      thumbnail: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/drone2.jpg",
     },
   ]
 
@@ -145,10 +145,10 @@ export default function DocumentaryProductionPage() {
         <div className="absolute inset-0 z-0">
           <div
             className="w-full h-full cursor-pointer"
-            onClick={() => window.open("https://www.youtube.com/watch?v=jw69BdTThwI", "_blank")}
+            onClick={() => window.open("https://www.youtube.com/watch?v=y7ho5QMxX8g", "_blank")}
           >
             <iframe
-              src="https://www.youtube.com/embed/jw69BdTThwI?autoplay=1&controls=0&mute=1&loop=1&playlist=jw69BdTThwI&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+              src="https://www.youtube.com/embed/y7ho5QMxX8g?autoplay=1&controls=0&mute=1&loop=1&playlist=y7ho5QMxX8g&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               title="Nepal Documentary Production"
@@ -237,10 +237,10 @@ export default function DocumentaryProductionPage() {
               <div className="aspect-video rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl">
                 <div
                   className="w-full h-full cursor-pointer"
-                  onClick={() => window.open("https://www.youtube.com/watch?v=GD0VFTc8Bac", "_blank")}
+                  onClick={() => window.open("https://www.youtube.com/watch?v=Cq-E0IamIVI", "_blank")}
                 >
                   <iframe
-                    src="https://www.youtube.com/embed/GD0VFTc8Bac?autoplay=1&controls=0&mute=1&loop=1&playlist=GD0VFTc8Bac&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+                    src="https://www.youtube.com/embed/Cq-E0IamIVI?autoplay=1&controls=0&mute=1&loop=1&playlist=Cq-E0IamIVI&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     title="Documentary Production Services"
@@ -253,7 +253,7 @@ export default function DocumentaryProductionPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-square rounded-xl overflow-hidden border border-red-500/20">
                   <Image
-                    src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic5.jpg"
+                    src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/drone12.jpg"
                     alt="Nepal Production"
                     width={300}
                     height={300}
@@ -262,7 +262,7 @@ export default function DocumentaryProductionPage() {
                 </div>
                 <div className="aspect-square rounded-xl overflow-hidden border border-red-500/20">
                   <Image
-                    src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic7.jpg"
+                    src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/drone6.jpg"
                     alt="Nepal Filming"
                     width={300}
                     height={300}
@@ -429,8 +429,8 @@ export default function DocumentaryProductionPage() {
           {/* Stats Section */}
           <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { number: "50+", label: "Documentaries Produced" },
-              { number: "25+", label: "International Clients" },
+              { number: "5+", label: "Documentaries Produced" },
+              { number: "3+", label: "International Clients" },
               { number: "7+", label: "Years Experience" },
               { number: "100%", label: "Permit Success Rate" },
             ].map((stat, index) => (
