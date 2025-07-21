@@ -2,12 +2,14 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu } from "lucide-react"
+import { Menu, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false)
 
   if (typeof window !== "undefined") {
     window.addEventListener("scroll", () => {
@@ -31,17 +33,74 @@ export default function Header() {
             <Link href="/" className="text-white hover:text-red-500 transition-colors">
               Home
             </Link>
-            <Link href="/services" className="text-white hover:text-red-500 transition-colors">
-              Services
-            </Link>
+
+            {/* Services Dropdown */}
+            <div
+              className="relative group"
+              onMouseEnter={() => setServicesDropdownOpen(true)}
+              onMouseLeave={() => setServicesDropdownOpen(false)}
+            >
+              <button className="flex items-center text-white hover:text-red-500 transition-colors">
+                Services
+                <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
+              </button>
+
+              {servicesDropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-64 bg-zinc-900 border border-zinc-800 rounded-lg shadow-xl py-2 z-50">
+                  <Link
+                    href="/services"
+                    className="block px-4 py-2 text-white hover:text-red-500 hover:bg-zinc-800 transition-colors"
+                  >
+                    Services
+                  </Link>
+                  <Link
+                    href="/documentaryproduction"
+                    className="block px-4 py-2 text-white hover:text-red-500 hover:bg-zinc-800 transition-colors"
+                  >
+                    Documentary Production
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <Link href="/portfolio" className="text-white hover:text-red-500 transition-colors">
               Portfolio
             </Link>
-            <Link href="/about" className="text-white hover:text-red-500 transition-colors">
-              About
-            </Link>
+
+            {/* About Dropdown */}
+            <div
+              className="relative group"
+              onMouseEnter={() => setAboutDropdownOpen(true)}
+              onMouseLeave={() => setAboutDropdownOpen(false)}
+            >
+              <button className="flex items-center text-white hover:text-red-500 transition-colors">
+                About
+                <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
+              </button>
+
+              {aboutDropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-56 bg-zinc-900 border border-zinc-800 rounded-lg shadow-xl py-2 z-50">
+                  <Link
+                    href="/about"
+                    className="block px-4 py-2 text-white hover:text-red-500 hover:bg-zinc-800 transition-colors"
+                  >
+                    Orite Production
+                  </Link>
+                  <Link
+                    href="/aayushtiwari"
+                    className="block px-4 py-2 text-white hover:text-red-500 hover:bg-zinc-800 transition-colors"
+                  >
+                    Creative Director
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <Link href="/contact">
-              <Button variant="outline" className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white">
+              <Button
+                variant="outline"
+                className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white bg-transparent"
+              >
                 Contact Us
               </Button>
             </Link>
@@ -59,15 +118,37 @@ export default function Header() {
                 <Link href="/" className="text-xl font-medium hover:text-red-500 transition-colors">
                   Home
                 </Link>
-                <Link href="/services" className="text-xl font-medium hover:text-red-500 transition-colors">
-                  Services
-                </Link>
+
+                {/* Mobile Services Section */}
+                <div className="space-y-2">
+                  <Link href="/services" className="text-xl font-medium hover:text-red-500 transition-colors block">
+                    Services
+                  </Link>
+                  <Link
+                    href="/documentaryproduction"
+                    className="text-lg font-medium hover:text-red-500 transition-colors block pl-4 text-gray-300"
+                  >
+                    Documentary Production
+                  </Link>
+                </div>
+
                 <Link href="/portfolio" className="text-xl font-medium hover:text-red-500 transition-colors">
                   Portfolio
                 </Link>
-                <Link href="/about" className="text-xl font-medium hover:text-red-500 transition-colors">
-                  About
-                </Link>
+
+                {/* Mobile About Section */}
+                <div className="space-y-2">
+                  <Link href="/about" className="text-xl font-medium hover:text-red-500 transition-colors block">
+                    Orite Production
+                  </Link>
+                  <Link
+                    href="/aayushtiwari"
+                    className="text-lg font-medium hover:text-red-500 transition-colors block pl-4 text-gray-300"
+                  >
+                    Creative Director
+                  </Link>
+                </div>
+
                 <Link href="/contact" className="text-xl font-medium hover:text-red-500 transition-colors">
                   Contact
                 </Link>
