@@ -157,7 +157,7 @@ export default function AboutPageClient() {
                 {
                   name: "Sijan Khadka",
                   role: "Freelance Editor",
-                  image: "/placeholder.svg?height=400&width=400",
+                  image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/sijan.png?height=400&width=400",
                   bio: "Sijan Khadka combines expert video editing with dynamic animation to craft visually engaging stories that captivate and communicate.",
                 },
               ].map((member, index) => (
