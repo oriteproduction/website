@@ -443,6 +443,23 @@ export default function DocumentaryProductionPage() {
         </div>
       </section>
 
+{/* Aston Band Advertisement */}
+      <section className="py-8 bg-black">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center">
+            <div className="w-full max-w-[1536px] h-[50px] sm:h-[200px] lg:h-[200px] relative overflow-hidden">
+              <video autoPlay muted loop playsInline className="w-full h-full object-cover" style={{ border: "none" }}>
+                <source
+                  src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/astonband2.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       {/* Call to Action */}
       <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-black via-zinc-900 to-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

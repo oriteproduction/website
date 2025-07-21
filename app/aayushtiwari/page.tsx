@@ -283,7 +283,7 @@ export default function AayushTiwariPage() {
             <div className="w-full max-w-[1536px] h-[50px] sm:h-[200px] lg:h-[200px] relative overflow-hidden">
               <video autoPlay muted loop playsInline className="w-full h-full object-cover" style={{ border: "none" }}>
                 <source
-                  src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/astonband1.mp4"
+                  src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/astonband2.mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
