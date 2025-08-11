@@ -205,7 +205,7 @@ export default function Home() {
 
       {/* First Cinematic Video Section */}
       <section className="bg-black">
-        <CinematicVideoSection videoUrl="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/clips1.mp4" />
+        <CinematicVideoSection videoUrl="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/clips3.mp4" />
       </section>
 
       {/* Elegant Divider Section */}
