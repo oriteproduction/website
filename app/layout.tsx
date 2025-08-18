@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/favicon.png",
   },
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
