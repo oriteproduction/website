@@ -1042,19 +1042,26 @@ export default function AayushTiwariPage() {
                               July 2024 – Present
                             </div>
                           </div>
-                          <p className="text-gray-300 leading-relaxed text-sm sm:text-base lg:text-lg">
-                            Founder and creative lead of a production company specializing in cinematic storytelling for
-                            commercials, documentaries, and branded content.
-                          </p>
+                          <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">• Founder and creative lead of a production company specializing in cinematic storytelling for
+                            commercials, documentaries, and branded content.</p>
+                          <p>• Project Planning – Break down projects into phases (pre-production, production, post-production) and set clear goals.</p>
+                          <p>• Timeline Management – Make schedules, set deadlines, and ensure the project stays on track.</p>
+                          <p>• Resource & Equipment Management – Arrange studios, cameras, lights, and other gear for shoots.</p>
+                          <p>• Quality Control – Review edits, designs, and deliverables before sharing with the client.</p>
+                          <p>• Problem Solving – Handle last-minute challenges like client changes, technical issues, or delays.</p>
+                          <p>• Final Delivery – Ensure all files (videos, designs, photos) are delivered on time and in proper format.</p>
                           <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
                             <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
-                              Leadership
+                              Project Management
                             </span>
                             <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
                               Business Development
                             </span>
                             <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
                               Creative Direction
+                            </span>
+                            <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
+                              Budget Handling
                             </span>
                           </div>
                         </div>
@@ -1082,11 +1089,13 @@ export default function AayushTiwariPage() {
                               Jhatka campaign, Daraz 11.11 - The biggest sale of the year campaign and Daraz Free
                               Delivery Festival campaign)
                             </p>
+                            <p>• Managed and executed the Project - Episodic series for Daraz Nepal</p>
                             <p>• Directed and shot a documentary for Daraz Nepal - The Journey (Documentary)</p>
                             <p>
                               • Shot over 100 videos for Daraz Nepal social media content. (Paid promotions for
                               Instagram, YouTube, Facebook)
                             </p>
+                            <p>• Worked with the Marketing team, alligned task with the Video editing team and delivered to clients</p>
                             <p>• Created paid promotional content for Instagram, Facebook, and YouTube</p>
                             <p>• Shot a series of 6 videos for Daraz 11.11 Campaign (Documentary style)</p>
                           </div>
