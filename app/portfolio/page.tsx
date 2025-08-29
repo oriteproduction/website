@@ -1,10 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import PortfolioGrid from "@/components/portfolio-grid"
 import Image from "next/image"
-import { X, ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from "lucide-react"
+import { X, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Play } from "lucide-react"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 
 interface Client {
@@ -19,6 +19,13 @@ interface SelectedPhoto {
   alt: string
   clientId: string
   photoIndex: number
+}
+
+interface Reel {
+  id: number
+  title: string
+  thumbnail: string
+  videoUrl: string
 }
 
 const behindScenesImages = [
@@ -36,6 +43,45 @@ const behindScenesImages = [
   "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic14.jpg",
   "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic15.jpg",
   "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic16.jpg",
+]
+
+const reelsData: Reel[] = [
+  {
+    id: 1,
+    title: "YouTube Short 1",
+    thumbnail: "https://img.youtube.com/vi/P_-tHhkdojE/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/P_-tHhkdojE",
+  },
+  {
+    id: 2,
+    title: "YouTube Short 2",
+    thumbnail: "https://img.youtube.com/vi/jJkanUwojYs/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/jJkanUwojYs",
+  },
+  {
+    id: 3,
+    title: "YouTube Short 3",
+    thumbnail: "https://img.youtube.com/vi/KhdktxGwXJk/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/KhdktxGwXJk",
+  },
+  {
+    id: 4,
+    title: "YouTube Short 4",
+    thumbnail: "https://img.youtube.com/vi/E8CGm2s2g_Q/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/E8CGm2s2g_Q",
+  },
+  {
+    id: 5,
+    title: "YouTube Short 5",
+    thumbnail: "https://img.youtube.com/vi/aln4MEsHkkQ/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/aln4MEsHkkQ",
+  },
+  {
+    id: 6,
+    title: "YouTube Short 6",
+    thumbnail: "https://img.youtube.com/vi/3GD8AX6l0mw/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/3GD8AX6l0mw",
+  },
 ]
 
 function PhotographyContent() {
@@ -262,6 +308,219 @@ function PhotographyContent() {
   )
 }
 
+function ReelsContent() {
+  const [hoveredReelId, setHoveredReelId] = useState<number | null>(null)
+  const [selectedReel, setSelectedReel] = useState<Reel | null>(null)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [visibleReels, setVisibleReels] = useState<Set<number>>(new Set())
+  const carouselRef = useRef<HTMLDivElement>(null)
+
+  // Helper function to extract YouTube video ID from URL (including Shorts)
+  const getYouTubeVideoId = (url: string): string | null => {
+    const match = url.match(/(?:youtube\.com\/(?:embed\/|shorts\/)|youtu\.be\/)([^?&]+)/)
+    return match ? match[1] : null
+  }
+
+  const handleReelClick = (reel: Reel) => {
+    // Open YouTube Short in new tab
+    window.open(reel.videoUrl, "_blank")
+  }
+
+  const handleCloseReel = () => {
+    setSelectedReel(null)
+  }
+
+  // Mobile carousel navigation
+  const totalSlides = Math.ceil(reelsData.length / 2)
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides)
+  }
+
+  // Intersection Observer for mobile autoplay
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const reelId = Number.parseInt(entry.target.getAttribute("data-reel-id") || "0")
+          if (entry.isIntersecting) {
+            setVisibleReels((prev) => new Set([...prev, reelId]))
+          } else {
+            setVisibleReels((prev) => {
+              const newSet = new Set(prev)
+              newSet.delete(reelId)
+              return newSet
+            })
+          }
+        })
+      },
+      { threshold: 0.5 },
+    )
+
+    const reelElements = document.querySelectorAll("[data-reel-id]")
+    reelElements.forEach((el) => observer.observe(el))
+
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <>
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold mb-4">Reels</h2>
+        <p className="text-gray-400 mb-6">
+          Short-form video content showcasing our creative storytelling and production skills in bite-sized formats.
+        </p>
+      </div>
+
+      {/* Desktop Grid Layout */}
+      <div className="hidden md:block">
+        <div className="grid grid-cols-4 gap-6 mb-8">
+          {reelsData.map((reel) => (
+            <div
+              key={reel.id}
+              className="group relative overflow-hidden rounded-lg cursor-pointer border border-zinc-700 hover:border-red-500/50 transition-all duration-300"
+              style={{ aspectRatio: "9/16" }}
+              onClick={() => handleReelClick(reel)}
+              onMouseEnter={() => setHoveredReelId(reel.id)}
+              onMouseLeave={() => setHoveredReelId(null)}
+            >
+              {hoveredReelId === reel.id ? (
+                <div className="w-full h-full relative">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${getYouTubeVideoId(reel.videoUrl)}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&loop=1&playlist=${getYouTubeVideoId(reel.videoUrl)}`}
+                    title={reel.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full object-cover"
+                    style={{ border: "none" }}
+                  />
+                </div>
+              ) : (
+                <>
+                  <Image
+                    src={reel.thumbnail || "/placeholder.svg"}
+                    alt={reel.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-4">
+                    <span className="text-red-500 text-xs font-medium mb-1">Reel</span>
+                    <h3 className="text-sm font-bold text-white line-clamp-2">{reel.title}</h3>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="rounded-full bg-red-500 p-3">
+                      <Play className="h-4 w-4 fill-white" />
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile Carousel Layout */}
+      <div className="md:hidden">
+        <div className="relative">
+          <div ref={carouselRef} className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-300 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+                <div key={slideIndex} className="w-full flex-shrink-0">
+                  <div className="grid grid-cols-2 gap-4 px-4">
+                    {reelsData.slice(slideIndex * 2, slideIndex * 2 + 2).map((reel) => (
+                      <div
+                        key={reel.id}
+                        data-reel-id={reel.id}
+                        className="group relative overflow-hidden rounded-lg cursor-pointer border border-zinc-700 hover:border-red-500/50 transition-all duration-300"
+                        style={{ aspectRatio: "9/16" }}
+                        onClick={() => handleReelClick(reel)}
+                      >
+                        {visibleReels.has(reel.id) ? (
+                          <div className="w-full h-full relative">
+                            <iframe
+                              src={`https://www.youtube.com/embed/${getYouTubeVideoId(reel.videoUrl)}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&loop=1&playlist=${getYouTubeVideoId(reel.videoUrl)}`}
+                              title={reel.title}
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              className="w-full h-full object-cover"
+                              style={{ border: "none" }}
+                            />
+                          </div>
+                        ) : (
+                          <>
+                            <Image
+                              src={reel.thumbnail || "/placeholder.svg"}
+                              alt={reel.title}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3">
+                              <span className="text-red-500 text-xs font-medium mb-1">Reel</span>
+                              <h3 className="text-xs font-bold text-white line-clamp-2">{reel.title}</h3>
+                            </div>
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="rounded-full bg-red-500/80 p-2">
+                                <Play className="h-3 w-3 fill-white" />
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation Arrows */}
+          {totalSlides > 1 && (
+            <>
+              <button
+                onClick={prevSlide}
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 rounded-full p-2 transition-colors duration-300 z-10"
+                disabled={currentSlide === 0}
+              >
+                <ChevronLeft className="h-4 w-4 text-white" />
+              </button>
+
+              <button
+                onClick={nextSlide}
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 rounded-full p-2 transition-colors duration-300 z-10"
+                disabled={currentSlide === totalSlides - 1}
+              >
+                <ChevronRight className="h-4 w-4 text-white" />
+              </button>
+            </>
+          )}
+
+          {/* Dots Indicator */}
+          {totalSlides > 1 && (
+            <div className="flex justify-center mt-4 space-x-2">
+              {Array.from({ length: totalSlides }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                    currentSlide === index ? "bg-red-500" : "bg-gray-600"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  )
+}
+
 export default function PortfolioPage() {
   return (
     <main className="min-h-screen bg-black text-white pt-24">
@@ -284,6 +543,7 @@ export default function PortfolioPage() {
               <TabsTrigger value="corporate clients">Corporate Clients</TabsTrigger>
               <TabsTrigger value="aerial">Aerial</TabsTrigger>
               <TabsTrigger value="photography">Photography</TabsTrigger>
+              <TabsTrigger value="reels">Reels</TabsTrigger>
             </TabsList>
           </div>
 
@@ -346,6 +606,10 @@ export default function PortfolioPage() {
 
           <TabsContent value="photography">
             <PhotographyContent />
+          </TabsContent>
+
+          <TabsContent value="reels">
+            <ReelsContent />
           </TabsContent>
         </Tabs>
       </div>

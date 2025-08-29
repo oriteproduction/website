@@ -1,0 +1,35 @@
+Please update the Reels Section in the /portfolio page with the following specifications:
+
+🎬 Reels Section (YouTube Shorts)
+
+Display YouTube Shorts in a 9x16 portrait grid.
+
+Desktop: show a 4x4 grid layout (4 reels per row).
+
+Mobile: use a carousel slider with 2 reels per slide (swipe/arrow navigation).
+
+Each reel should display the YouTube thumbnail for that specific short.
+
+On hover → replace thumbnail with autoplaying video (muted, loop).
+
+On click → open the video on YouTube in a new tab.
+
+Add the following YouTube Shorts as initial reels:
+
+https://www.youtube.com/shorts/P_-tHhkdojE
+
+https://www.youtube.com/shorts/jJkanUwojYs
+
+https://www.youtube.com/shorts/KhdktxGwXJk
+
+https://www.youtube.com/shorts/E8CGm2s2g_Q
+
+https://www.youtube.com/shorts/aln4MEsHkkQ
+
+https://youtube.com/shorts/3GD8AX6l0mw
+
+Make the code easily extendable so that I can add more reels in the future just by adding new YouTube links (same format).
+
+Ensure the design matches the Portfolio page theme (borders, spacing, hover effects).
+
+Optimize for both desktop and mobile viewing without affecting other sections.
