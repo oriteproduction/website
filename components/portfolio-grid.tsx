@@ -80,6 +80,14 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       isVideo: true,
     },
     {
+      id: 37,
+      title: "Celebrating Eye Health in Nepal",
+      category: "documentary",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/iapbthumbnail1.jpg?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed/dbcDt6Hll2w",
+      isVideo: true,
+    },
+    {
       id: 2,
       title: "Easy Fruits Commercial",
       category: "commercial",
@@ -98,7 +106,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
 
     {
       id: 4,
-      title: "Dopper",
+      title: "Dopper Changemaker Challenge Winner- Nepal",
       category: "documentary",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/anishadopper.jpg?height=600&width=800", // Using the same thumbnail for testing
       videoUrl: "https://www.youtube.com/embed/ZfDDcEOpR5A",
