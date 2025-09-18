@@ -219,6 +219,14 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       isVideo: true,
     },
     {
+      id: 38,
+      title: "This is How I bring Smile to People's Faces - Award Winning Short Film",
+      category: "shortfilm",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/teagirl.jpg?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed//jSBOsfXlcY8",
+      isVideo: true,
+    },
+    {
       id: 32,
       title: "A doctor's story from Rupakot",
       category: "documentary",
