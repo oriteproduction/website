@@ -253,7 +253,7 @@ export default function DocumentaryProductionPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-square rounded-xl overflow-hidden border border-red-500/20">
                   <Image
-                    src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/drone12.jpg"
+                    src="/images/design-mode/drone12.jpg"
                     alt="Nepal Production"
                     width={300}
                     height={300}
@@ -262,7 +262,7 @@ export default function DocumentaryProductionPage() {
                 </div>
                 <div className="aspect-square rounded-xl overflow-hidden border border-red-500/20">
                   <Image
-                    src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/drone6.jpg"
+                    src="/images/design-mode/drone6.jpg"
                     alt="Nepal Filming"
                     width={300}
                     height={300}

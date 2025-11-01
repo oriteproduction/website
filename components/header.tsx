@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import { Menu, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -10,11 +10,33 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false)
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false)
+  const aboutDropdownRef = useRef<HTMLDivElement>(null)
+  const servicesDropdownRef = useRef<HTMLDivElement>(null)
 
   if (typeof window !== "undefined") {
     window.addEventListener("scroll", () => {
       setIsScrolled(window.scrollY > 10)
     })
+  }
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      const target = event.target as Node
+      if (aboutDropdownRef.current && !aboutDropdownRef.current.contains(target)) {
+        setAboutDropdownOpen(false)
+      }
+      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(target)) {
+        setServicesDropdownOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
+
+  const handleDropdownItemClick = () => {
+    setAboutDropdownOpen(false)
+    setServicesDropdownOpen(false)
   }
 
   return (
@@ -35,26 +57,29 @@ export default function Header() {
             </Link>
 
             {/* Services Dropdown */}
-            <div
-              className="relative group"
-              onMouseEnter={() => setServicesDropdownOpen(true)}
-              onMouseLeave={() => setServicesDropdownOpen(false)}
-            >
-              <button className="flex items-center text-white hover:text-red-500 transition-colors">
+            <div ref={servicesDropdownRef} className="relative group">
+              <button
+                onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
+                className="flex items-center text-white hover:text-red-500 transition-colors"
+              >
                 Services
-                <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
+                <ChevronDown
+                  className={`ml-1 h-4 w-4 transition-transform ${servicesDropdownOpen ? "rotate-180" : ""}`}
+                />
               </button>
 
               {servicesDropdownOpen && (
                 <div className="absolute top-full left-0 mt-2 w-64 bg-zinc-900 border border-zinc-800 rounded-lg shadow-xl py-2 z-50">
                   <Link
                     href="/services"
+                    onClick={handleDropdownItemClick}
                     className="block px-4 py-2 text-white hover:text-red-500 hover:bg-zinc-800 transition-colors"
                   >
                     Services
                   </Link>
                   <Link
                     href="/documentaryproduction"
+                    onClick={handleDropdownItemClick}
                     className="block px-4 py-2 text-white hover:text-red-500 hover:bg-zinc-800 transition-colors"
                   >
                     Documentary Production
@@ -68,26 +93,27 @@ export default function Header() {
             </Link>
 
             {/* About Dropdown */}
-            <div
-              className="relative group"
-              onMouseEnter={() => setAboutDropdownOpen(true)}
-              onMouseLeave={() => setAboutDropdownOpen(false)}
-            >
-              <button className="flex items-center text-white hover:text-red-500 transition-colors">
+            <div ref={aboutDropdownRef} className="relative group">
+              <button
+                onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
+                className="flex items-center text-white hover:text-red-500 transition-colors"
+              >
                 About
-                <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${aboutDropdownOpen ? "rotate-180" : ""}`} />
               </button>
 
               {aboutDropdownOpen && (
                 <div className="absolute top-full left-0 mt-2 w-56 bg-zinc-900 border border-zinc-800 rounded-lg shadow-xl py-2 z-50">
                   <Link
                     href="/about"
+                    onClick={handleDropdownItemClick}
                     className="block px-4 py-2 text-white hover:text-red-500 hover:bg-zinc-800 transition-colors"
                   >
-                    Orite Production
+                    About Orite Production
                   </Link>
                   <Link
                     href="/aayushtiwari"
+                    onClick={handleDropdownItemClick}
                     className="block px-4 py-2 text-white hover:text-red-500 hover:bg-zinc-800 transition-colors"
                   >
                     Creative Director
@@ -139,7 +165,7 @@ export default function Header() {
                 {/* Mobile About Section */}
                 <div className="space-y-2">
                   <Link href="/about" className="text-xl font-medium hover:text-red-500 transition-colors block">
-                    Orite Production
+                    About Orite Production
                   </Link>
                   <Link
                     href="/aayushtiwari"

@@ -42,7 +42,7 @@ export default function AboutPageClient() {
             <div className="relative h-80 md:h-96 overflow-hidden rounded-lg group">
               <div className="absolute inset-0 transition-transform duration-500 ease-in-out group-hover:scale-110">
                 <Image
-                  src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/Collage_Orite.jpg"
+                  src="/images/design-mode/Collage_Orite.jpg"
                   alt="Orite Production Team"
                   fill
                   className="object-cover"
@@ -56,7 +56,7 @@ export default function AboutPageClient() {
             <div className="order-2 md:order-1 relative h-80 md:h-96 overflow-hidden rounded-lg group">
               <div className="absolute inset-0 transition-transform duration-500 ease-in-out group-hover:scale-110">
                 <Image
-                  src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/Collage2_Orite.jpg"
+                  src="/images/design-mode/Collage2_Orite.jpg"
                   alt="Our Mission"
                   fill
                   className="object-cover"
@@ -272,7 +272,7 @@ export default function AboutPageClient() {
                     {/* Front */}
                     <div className="flip-card-front absolute inset-0 w-full h-full backface-hidden rounded-lg shadow-2xl overflow-hidden">
                       <Image
-                        src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cardfront.jpg"
+                        src="/images/design-mode/cardfront.jpg"
                         alt="Business Card Front"
                         fill
                         className="object-cover"
@@ -281,7 +281,7 @@ export default function AboutPageClient() {
                     {/* Back */}
                     <div className="flip-card-back absolute inset-0 w-full h-full backface-hidden rounded-lg shadow-2xl overflow-hidden rotate-y-180">
                       <Image
-                        src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cardback.jpg"
+                        src="/images/design-mode/cardback.jpg"
                         alt="Business Card Back"
                         fill
                         className="object-cover"

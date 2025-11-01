@@ -88,6 +88,14 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       isVideo: true,
     },
     {
+      id: 39,
+      title: "Save the Children - Shanina Shaik",
+      category: "documentary",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/shaninayt.png?height=600&width=800", // Using the same thumbnail for testing
+      videoUrl: "https://www.youtube.com/embed/A6aVMuG-Qyo",
+      isVideo: true,
+    },
+    {
       id: 2,
       title: "Easy Fruits Commercial",
       category: "commercial",
@@ -232,6 +240,22 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       category: "documentary",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/subhasdoctor.jpg?height=600&width=800",
       videoUrl: "https://www.youtube.com/embed//k4vpF9bhMQo",
+      isVideo: true,
+    },
+    {
+      id: 40,
+      title: "Save the Children - Rita",
+      category: "documentary",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/ritastc.jpg?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed//Cy713S1pOpw",
+      isVideo: true,
+    },
+    {
+      id: 41,
+      title: "Save the Children - Himani",
+      category: "documentary",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/himanistc.jpg?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed//TwbnH_HDrbU",
       isVideo: true,
     },
     {

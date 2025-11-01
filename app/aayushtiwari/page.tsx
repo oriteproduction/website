@@ -180,7 +180,7 @@ export default function AayushTiwariPage() {
               <div className="absolute inset-0 bg-gradient-to-r from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] rounded-full p-1">
                 <div className="w-full h-full rounded-full overflow-hidden bg-black">
                   <Image
-                    src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/aayush4.png"
+                    src="/images/design-mode/aayush4.png"
                     alt="Aayush Tiwari"
                     width={520}
                     height={520}
