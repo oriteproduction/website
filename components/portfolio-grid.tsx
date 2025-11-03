@@ -410,6 +410,14 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       videoUrl: "https://www.youtube.com/embed/wiJSGb8egkQ",
       isVideo: true,
     },
+    {
+      id: 42,
+      title: "Wrap up - 2030 In Sight Live - Nepal 2025",
+      category: "corporate clients",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/iapbthumbnail2.jpg?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed//zcnWFko6wDs",
+      isVideo: true,
+    },
 
   ]
 
