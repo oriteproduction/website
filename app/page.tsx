@@ -26,9 +26,8 @@ export default function Home() {
     { key: 7, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/shreepech.png" },
     { key: 8, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/tapobhumi.png" },
     { key: 9, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/vantuff.png" },
-    { key: 10, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/iapb.png" },
-    { key: 11, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/stc.png" },
-    { key: 12, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/rayzlogo.png" },
+    { key: 10, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/stc.png" },
+    { key: 11, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/rayzlogo.png" },
     { key: 12, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/auroravpn.png" },
   ]
 
