@@ -418,7 +418,22 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       videoUrl: "https://www.youtube.com/embed//zcnWFko6wDs",
       isVideo: true,
     },
-
+    {
+      id: 43,
+      title: "FL Talks Ep 01 | Future Leaders Nepal | SCAEF NEPAL",
+      category: "corporate clients",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/fltalks1.png?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed//o2JL5Sii8AM",
+      isVideo: true,
+    },
+    {
+      id: 44,
+      title: "Bag Distribution Event coverage | Aurora VPN |",
+      category: "corporate clients",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/auroravid1.jpg?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed//0KpP3vsvzm8",
+      isVideo: true,
+    },
   ]
 
   // Filter items based on selected category
