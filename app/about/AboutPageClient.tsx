@@ -160,6 +160,7 @@ export default function AboutPageClient() {
                   image:
                     "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/roshan.png?height=400&width=400",
                   bio: "Roshan's technical expertise and creative approach ensure that every project is polished to perfection.",
+                  link: "https://www.roshant.com.np/"
                 },
                 {
                   name: "Sijan Khadka",
