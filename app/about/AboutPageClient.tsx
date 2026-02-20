@@ -158,7 +158,7 @@ export default function AboutPageClient() {
                   name: "Roshan Thapa",
                   role: "Post Production",
                   image:
-                    "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/roshan.jpg?height=400&width=400",
+                    "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/roshan.png?height=400&width=400",
                   bio: "Roshan's technical expertise and creative approach ensure that every project is polished to perfection.",
                 },
                 {
