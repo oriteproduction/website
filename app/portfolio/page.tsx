@@ -83,11 +83,24 @@ const reelsData: Reel[] = [
     videoUrl: "https://www.youtube.com/shorts/3GD8AX6l0mw",
   },
   {
-    id: 6,
+    id: 7,
     title: "YouTube Short 7",
-    thumbnail: "https://img.youtube.com/vi/3GD8AX6l0mw/maxresdefault.jpg",
-    videoUrl: "https://www.youtube.com/shorts/M3OSXbcofQ",
+    thumbnail: "https://img.youtube.com/vi/_M3OSXbcofQ/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/_M3OSXbcofQ",
   },
+  {
+    id: 8,
+    title: "YouTube Short 7",
+    thumbnail: "https://img.youtube.com/vi/5h7A3J7Zg7A/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/5h7A3J7Zg7A",
+  },
+  {
+    id: 9,
+    title: "YouTube Short 7",
+    thumbnail: "https://img.youtube.com/vi/vhizMJgz2P0/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/vhizMJgz2P0",
+  },
+
 ]
 
 function PhotographyContent() {
