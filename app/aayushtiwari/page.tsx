@@ -171,9 +171,8 @@ export default function AayushTiwariPage() {
 
         {/* Hero Content */}
         <div
-          className={`relative z-10 text-center px-4 sm:px-6 lg:px-8 transition-all duration-2000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          className={`relative z-10 text-center px-4 sm:px-6 lg:px-8 transition-all duration-2000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
         >
           <div className="mb-6 sm:mb-8">
             <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 mx-auto rounded-full overflow-hidden border-4 shadow-2xl relative">
@@ -772,9 +771,8 @@ export default function AayushTiwariPage() {
                   <button
                     key={slide}
                     onClick={() => setCurrentSlide(slide)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      currentSlide === slide ? "bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] scale-125" : "bg-white/20"
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === slide ? "bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] scale-125" : "bg-white/20"
+                      }`}
                   />
                 ))}
               </div>
@@ -803,9 +801,8 @@ export default function AayushTiwariPage() {
                         className={`relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 ${
                           // Mobile: show 1-2 reels, Tablet: show 2-3 reels, Desktop: show 4 reels
                           index >= 2 ? "hidden sm:block" : ""
-                        } ${
-                          index >= 3 ? "hidden lg:block" : ""
-                        } w-full max-w-[280px] sm:max-w-[200px] lg:max-w-[280px]`}
+                          } ${index >= 3 ? "hidden lg:block" : ""
+                          } w-full max-w-[280px] sm:max-w-[200px] lg:max-w-[280px]`}
                       >
                         <iframe
                           src={`https://www.youtube.com/embed/${reel.id}?autoplay=1&controls=0&mute=1&loop=1&playlist=${reel.id}&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`}
@@ -843,9 +840,8 @@ export default function AayushTiwariPage() {
                         className={`relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 ${
                           // Mobile: show 1-2 reels, Tablet: show 2-3 reels, Desktop: show 4 reels
                           index >= 2 ? "hidden sm:block" : ""
-                        } ${
-                          index >= 3 ? "hidden lg:block" : ""
-                        } w-full max-w-[280px] sm:max-w-[200px] lg:max-w-[280px]`}
+                          } ${index >= 3 ? "hidden lg:block" : ""
+                          } w-full max-w-[280px] sm:max-w-[200px] lg:max-w-[280px]`}
                       >
                         <iframe
                           src={`https://www.youtube.com/embed/${reel.id}?autoplay=1&controls=0&mute=1&loop=1&playlist=${reel.id}&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`}
@@ -883,9 +879,8 @@ export default function AayushTiwariPage() {
                         className={`relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 ${
                           // Mobile: show 1-2 reels, Tablet: show 2-3 reels, Desktop: show 4 reels
                           index >= 2 ? "hidden sm:block" : ""
-                        } ${
-                          index >= 3 ? "hidden lg:block" : ""
-                        } w-full max-w-[280px] sm:max-w-[200px] lg:max-w-[280px]`}
+                          } ${index >= 3 ? "hidden lg:block" : ""
+                          } w-full max-w-[280px] sm:max-w-[200px] lg:max-w-[280px]`}
                       >
                         <iframe
                           src={`https://www.youtube.com/embed/${reel.id}?autoplay=1&controls=0&mute=1&loop=1&playlist=${reel.id}&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`}
@@ -940,11 +935,10 @@ export default function AayushTiwariPage() {
                 <button
                   key={slide}
                   onClick={() => setCurrentSlide(slide)}
-                  className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 touch-manipulation ${
-                    currentSlide === slide
+                  className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 touch-manipulation ${currentSlide === slide
                       ? "bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] scale-125"
                       : "bg-white/20 hover:bg-white/40"
-                  }`}
+                    }`}
                 />
               ))}
             </div>
@@ -995,9 +989,8 @@ export default function AayushTiwariPage() {
 
           {/* Collapsible Content */}
           <div
-            className={`transition-all duration-500 ease-in-out overflow-hidden ${
-              isJourneyExpanded ? "max-h-none opacity-100" : "max-h-0 opacity-0"
-            }`}
+            className={`transition-all duration-500 ease-in-out overflow-hidden ${isJourneyExpanded ? "max-h-none opacity-100" : "max-h-0 opacity-0"
+              }`}
           >
             {isJourneyExpanded && (
               <div>
@@ -1007,7 +1000,7 @@ export default function AayushTiwariPage() {
                   </p>
                   <div className="flex justify-center mb-6 sm:mb-8">
                     <Link
-                      href="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/aayushcv1.jpg"
+                      href="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/aayushcv1.pdf"
                       target="_blank"
                     >
                       <Button className="bg-gradient-to-r from-[#6E3D1B] via-[#F7BD3A] to-[#FCE2A6] hover:from-[#FCE2A6] hover:via-[#F7BD3A] hover:to-[#6E3D1B] text-black font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-full transition-all duration-300 hover:scale-105 text-sm sm:text-base">
@@ -1043,14 +1036,14 @@ export default function AayushTiwariPage() {
                             </div>
                           </div>
                           <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-300 leading-relaxed">
-                          <p>• Founder and creative lead of a production company specializing in cinematic storytelling for
-                            commercials, documentaries, and branded content.</p>
-                          <p>• Project Planning – Break down projects into phases (pre-production, production, post-production) and set clear goals.</p>
-                          <p>• Timeline Management – Make schedules, set deadlines, and ensure the project stays on track.</p>
-                          <p>• Resource & Equipment Management – Arrange studios, cameras, lights, and other gear for shoots.</p>
-                          <p>• Quality Control – Review edits, designs, and deliverables before sharing with the client.</p>
-                          <p>• Problem Solving – Handle last-minute challenges like client changes, technical issues, or delays.</p>
-                          <p>• Final Delivery – Ensure all files (videos, designs, photos) are delivered on time and in proper format.</p>
+                            <p>• Founder and creative lead of a production company specializing in cinematic storytelling for
+                              commercials, documentaries, and branded content.</p>
+                            <p>• Project Planning – Break down projects into phases (pre-production, production, post-production) and set clear goals.</p>
+                            <p>• Timeline Management – Make schedules, set deadlines, and ensure the project stays on track.</p>
+                            <p>• Resource & Equipment Management – Arrange studios, cameras, lights, and other gear for shoots.</p>
+                            <p>• Quality Control – Review edits, designs, and deliverables before sharing with the client.</p>
+                            <p>• Problem Solving – Handle last-minute challenges like client changes, technical issues, or delays.</p>
+                            <p>• Final Delivery – Ensure all files (videos, designs, photos) are delivered on time and in proper format.</p>
                           </div>
                           <div className="mt-3 sm:mt-4 flex flex-wrap gap-2">
                             <span className="text-xs bg-gradient-to-r from-[#6E3D1B] to-[#F7BD3A] text-white px-2 sm:px-3 py-1 rounded-full">
@@ -1067,7 +1060,7 @@ export default function AayushTiwariPage() {
                             </span>
                           </div>
                         </div>
-                       </div>
+                      </div>
 
                       {/* Videographer - Daraz */}
                       <div className="relative flex items-start group">
@@ -1413,7 +1406,7 @@ export default function AayushTiwariPage() {
           </div>
         </div>
       </section>
-      
+
       {/* Connect with Me Section */}
       <section className="py-12 sm:py-16 lg:py-20 relative bg-[#0F0F0F]">
         <div className="container mx-auto px-4 max-[768px]:px-3 sm:px-6 lg:px-8 relative z-10">
