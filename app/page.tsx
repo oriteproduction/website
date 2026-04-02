@@ -31,7 +31,9 @@ export default function Home() {
     { key: 12, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/auroravpn.png" },
     { key: 13, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/scaefnepal.png" },
     { key: 14, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/callidream.png" },
-    
+    { key: 15, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/shubhavani.png" },
+
+
   ]
 
   const services = [

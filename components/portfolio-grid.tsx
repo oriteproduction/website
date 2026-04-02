@@ -262,7 +262,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       id: 47,
       title: "Jaquar Authorized Distributor | Shubha Vani International",
       category: "commercial",
-      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/easyyt3.jpg?height=600&width=800",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/jaquar1.jpg?height=600&width=800",
       videoUrl: "https://www.youtube.com/embed//LehSpll-XQs",
       isVideo: true,
     },
