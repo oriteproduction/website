@@ -259,6 +259,14 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       isVideo: true,
     },
     {
+      id: 47,
+      title: "Easy Fruits Commercial - Edit III",
+      category: "commercial",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/easyyt3.jpg?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed//LehSpll-XQs",
+      isVideo: true,
+    },
+    {
       id: 18,
       title: "Kathmandu during Tihar",
       category: "aerial",
