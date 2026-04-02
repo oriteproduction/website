@@ -42,11 +42,11 @@ export default function ContactPage() {
   }
 
   const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault()
+    e.preventDefault()
 
-  const { name, email, phone, subject, service, message } = formData
+    const { name, email, phone, subject, service, message } = formData
 
-  const whatsappMessage = `
+    const whatsappMessage = `
 Hello, I'm ${name}.
 
 📧 Email: ${email}
@@ -57,11 +57,11 @@ Hello, I'm ${name}.
 ${message}
   `.trim()
 
-  const encodedMessage = encodeURIComponent(whatsappMessage)
-  const whatsappURL = `https://wa.me/9779843821246?text=${encodedMessage}`
+    const encodedMessage = encodeURIComponent(whatsappMessage)
+    const whatsappURL = `https://wa.me/9779843821246?text=${encodedMessage}`
 
-  window.open(whatsappURL, "_blank")
-}
+    window.open(whatsappURL, "_blank")
+  }
 
 
   return (
@@ -92,8 +92,8 @@ ${message}
                     <p className="text-gray-400 mb-2">Chandragiri -14, Kathmandu, Nepal</p>
 
                     <p className="font-medium text-gray-300">Orite Studios:</p>
-                    <p className="text-gray-400">Shop number 5151, NBTC Mall</p>
-                    <p className="text-gray-400">Khasibazar, Kathmandu, Nepal</p>
+                    <p className="text-gray-400">We are relocating and will open soon</p>
+                    <p className="text-gray-400">____ Kathmandu, Nepal</p>
                   </div>
                 </div>
 
@@ -321,52 +321,52 @@ ${message}
       </section>
 
       {/* Map Section */}
-<section className="py-16 bg-zinc-900">
-  <div className="container mx-auto px-4">
-    <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold mb-4">Find Us</h2>
-      <p className="text-gray-400 max-w-2xl mx-auto">Visit our office in Kathmandu, Nepal</p>
-    </div>
+      <section className="py-16 bg-zinc-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Find Us</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">Visit our office in Kathmandu, Nepal</p>
+          </div>
 
-    <div className="grid md:grid-cols-2 gap-8">
-      {/* Main Office Map */}
-      <div>
-        <h3 className="text-xl font-semibold mb-4">Main Office</h3>
-        <div className="h-96 bg-zinc-800 rounded-lg overflow-hidden">
-          <iframe
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Orite%20Production%2C%20Kathmandu%2C%20Nepal&maptype=roadmap"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Main Office"
-            className="w-full h-full"
-          ></iframe>
-        </div>
-      </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Main Office Map */}
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Main Office</h3>
+              <div className="h-96 bg-zinc-800 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Orite%20Production%2C%20Kathmandu%2C%20Nepal&maptype=roadmap"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Main Office"
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+            </div>
 
-      {/* Orite Studios Map */}
-      <div>
-        <h3 className="text-xl font-semibold mb-4">Orite Studios</h3>
-        <div className="h-96 bg-zinc-800 rounded-lg overflow-hidden">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1766.4545596540358!2d85.28558269472!3d27.68920362208147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198e85e70f7f%3A0x2d36f5f14d21ef6f!2sOrite%20Studios!5e0!3m2!1sen!2snp!4v1744223184763!5m2!1sen!2snp"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Orite Studios"
-            className="w-full h-full"
-          ></iframe>
+            {/* Orite Studios Map */}
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Orite Studios - New location soon!</h3>
+              <div className="h-96 bg-zinc-800 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&q=Orite%20Production%2C%20Kathmandu%2C%20Nepal&maptype=roadmap"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Orite Studios"
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
     </main>
   )
