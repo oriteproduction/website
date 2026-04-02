@@ -82,6 +82,30 @@ const reelsData: Reel[] = [
     thumbnail: "https://img.youtube.com/vi/3GD8AX6l0mw/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/shorts/3GD8AX6l0mw",
   },
+  {
+    id: 7,
+    title: "YouTube Short 7",
+    thumbnail: "https://img.youtube.com/vi/_M3OSXbcofQ/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/_M3OSXbcofQ",
+  },
+  {
+    id: 8,
+    title: "YouTube Short 8",
+    thumbnail: "https://img.youtube.com/vi/5h7A3J7Zg7A/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/5h7A3J7Zg7A",
+  },
+  {
+    id: 9,
+    title: "YouTube Short 9",
+    thumbnail: "https://img.youtube.com/vi/vhizMJgz2P0/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/vhizMJgz2P0",
+  },
+  {
+    id: 10,
+    title: "YouTube Short 10",
+    thumbnail: "https://img.youtube.com/vi/uLcPzWgsp60/maxresdefault.jpg",
+    videoUrl: "https://www.youtube.com/shorts/uLcPzWgsp60",
+  },
 ]
 
 function PhotographyContent() {
@@ -121,6 +145,27 @@ function PhotographyContent() {
         "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/secpalphoto7.jpg",
         "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/secpalphoto8.jpg",
         "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/secpalphoto10.jpg",
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/secpalphoto11.jpg",
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/secpalphoto12.jpg",
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/secpalphoto13.jpg",
+      ],
+    },
+    {
+      id: "callidream",
+      name: "Callidream",
+      logo: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/callidream.png",
+      photos: [
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/calli1.jpg",
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/calli2.jpg",
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/calli3.jpg",
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/calli4.jpg",
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/calli5.jpg",
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/calli6.jpg",
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/calli7.jpg",
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/calli8.jpg",
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/calli9.jpg",
+        "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/calli10.jpg",
+
       ],
     },
   ]
@@ -185,9 +230,8 @@ function PhotographyContent() {
           <div key={client.id} className="w-full">
             {/* Client Logo */}
             <div
-              className={`bg-zinc-900 rounded-lg p-6 cursor-pointer transition-all duration-300 hover:bg-zinc-800 border ${
-                expandedClient === client.id ? "border-red-500 bg-zinc-800" : "border-zinc-800 hover:border-red-500/50"
-              }`}
+              className={`bg-zinc-900 rounded-lg p-6 cursor-pointer transition-all duration-300 hover:bg-zinc-800 border ${expandedClient === client.id ? "border-red-500 bg-zinc-800" : "border-zinc-800 hover:border-red-500/50"
+                }`}
               onClick={() => handleClientClick(client.id)}
             >
               <div className="flex items-center justify-between">
@@ -508,9 +552,8 @@ function ReelsContent() {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                    currentSlide === index ? "bg-red-500" : "bg-gray-600"
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-colors duration-300 ${currentSlide === index ? "bg-red-500" : "bg-gray-600"
+                    }`}
                 />
               ))}
             </div>

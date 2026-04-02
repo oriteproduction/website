@@ -259,6 +259,14 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       isVideo: true,
     },
     {
+      id: 47,
+      title: "Jaquar Authorized Distributor | Shubha Vani International",
+      category: "corporate clients",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/jaquar1.jpg?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed//LehSpll-XQs",
+      isVideo: true,
+    },
+    {
       id: 18,
       title: "Kathmandu during Tihar",
       category: "aerial",
@@ -432,6 +440,22 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       category: "corporate clients",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/auroravid1.jpg?height=600&width=800",
       videoUrl: "https://www.youtube.com/embed//0KpP3vsvzm8",
+      isVideo: true,
+    },
+    {
+      id: 45,
+      title: "Easy Fruits Commercial - Edit II",
+      category: "commercial",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/easyyt2.jpg?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed//PW_OqH_FVtI",
+      isVideo: true,
+    },
+    {
+      id: 46,
+      title: "Easy Fruits Commercial - Edit III",
+      category: "commercial",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/easyyt3.jpg?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed//lxlnpZnpeDM",
       isVideo: true,
     },
   ]

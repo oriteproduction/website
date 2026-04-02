@@ -148,11 +148,19 @@ export default function AboutPageClient() {
                   link: "/aayushtiwari",
                 },
                 {
-                  name: "Roshan Thapa",
-                  role: "Post-Production Manager",
+                  name: "Shishir Thapa",
+                  role: "Videographer",
                   image:
-                    "/placeholder.svg?height=400&width=400",
+                    "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/shishir.png?height=400&width=400",
+                  bio: "Shishir brings stories to life through his lens, capturing powerful visuals with precision and creativity.",
+                },
+                {
+                  name: "Roshan Thapa",
+                  role: "Post Production",
+                  image:
+                    "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/roshan.png?height=400&width=400",
                   bio: "Roshan's technical expertise and creative approach ensure that every project is polished to perfection.",
+                  link: "https://www.roshant.com.np/"
                 },
                 {
                   name: "Sijan Khadka",
