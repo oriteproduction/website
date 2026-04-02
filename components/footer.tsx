@@ -97,7 +97,7 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="border-t border-zinc-800 mt-12 pt-8">
           <div className="text-center">
-            <p className="text-gray-400 text-sm">© 2025 Orite Production. All rights reserved.</p>
+            <p className="text-gray-400 text-sm">© 2026 Orite Production. All rights reserved.</p>
           </div>
         </div>
       </div>
