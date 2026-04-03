@@ -276,7 +276,7 @@ export default function DocumentaryProductionPage() {
       </section>
 
       {/* Nepal Visual Showcase */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-black">
+      <section className="hidden md:block py-16 sm:py-20 lg:py-24 bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -384,9 +384,8 @@ export default function DocumentaryProductionPage() {
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      currentSlide === index ? "bg-red-500 scale-125" : "bg-white/20"
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === index ? "bg-red-500 scale-125" : "bg-white/20"
+                      }`}
                   />
                 ))}
               </div>
@@ -443,7 +442,7 @@ export default function DocumentaryProductionPage() {
         </div>
       </section>
 
-{/* Aston Band Advertisement */}
+      {/* Aston Band Advertisement */}
       <section className="py-8 bg-black">
         <div className="container mx-auto px-4">
           <div className="flex justify-center">
@@ -459,7 +458,7 @@ export default function DocumentaryProductionPage() {
           </div>
         </div>
       </section>
-      
+
       {/* Call to Action */}
       <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-black via-zinc-900 to-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
