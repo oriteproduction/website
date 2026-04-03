@@ -138,14 +138,6 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
     },
 
     {
-      id: 18,
-      title: "Product Photography",
-      category: "photography",
-      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/sanphoto.jpg?height=600&width=800",
-      isVideo: false,
-    },
-
-    {
       id: 7,
       title: "Daraz Naya Barsha Utsav Ad",
       category: "commercial",
