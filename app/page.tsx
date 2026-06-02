@@ -32,6 +32,10 @@ export default function Home() {
     { key: 13, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/scaefnepal.png" },
     { key: 14, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/callidream.png" },
     { key: 15, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/shubhavani.png" },
+    { key: 16, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cureblindnessprojectlogo.png" },
+    { key: 17, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/floralogo.png" },
+    { key: 18, imgSrc: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/nettvlogo.png" },
+
 
 
   ]
