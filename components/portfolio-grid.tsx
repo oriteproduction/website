@@ -96,6 +96,22 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       isVideo: true,
     },
     {
+      id: 47,
+      title: "Cure Blindness Project | Outreach Story 1 |",
+      category: "documentary",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbp1.png?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed/oJp8oA4GRew",
+      isVideo: true,
+    },
+    {
+      id: 48,
+      title: "Cure Blindness Project | Outreach Story 2 |",
+      category: "documentary",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbp2.png?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed/U5_govi42UQ",
+      isVideo: true,
+    },
+    {
       id: 2,
       title: "Easy Fruits Commercial",
       category: "commercial",
@@ -223,7 +239,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       title: "This is How I bring Smile to People's Faces - Award Winning Short Film",
       category: "shortfilm",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/teagirl.jpg?height=600&width=800",
-      videoUrl: "https://www.youtube.com/embed//jSBOsfXlcY8",
+      videoUrl: "https://www.youtube.com/embed/jSBOsfXlcY8",
       isVideo: true,
     },
     {
@@ -231,7 +247,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       title: "A doctor's story from Rupakot",
       category: "documentary",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/subhasdoctor.jpg?height=600&width=800",
-      videoUrl: "https://www.youtube.com/embed//k4vpF9bhMQo",
+      videoUrl: "https://www.youtube.com/embed/k4vpF9bhMQo",
       isVideo: true,
     },
     {
@@ -239,7 +255,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       title: "Save the Children - Rita",
       category: "documentary",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/ritastc.jpg?height=600&width=800",
-      videoUrl: "https://www.youtube.com/embed//Cy713S1pOpw",
+      videoUrl: "https://www.youtube.com/embed/Cy713S1pOpw",
       isVideo: true,
     },
     {
@@ -247,7 +263,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       title: "Save the Children - Himani",
       category: "documentary",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/himanistc.jpg?height=600&width=800",
-      videoUrl: "https://www.youtube.com/embed//TwbnH_HDrbU",
+      videoUrl: "https://www.youtube.com/embed/TwbnH_HDrbU",
       isVideo: true,
     },
     {
@@ -255,7 +271,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       title: "Jaquar Authorized Distributor | Shubha Vani International",
       category: "corporate clients",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/jaquar1.jpg?height=600&width=800",
-      videoUrl: "https://www.youtube.com/embed//LehSpll-XQs",
+      videoUrl: "https://www.youtube.com/embed/LehSpll-XQs",
       isVideo: true,
     },
     {
@@ -415,7 +431,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       title: "Wrap up - 2030 In Sight Live - Nepal 2025",
       category: "corporate clients",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/iapbthumbnail2.jpg?height=600&width=800",
-      videoUrl: "https://www.youtube.com/embed//zcnWFko6wDs",
+      videoUrl: "https://www.youtube.com/embed/zcnWFko6wDs",
       isVideo: true,
     },
     {
@@ -423,7 +439,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       title: "FL Talks Ep 01 | Future Leaders Nepal | SCAEF NEPAL",
       category: "corporate clients",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/fltalks1.png?height=600&width=800",
-      videoUrl: "https://www.youtube.com/embed//o2JL5Sii8AM",
+      videoUrl: "https://www.youtube.com/embed/o2JL5Sii8AM",
       isVideo: true,
     },
     {
@@ -431,7 +447,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       title: "Bag Distribution Event coverage | Aurora VPN |",
       category: "corporate clients",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/auroravid1.jpg?height=600&width=800",
-      videoUrl: "https://www.youtube.com/embed//0KpP3vsvzm8",
+      videoUrl: "https://www.youtube.com/embed/0KpP3vsvzm8",
       isVideo: true,
     },
     {
@@ -439,7 +455,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       title: "Easy Fruits Commercial - Edit II",
       category: "commercial",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/easyyt2.jpg?height=600&width=800",
-      videoUrl: "https://www.youtube.com/embed//PW_OqH_FVtI",
+      videoUrl: "https://www.youtube.com/embed/PW_OqH_FVtI",
       isVideo: true,
     },
     {
@@ -447,7 +463,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       title: "Easy Fruits Commercial - Edit III",
       category: "commercial",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/easyyt3.jpg?height=600&width=800",
-      videoUrl: "https://www.youtube.com/embed//lxlnpZnpeDM",
+      videoUrl: "https://www.youtube.com/embed/lxlnpZnpeDM",
       isVideo: true,
     },
   ]
