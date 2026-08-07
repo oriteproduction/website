@@ -96,6 +96,14 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       isVideo: true,
     },
     {
+      id: 47,
+      title: "Cure Blindness Project | Outreach Story 1 |",
+      category: "documentary",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbp1.png?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed//oJp8oA4GRew",
+      isVideo: true,
+    },
+    {
       id: 2,
       title: "Easy Fruits Commercial",
       category: "commercial",
