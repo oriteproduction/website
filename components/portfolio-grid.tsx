@@ -220,7 +220,7 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
     },
     {
       id: 4,
-      title: "Cure Blindness Project | Outreach Story 2 |",
+      title: "FPV flythrough at Flora Adventure Resort",
       category: "aerial",
       image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/florathumbnail.png?height=600&width=800",
       videoUrl: "https://www.youtube.com/embed/BFp6gMfPdNA",
