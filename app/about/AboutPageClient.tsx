@@ -216,7 +216,7 @@ export default function AboutPageClient() {
                 },
                 {
                   category: "Aerial",
-                  items: ["DJI Mavic Air 2S", "DJI Avata 2", "DJI Drone"],
+                  items: ["DJI Mavic Air 3S", "DJI Mavic Air 2S", "DJI Avata 2", "DJI Drone"],
                 },
                 {
                   category: "Audio",
