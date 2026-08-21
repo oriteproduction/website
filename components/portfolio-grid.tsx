@@ -219,6 +219,14 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       isVideo: true,
     },
     {
+      id: 4,
+      title: "Cure Blindness Project | Outreach Story 2 |",
+      category: "aerial",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/florathumbnail.png?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed/BFp6gMfPdNA",
+      isVideo: true,
+    },
+    {
       id: 8,
       title: "Rayz Financial Services",
       category: "corporate clients",
