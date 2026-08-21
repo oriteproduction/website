@@ -212,7 +212,7 @@ export default function AboutPageClient() {
               {[
                 {
                   category: "Cameras",
-                  items: ["Sony FX3A", "Sony A7iii", "Sony A7iv", "Sony A7c2", "GoPro Hero 7", "Sony Alpha Series"],
+                  items: ["Sony FX3A", "Sony A7iii", "Sony A7iv", "Sony A7c2", "DJI Pocket 4", "GoPro Hero 7", "Sony Alpha Series"],
                 },
                 {
                   category: "Aerial",
@@ -220,7 +220,7 @@ export default function AboutPageClient() {
                 },
                 {
                   category: "Audio",
-                  items: ["Saramonic Blink500 B2", "Boya Boom Mic", "Zoom f5 Recorder", "Wireless Lavalier Systems"],
+                  items: ["Saramonic Blink500 B2", "DJI Mic Mini 2", "Boya Boom Mic", "Zoom f5 Recorder", "Wireless Lavalier Systems"],
                 },
                 {
                   category: "Lighting",
@@ -228,7 +228,7 @@ export default function AboutPageClient() {
                 },
                 {
                   category: "Support",
-                  items: ["Zhiyun Weebil Lab", "Zhiyun Weebil S", "Video Tripods", "C Stands"],
+                  items: ["DJI Ronin 4 Pro", "Zhiyun Weebil Lab", "Video Tripods", "C Stands"],
                 },
                 {
                   category: "Post-Production",
