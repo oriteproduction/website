@@ -212,7 +212,7 @@ export default function AboutPageClient() {
               {[
                 {
                   category: "Cameras",
-                  items: ["Sony FX3A", Sony A7iii", "Sony A7iv", "Sony A7c2", "GoPro Hero 7", "Sony Alpha Series"],
+                  items: ["Sony FX3A", "Sony A7iii", "Sony A7iv", "Sony A7c2", "GoPro Hero 7", "Sony Alpha Series"],
                 },
                 {
                   category: "Aerial",
