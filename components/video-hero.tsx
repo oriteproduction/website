@@ -45,7 +45,10 @@ export default function VideoHero({ landscapeVideoId, portraitVideoId }: VideoHe
       </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black z-10" />
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black z-10"
+        style={{ borderColor: "rgb(24, 24, 27)" }}
+      />
 
       {/* Foreground Content */}
       <div className="relative z-20 flex flex-col items-center justify-center min-h-screen text-white text-center px-4">
