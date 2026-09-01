@@ -166,11 +166,10 @@ export default function DocumentaryProductionPage() {
             Documentary Production in Nepal
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed">
-            Your trusted partner for documentary filmmaking in the Himalayas
+            Thoughtful documentary storytelling rooted in people, place, and purpose
           </p>
           <p className="text-sm sm:text-base md:text-lg text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
-            From the peaks of Everest to the jungles of Chitwan, we provide comprehensive production services for
-            filmmakers, producers, and directors seeking to tell authentic stories in Nepal.
+            From communities to health and social initiatives, we create human-centered documentaries that capture real experiences, meaningful change, and stories that matter. Our work combines sensitive field production with strong visual storytelling to help organizations communicate impact with authenticity and purpose.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
@@ -431,10 +430,10 @@ export default function DocumentaryProductionPage() {
           {/* Stats Section */}
           <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { number: "5+", label: "Documentaries Produced" },
+              { number: "10+", label: "Documentaries Produced" },
               { number: "3+", label: "International Clients" },
               { number: "7+", label: "Years Experience" },
-              { number: "100%", label: "Permit Success Rate" },
+              { number: "100%", label: "Work Success Rate" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-red-500 mb-2">{stat.number}</div>
