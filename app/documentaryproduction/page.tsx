@@ -166,10 +166,10 @@ export default function DocumentaryProductionPage() {
             Documentary Production in Nepal
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed">
-            Thoughtful documentary storytelling rooted in people, place, and purpose
+            Your trusted partner for documentary filmmaking in the Himalayas
           </p>
           <p className="text-sm sm:text-base md:text-lg text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
-            From communities to health and social initiatives, we create human-centered documentaries that capture real experiences, meaningful change, and stories that matter. Our work combines sensitive field production with strong visual storytelling to help organizations communicate impact with authenticity and purpose.
+            From communities to health and social initiatives, we create human-centered documentaries that capture real experiences, meaningful change, and stories that matter—combining sensitive field production with authentic visual storytelling.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">

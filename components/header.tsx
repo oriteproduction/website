@@ -41,9 +41,8 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-black/90 backdrop-blur-sm py-3" : "bg-transparent py-5"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-black/90 backdrop-blur-sm py-3" : "bg-transparent py-5"
+        }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
@@ -109,14 +108,14 @@ export default function Header() {
                     onClick={handleDropdownItemClick}
                     className="block px-4 py-2 text-white hover:text-red-500 hover:bg-zinc-800 transition-colors"
                   >
-                    About Orite Production
+                    About Us
                   </Link>
                   <Link
                     href="/aayushtiwari"
                     onClick={handleDropdownItemClick}
                     className="block px-4 py-2 text-white hover:text-red-500 hover:bg-zinc-800 transition-colors"
                   >
-                    Creative Director
+                    About Creative Director
                   </Link>
                 </div>
               )}
