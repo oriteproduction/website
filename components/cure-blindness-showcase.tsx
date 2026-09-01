@@ -80,7 +80,7 @@ function ShowcaseCard({ id, title, url }: (typeof projects)[number]) {
 
 export default function CureBlindnessShowcase() {
   return (
-    <section className="bg-black py-16 sm:py-20 lg:py-24" aria-labelledby="cure-blindness-heading">
+    <section className="bg-zinc-900 py-16 sm:py-20 lg:py-24" aria-labelledby="cure-blindness-heading">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-red-500">Featured Documentary Work</p>
@@ -98,12 +98,6 @@ export default function CureBlindnessShowcase() {
           ))}
         </div>
 
-        <div className="mt-10 border-t border-red-500/20 pt-8 sm:mt-12 sm:pt-10">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-red-500">Full-Service Production in Nepal</p>
-          <p className="max-w-4xl text-sm leading-relaxed text-gray-400 sm:text-base">
-            Orite Production handled the Nepal-side video production in coordination with Cure Blindness Project&apos;s Communications Manager. Aayush Tiwari directed and coordinated the productions alongside freelance cinematographers and crew, using a Sony A7S III and professional Sony camera and lens system for lightweight, high-quality field storytelling.
-          </p>
-        </div>
       </div>
     </section>
   )
