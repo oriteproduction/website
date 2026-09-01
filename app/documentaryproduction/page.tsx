@@ -279,7 +279,7 @@ export default function DocumentaryProductionPage() {
       <CureBlindnessShowcase />
 
       {/* Nepal Visual Showcase */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-black">
+      <section className="py-16 sm:py-20 lg:py-24 bg-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -398,7 +398,7 @@ export default function DocumentaryProductionPage() {
       </section>
 
       {/* Why Choose Orite Production */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-zinc-900">
+      <section className="py-16 sm:py-20 lg:py-24 bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -463,7 +463,7 @@ export default function DocumentaryProductionPage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-black via-zinc-900 to-black">
+      <section className="py-16 sm:py-20 lg:py-24 bg-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">Ready to Film in Nepal?</h2>

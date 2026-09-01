@@ -80,7 +80,7 @@ function ShowcaseCard({ id, title, url }: (typeof projects)[number]) {
 
 export default function CureBlindnessShowcase() {
   return (
-    <section className="bg-zinc-900 py-16 sm:py-20 lg:py-24" aria-labelledby="cure-blindness-heading">
+    <section className="bg-black py-16 sm:py-20 lg:py-24" aria-labelledby="cure-blindness-heading">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-red-500">Featured Documentary Work</p>
