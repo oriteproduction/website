@@ -164,7 +164,7 @@ export default function Home() {
       </section>
 
       {/* Featured Work Section */}
-      <section className="py-16 bg-zinc-900 text-white">
+      <section className="py-16 bg-black text-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold">Featured Work</h2>
