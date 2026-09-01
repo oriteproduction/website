@@ -17,6 +17,7 @@ import {
   Mail,
   Phone,
 } from "lucide-react"
+import CureBlindnessShowcase from "@/components/cure-blindness-showcase"
 
 export default function DocumentaryProductionPage() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -274,6 +275,8 @@ export default function DocumentaryProductionPage() {
           </div>
         </div>
       </section>
+
+      <CureBlindnessShowcase />
 
       {/* Nepal Visual Showcase */}
       <section className="py-16 sm:py-20 lg:py-24 bg-black">
