@@ -29,6 +29,16 @@ interface Reel {
 }
 
 const behindScenesImages = [
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbpbts1a.JPG",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbpbts2a.JPG",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbpbts3a.JPG",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbpbts4a.JPG",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbpbts5a.JPG",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbpbts6a.JPG",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbpbts7a.JPG",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbpbts8a.JPG",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbpbts9a.JPG",
+  "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/cbpbts10a.JPG",
   "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic6.jpg",
   "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic5.jpg",
   "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/pic7.jpg",
@@ -571,8 +581,7 @@ export default function PortfolioPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Portfolio</h1>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Explore our diverse range of projects across various categories. Each project represents our commitment to
-            quality and creativity.
+            Explore our diverse range of projects across various categories. Each project represents our commitment to quality and creativity. Trusted by businesses and organizations across the world. Our Founder/ Director has proudly worked with them in these projects below.
           </p>
         </div>
 
