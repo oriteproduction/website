@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button"
 const YT_ALLOW = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 
 const ytSrc = (id: string) =>
-  `https://www.youtube.com/embed/${id}?autoplay=1&controls=0&mute=1&loop=1&playlist=${id}&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`
+  `https://www.youtube.com/embed/${id}?autoplay=1&controls=0&mute=1&loop=1&playlist=${id}&playsinline=1&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`
 
 /* ------------------------------------------------------------------ */
 /* YouTubeEmbed                                                         */
@@ -265,6 +265,33 @@ export default function AayushTiwariPage() {
     setIsVisible(true)
   }, [])
 
+  /* ---------------- Hero video autoplay (iPhone / in-app browsers) ---------------- */
+  const heroIframeRef = useRef<HTMLIFrameElement>(null)
+
+  const playHeroVideo = () => {
+    const player = heroIframeRef.current?.contentWindow
+    if (!player) return
+    player.postMessage(JSON.stringify({ event: "command", func: "mute", args: [] }), "*")
+    player.postMessage(JSON.stringify({ event: "command", func: "playVideo", args: [] }), "*")
+  }
+
+  useEffect(() => {
+    // Retry a few times after load, and again on the visitor's first touch/scroll
+    const timers = [800, 2000, 4000].map((ms) => window.setTimeout(playHeroVideo, ms))
+    const onFirstInteraction = () => {
+      playHeroVideo()
+      window.removeEventListener("touchstart", onFirstInteraction)
+      window.removeEventListener("scroll", onFirstInteraction)
+    }
+    window.addEventListener("touchstart", onFirstInteraction, { passive: true })
+    window.addEventListener("scroll", onFirstInteraction, { passive: true })
+    return () => {
+      timers.forEach((t) => window.clearTimeout(t))
+      window.removeEventListener("touchstart", onFirstInteraction)
+      window.removeEventListener("scroll", onFirstInteraction)
+    }
+  }, [])
+
   // Mobile reels data - 12 reels total, 2 per slide for first 3 slides, 1 for last slide
   const mobileReelsData = [
     { id: "Tq7_CQjI64c", title: "Camera Roll" },
@@ -309,7 +336,9 @@ export default function AayushTiwariPage() {
         {/* Background Video (unchanged — loads immediately, 1080p) */}
         <div className="absolute inset-0 z-0">
           <iframe
-            src="https://www.youtube.com/embed/59D0A7C0SUY?autoplay=1&controls=0&mute=1&loop=1&playlist=59D0A7C0SUY&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
+            ref={heroIframeRef}
+            onLoad={playHeroVideo}
+            src="https://www.youtube.com/embed/59D0A7C0SUY?autoplay=1&controls=0&mute=1&loop=1&playlist=59D0A7C0SUY&playsinline=1&enablejsapi=1&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             title="Background Video"
