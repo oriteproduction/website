@@ -8,22 +8,181 @@ import Link from "next/link"
 import { Award, Film, Eye, Calendar, MapPin, Play, Download, ChevronDown, ChevronUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+/* ------------------------------------------------------------------ */
+/* Shared YouTube embed settings (same parameters as before)           */
+/* ------------------------------------------------------------------ */
+const YT_ALLOW = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+
+const ytSrc = (id: string) =>
+  `https://www.youtube.com/embed/${id}?autoplay=1&controls=0&mute=1&loop=1&playlist=${id}&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`
+
+/* ------------------------------------------------------------------ */
+/* YouTubeEmbed                                                         */
+/* - Desktop (isMobile === false): normal autoplaying iframe, as before */
+/* - Mobile  (isMobile === true):  thumbnail first; the video loads and */
+/*   autoplays only when scrolled into view, and unloads when scrolled  */
+/*   away (keeps phone memory low so the page doesn't crash)            */
+/* - alwaysLazy: always use the mobile behaviour (used for the mobile   */
+/*   reels carousel, which is only visible on mobile anyway)            */
+/* - active: extra switch, e.g. only the current carousel slide plays   */
+/* ------------------------------------------------------------------ */
+type YouTubeEmbedProps = {
+  videoId: string
+  title: string
+  isMobile: boolean | null
+  alwaysLazy?: boolean
+  active?: boolean
+}
+
+function YouTubeEmbed({ videoId, title, isMobile, alwaysLazy = false, active = true }: YouTubeEmbedProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(false)
+  const lazy = alwaysLazy || isMobile === true
+
+  useEffect(() => {
+    if (!lazy) return
+    const el = containerRef.current
+    if (!el) return
+    if (typeof IntersectionObserver === "undefined") {
+      setInView(true)
+      return
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting)
+      },
+      { threshold: 0.5 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [lazy])
+
+  // Desktop: exactly the same iframe as before
+  if (!lazy && isMobile === false) {
+    return (
+      <iframe
+        src={ytSrc(videoId)}
+        allow={YT_ALLOW}
+        allowFullScreen
+        title={title}
+        className="w-full h-full"
+        style={{ border: "none" }}
+      />
+    )
+  }
+
+  const showPlayer = lazy && inView && active
+
+  return (
+    <div ref={containerRef} className="relative w-full h-full bg-black">
+      {showPlayer ? (
+        <iframe
+          src={ytSrc(videoId)}
+          allow={YT_ALLOW}
+          allowFullScreen
+          title={title}
+          className="w-full h-full"
+          style={{ border: "none" }}
+        />
+      ) : (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+          alt={title}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
+    </div>
+  )
+}
+
+/* ------------------------------------------------------------------ */
+/* ScrollVideo (Aston band MP4)                                         */
+/* - Desktop: autoplays as before                                       */
+/* - Mobile: nothing downloads until scrolled into view; pauses when    */
+/*   scrolled away                                                      */
+/* ------------------------------------------------------------------ */
+type ScrollVideoProps = {
+  src: string
+  isMobile: boolean | null
+}
+
+function ScrollVideo({ src, isMobile }: ScrollVideoProps) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (isMobile !== true) return
+    const video = videoRef.current
+    if (!video) return
+    video.muted = true
+    if (typeof IntersectionObserver === "undefined") {
+      video.play().catch(() => {})
+      return
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {})
+        } else {
+          video.pause()
+        }
+      },
+      { threshold: 0.25 },
+    )
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [isMobile])
+
+  if (isMobile === null) {
+    return <div className="w-full h-full bg-black" />
+  }
+
+  if (isMobile === false) {
+    return (
+      <video autoPlay muted loop playsInline className="w-full h-full object-cover" style={{ border: "none" }}>
+        <source src={src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    )
+  }
+
+  return (
+    <video
+      ref={videoRef}
+      muted
+      loop
+      playsInline
+      preload="none"
+      className="w-full h-full object-cover"
+      style={{ border: "none" }}
+    >
+      <source src={src} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  )
+}
+
 export default function AayushTiwariPage() {
-  const [scrollY, setScrollY] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
-  const [hoveredReel, setHoveredReel] = useState<number | null>(null)
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isMobile, setIsMobile] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0) // desktop reels carousel (0–2)
+  const [currentMobileSlide, setCurrentMobileSlide] = useState(0) // mobile reels carousel (0–3)
+  // null = not measured yet (first render), true = mobile (< 768px), false = desktop
+  const [isMobile, setIsMobile] = useState<boolean | null>(null)
   const [isJourneyExpanded, setIsJourneyExpanded] = useState(false)
   const [showAllExperiences, setShowAllExperiences] = useState(false)
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768)
+    // 768px matches Tailwind's "md" breakpoint used by the layout below
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
     checkMobile()
     window.addEventListener("resize", checkMobile)
     return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
+  /* ================================================================ */
+  /* COLOR GRADING (kept for future use — not rendered on the page)   */
+  /* ================================================================ */
   // Refs for color grading sections with manual sliders
   const colorGrading1Ref = useRef<HTMLDivElement>(null)
   const colorGrading2Ref = useRef<HTMLDivElement>(null)
@@ -42,16 +201,6 @@ export default function AayushTiwariPage() {
   const [isDragging3, setIsDragging3] = useState(false)
   const [isDragging4, setIsDragging4] = useState(false)
   const [isDragging5, setIsDragging5] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
 
   // Mouse down handlers for each frame
   const handleMouseDown1 = () => setIsDragging1(true)
@@ -108,12 +257,13 @@ export default function AayushTiwariPage() {
       window.removeEventListener("touchend", handleTouchEnd)
     }
   }, [])
+  /* ================================================================ */
+  /* END COLOR GRADING                                                */
+  /* ================================================================ */
 
-  const reelsData = [
-    { id: "TDdW2nJ0bw8", title: "Commercial Showcase" },
-    { id: "VgWN4p1eVu4", title: "Brand Storytelling" },
-    { id: "GD0VFTc8Bac", title: "Documentary Style" },
-  ]
+  useEffect(() => {
+    setIsVisible(true)
+  }, [])
 
   // Mobile reels data - 12 reels total, 2 per slide for first 3 slides, 1 for last slide
   const mobileReelsData = [
@@ -156,7 +306,7 @@ export default function AayushTiwariPage() {
     <main className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-black">
-        {/* Background Video */}
+        {/* Background Video (unchanged — loads immediately, 1080p) */}
         <div className="absolute inset-0 z-0">
           <iframe
             src="https://www.youtube.com/embed/59D0A7C0SUY?autoplay=1&controls=0&mute=1&loop=1&playlist=59D0A7C0SUY&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
@@ -261,14 +411,7 @@ export default function AayushTiwariPage() {
             </div>
             <div className="relative">
               <div className="aspect-video rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
-                <iframe
-                  src="https://www.youtube.com/embed/32Bjl84gkz0?autoplay=1&controls=0&mute=1&loop=1&playlist=32Bjl84gkz0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Creative Showcase"
-                  className="w-full h-full"
-                  style={{ border: "none" }}
-                />
+                <YouTubeEmbed videoId="32Bjl84gkz0" title="Creative Showcase" isMobile={isMobile} />
               </div>
             </div>
           </div>
@@ -280,13 +423,11 @@ export default function AayushTiwariPage() {
         <div className="container mx-auto px-4">
           <div className="flex justify-center">
             <div className="w-full max-w-[1536px] h-[50px] sm:h-[200px] lg:h-[200px] relative overflow-hidden">
-              <video autoPlay muted loop playsInline className="w-full h-full object-cover" style={{ border: "none" }}>
-                <source
-                  src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/astonband2.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
+              {/* NOTE: consider moving this MP4 off raw.githubusercontent.com to /public or a CDN for faster loading */}
+              <ScrollVideo
+                src="https://raw.githubusercontent.com/oriteproduction/thumbnails/main/astonband2.mp4"
+                isMobile={isMobile}
+              />
             </div>
           </div>
         </div>
@@ -329,28 +470,14 @@ export default function AayushTiwariPage() {
                 </div>
               </div>
               <div className="aspect-video rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
-                <iframe
-                  src="https://www.youtube.com/embed/_oiVSMmS8d0?autoplay=1&controls=0&mute=1&loop=1&playlist=_oiVSMmS8d0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Daraz Nepal Campaign Series"
-                  className="w-full h-full"
-                  style={{ border: "none" }}
-                />
+                <YouTubeEmbed videoId="_oiVSMmS8d0" title="Daraz Nepal Campaign Series" isMobile={isMobile} />
               </div>
             </div>
 
             {/* Project 2 - Documentary Work */}
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               <div className="order-2 lg:order-1 aspect-video rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
-                <iframe
-                  src="https://www.youtube.com/embed/GD0VFTc8Bac?autoplay=1&controls=0&mute=1&loop=1&playlist=GD0VFTc8Bac&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Documentary Work"
-                  className="w-full h-full"
-                  style={{ border: "none" }}
-                />
+                <YouTubeEmbed videoId="GD0VFTc8Bac" title="Documentary Work" isMobile={isMobile} />
               </div>
               <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
                 <h3 className="text-2xl sm:text-3xl font-bold text-[#F7BD3A]">Documentary Storytelling</h3>
@@ -407,28 +534,14 @@ export default function AayushTiwariPage() {
                 </div>
               </div>
               <div className="aspect-video rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
-                <iframe
-                  src="https://www.youtube.com/embed/VgWN4p1eVu4?autoplay=1&controls=0&mute=1&loop=1&playlist=VgWN4p1eVu4&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Commercial Work"
-                  className="w-full h-full"
-                  style={{ border: "none" }}
-                />
+                <YouTubeEmbed videoId="VgWN4p1eVu4" title="Commercial Work" isMobile={isMobile} />
               </div>
             </div>
 
             {/* Project 4 - Informative Video Journalism */}
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               <div className="order-2 lg:order-1 aspect-video rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
-                <iframe
-                  src="https://www.youtube.com/embed/lZvw6H0F4gs?autoplay=1&controls=0&mute=1&loop=1&playlist=lZvw6H0F4gs&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Informative Video Journalism"
-                  className="w-full h-full"
-                  style={{ border: "none" }}
-                />
+                <YouTubeEmbed videoId="lZvw6H0F4gs" title="Informative Video Journalism" isMobile={isMobile} />
               </div>
               <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
                 <h3 className="text-2xl sm:text-3xl font-bold text-[#F7BD3A]">Informative Video Journalism</h3>
@@ -488,14 +601,7 @@ export default function AayushTiwariPage() {
                 </div>
               </div>
               <div className="aspect-video rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
-                <iframe
-                  src="https://www.youtube.com/embed/dbcDt6Hll2w?autoplay=1&controls=0&mute=1&loop=1&playlist=dbcDt6Hll2w&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="IAPB Eye Health Project"
-                  className="w-full h-full"
-                  style={{ border: "none" }}
-                />
+                <YouTubeEmbed videoId="dbcDt6Hll2w" title="IAPB Eye Health Project" isMobile={isMobile} />
               </div>
             </div>
           </div>
@@ -521,7 +627,7 @@ export default function AayushTiwariPage() {
               >
                 <div
                   className="flex transition-transform duration-500 ease-in-out"
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  style={{ transform: `translateX(-${currentMobileSlide * 100}%)` }}
                 >
                   {/* 4 slides total */}
                   {[0, 1, 2, 3].map((slideIndex) => {
@@ -531,18 +637,17 @@ export default function AayushTiwariPage() {
                     return (
                       <div key={slideIndex} className="w-full flex-shrink-0">
                         <div className={`flex ${isLastSlide ? "justify-center" : "space-x-2"} h-[400px]`}>
-                          {reelsForSlide.map((reel, reelIndex) => (
+                          {reelsForSlide.map((reel) => (
                             <div
                               key={reel.id}
                               className={`${isLastSlide ? "w-[180px]" : "w-1/2"} aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl relative`}
                             >
-                              <iframe
-                                src={`https://www.youtube.com/embed/${reel.id}?autoplay=${currentSlide === slideIndex ? 1 : 0}&controls=0&mute=1&loop=1&playlist=${reel.id}&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`}
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
+                              <YouTubeEmbed
+                                videoId={reel.id}
                                 title={reel.title}
-                                className="w-full h-full"
-                                style={{ border: "none" }}
+                                isMobile={isMobile}
+                                alwaysLazy
+                                active={currentMobileSlide === slideIndex}
                               />
                               {/* Overlay */}
                               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
@@ -566,8 +671,8 @@ export default function AayushTiwariPage() {
 
               {/* Mobile Navigation Arrows */}
               <button
-                onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
-                disabled={currentSlide === 0}
+                onClick={() => setCurrentMobileSlide(Math.max(0, currentMobileSlide - 1))}
+                disabled={currentMobileSlide === 0}
                 className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10 touch-manipulation"
               >
                 <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -576,8 +681,8 @@ export default function AayushTiwariPage() {
               </button>
 
               <button
-                onClick={() => setCurrentSlide(Math.min(3, currentSlide + 1))}
-                disabled={currentSlide === 3}
+                onClick={() => setCurrentMobileSlide(Math.min(3, currentMobileSlide + 1))}
+                disabled={currentMobileSlide === 3}
                 className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10 touch-manipulation"
               >
                 <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -590,8 +695,8 @@ export default function AayushTiwariPage() {
                 {[0, 1, 2, 3].map((slide) => (
                   <button
                     key={slide}
-                    onClick={() => setCurrentSlide(slide)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === slide ? "bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] scale-125" : "bg-white/20"
+                    onClick={() => setCurrentMobileSlide(slide)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${currentMobileSlide === slide ? "bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] scale-125" : "bg-white/20"
                       }`}
                   />
                 ))}
@@ -600,7 +705,7 @@ export default function AayushTiwariPage() {
           </div>
 
           {/* Desktop: Horizontal Slideshow Container */}
-          <div className="hidden sm:block max-w-7xl mx-auto">
+          <div className="hidden md:block max-w-7xl mx-auto">
             <div className="relative">
               {/* Slideshow Wrapper */}
               <div className="overflow-hidden rounded-2xl">
@@ -624,14 +729,7 @@ export default function AayushTiwariPage() {
                           } ${index >= 3 ? "hidden lg:block" : ""
                           } w-full max-w-[280px] sm:max-w-[200px] lg:max-w-[280px]`}
                       >
-                        <iframe
-                          src={`https://www.youtube.com/embed/${reel.id}?autoplay=1&controls=0&mute=1&loop=1&playlist=${reel.id}&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          title={reel.title}
-                          className="w-full h-full"
-                          style={{ border: "none" }}
-                        />
+                        <YouTubeEmbed videoId={reel.id} title={reel.title} isMobile={isMobile} />
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
@@ -663,14 +761,7 @@ export default function AayushTiwariPage() {
                           } ${index >= 3 ? "hidden lg:block" : ""
                           } w-full max-w-[280px] sm:max-w-[200px] lg:max-w-[280px]`}
                       >
-                        <iframe
-                          src={`https://www.youtube.com/embed/${reel.id}?autoplay=1&controls=0&mute=1&loop=1&playlist=${reel.id}&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          title={reel.title}
-                          className="w-full h-full"
-                          style={{ border: "none" }}
-                        />
+                        <YouTubeEmbed videoId={reel.id} title={reel.title} isMobile={isMobile} />
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
@@ -702,14 +793,7 @@ export default function AayushTiwariPage() {
                           } ${index >= 3 ? "hidden lg:block" : ""
                           } w-full max-w-[280px] sm:max-w-[200px] lg:max-w-[280px]`}
                       >
-                        <iframe
-                          src={`https://www.youtube.com/embed/${reel.id}?autoplay=1&controls=0&mute=1&loop=1&playlist=${reel.id}&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080`}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          title={reel.title}
-                          className="w-full h-full"
-                          style={{ border: "none" }}
-                        />
+                        <YouTubeEmbed videoId={reel.id} title={reel.title} isMobile={isMobile} />
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4">
@@ -1139,14 +1223,7 @@ export default function AayushTiwariPage() {
             </div>
             <div className="relative">
               <div className="aspect-video rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl">
-                <iframe
-                  src="https://www.youtube.com/embed/6tkONV3yq60?autoplay=1&controls=0&mute=1&loop=1&playlist=6tkONV3yq60&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&hd=1&vq=hd1080"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title="Creative Philosophy"
-                  className="w-full h-full"
-                  style={{ border: "none" }}
-                />
+                <YouTubeEmbed videoId="6tkONV3yq60" title="Creative Philosophy" isMobile={isMobile} />
               </div>
             </div>
           </div>
