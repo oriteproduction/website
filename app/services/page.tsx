@@ -102,6 +102,7 @@ const SERVICES: Service[] = [
     description:
       "Our post-production services transform raw footage into polished, professional content. We offer comprehensive editing, color grading, sound design, and visual effects to enhance your visual content.",
     videoId: "TDdW2nJ0bw8",
+    showcaseVideoId: "pJcnBuKA_gA",
     icon: <Film className="h-8 w-8 text-red-500" />,
     features: [
       {
@@ -182,7 +183,7 @@ const SERVICES: Service[] = [
     description:
       "Capture breathtaking perspectives with our aerial videography services. Using state-of-the-art drone technology, we provide stunning aerial footage for real estate, events, landscapes, and more.",
     videoId: "p9d-1I4-1iY", // ← NEW hero video (autoplays, muted)
-    showcaseVideoId: "pJcnBuKA_gA", // ← the old Kathmandu/Tihar video, now the second box
+    showcaseVideoId: "BFp6gMfPdNA", // 
     icon: <Plane className="h-8 w-8 text-red-500" />,
     features: [
       {
