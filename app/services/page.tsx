@@ -60,8 +60,8 @@ const SERVICES: Service[] = [
     title: "Video Production",
     description:
       "From concept to completion, our video production team delivers high-quality videos that captivate your audience. We handle every aspect of the production process, including scriptwriting, storyboarding, filming, and editing.",
-    videoId: "TDdW2nJ0bw8",
-    // showcaseVideoId: "PUT_AN_ID_HERE",
+    videoId: "TDdW2nJ0bw8", 
+    showcaseVideoId: "0KpP3vsvzm8",// showcaseVideoId: "PUT_AN_ID_HERE",
     icon: <Video className="h-8 w-8 text-red-500" />,
     features: [
       {
@@ -102,7 +102,7 @@ const SERVICES: Service[] = [
     description:
       "Our post-production services transform raw footage into polished, professional content. We offer comprehensive editing, color grading, sound design, and visual effects to enhance your visual content.",
     videoId: "VgWN4p1eVu4",
-    showcaseVideoId: "pJcnBuKA_gA",
+    showcaseVideoId: "Ccy20WdmNuU",
     icon: <Film className="h-8 w-8 text-red-500" />,
     features: [
       {
@@ -183,8 +183,8 @@ const SERVICES: Service[] = [
     title: "Aerial Videography",
     description:
       "Capture breathtaking perspectives with our aerial videography services. Using state-of-the-art drone technology, we provide stunning aerial footage for real estate, events, landscapes, and more.",
-    videoId: "p9d-1I4-1iY", // ← NEW hero video (autoplays, muted)
-    showcaseVideoId: "BFp6gMfPdNA", // 
+    videoId: "VFr0TzEp4Bk", // ← NEW hero video (autoplays, muted)
+    showcaseVideoId: "p9d-1I4-1iY", // 
     icon: <Plane className="h-8 w-8 text-red-500" />,
     features: [
       {
