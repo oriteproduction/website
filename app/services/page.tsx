@@ -513,7 +513,7 @@ function ServiceContent({ id, title, description, features, videoId, showcaseVid
           {showcaseVideoId && (
             <div className="aspect-video w-full rounded-2xl overflow-hidden border border-zinc-800">
               <iframe
-                src={embedUrl(showcaseVideoId)}
+                src={embedUrl(showcaseVideoId, { autoplay: true, loop: true })}
                 title={`${title} showcase - Orite Production`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -656,8 +656,8 @@ function ServicesPageContent() {
                 onClick={() => handleTabChange(service.id)}
                 aria-current={activeTab === service.id ? "true" : undefined}
                 className={`group relative px-4 py-3 rounded-xl border transition-all duration-300 hover:scale-105 text-sm font-medium ${activeTab === service.id
-                    ? "bg-red-600 border-red-500 text-white shadow-lg shadow-red-500/25"
-                    : "bg-zinc-900/50 border-zinc-700 text-gray-300 hover:border-red-500/50 hover:bg-zinc-800/50"
+                  ? "bg-red-600 border-red-500 text-white shadow-lg shadow-red-500/25"
+                  : "bg-zinc-900/50 border-zinc-700 text-gray-300 hover:border-red-500/50 hover:bg-zinc-800/50"
                   }`}
               >
                 <div className="flex items-center space-x-2">
