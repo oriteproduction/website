@@ -376,7 +376,7 @@ const REELS = [
    EDIT 6 — TESTIMONIALS
    Flip SHOW_TESTIMONIALS_SECTION to true when you want this live again.
    -------------------------------------------------------------------------- */
-const SHOW_TESTIMONIALS_SECTION = false
+const SHOW_TESTIMONIALS_SECTION = true
 
 const TESTIMONIALS = [
   {
