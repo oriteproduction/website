@@ -225,12 +225,12 @@ export default function Home() {
           <div className="text-center">
             <div className="inline-block relative">
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-red-500 via-red-400 to-red-600 bg-clip-text text-transparent mb-4">
-                Experience the Beauty of Nepal
+                Filming a Documentary in Nepal?
               </h2>
               <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-red-500 to-red-600 rounded-full"></div>
             </div>
             <p className="text-gray-400 text-lg md:text-xl mt-8 max-w-2xl mx-auto leading-relaxed">
-              Discover the breathtaking landscapes and rich culture of Nepal through our cinematic lens
+              Permits, fixers, local crew, altitude logistics, kit and post — we run the ground operation so your team can shoot.
             </p>
             <div className="flex flex-col items-center space-y-4 mt-8">
               <Link href="/documentaryproduction">
