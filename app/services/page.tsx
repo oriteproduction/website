@@ -143,7 +143,7 @@ const SERVICES: Service[] = [
     description:
       "Our content creation services focus on developing engaging and effective content that tells your story across multiple platforms. We craft compelling videos, graphics, and written content that resonate with your audience.",
     videoId: "PW_OqH_FVtI",
-    showcaseVideoId:"y7ho5QMxX8g" 
+    showcaseVideoId: "y7ho5QMxX8g", 
     icon: <FileVideo className="h-8 w-8 text-red-500" />,
     features: [
       {
