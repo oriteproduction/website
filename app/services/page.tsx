@@ -380,11 +380,11 @@ const SHOW_TESTIMONIALS_SECTION = false
 
 const TESTIMONIALS = [
   {
-    name: "Saurav Dhungana",
-    company: "Playbox Arena",
+    name: "Divya Baliyan",
+    company: "Communications Manager | Cure Blindness Project",
     quote:
-      "Partnering with Orite Production for our TV commercial and Aston ad was an outstanding experience. Their team brought a sharp creative vision, technical excellence, and a strong understanding of our brand. The final outputs were dynamic, high-impact, and perfectly aligned with our marketing goals. We're thrilled with the results and confident in Orite as a go-to creative partner for future campaigns.",
-    image: `${IMAGE_BASE}/playbox.png`,
+      "I finally got a chance to watch the first cut, and I just have to say... its outstanding, Aayush. Even though I was there throughout the shoot and knew exactly what we had filmed, watching it come together gave me goosebumps. There were moments that genuinely made me emotional, which I honestly wasn't expecting. Aayush, you've done an incredible job. This is, without a doubt, some of the finest work I've ever seen. Every frame feels intentional, and the way you've brought the story together has exceeded all my and even our team's expectations. The emotions come through so naturally. I shared it with Harris Media and our communications team as well, and they all had the same reaction. Everyone was genuinely blown away. Seriously, congratulations to you and the entire team. You should all be incredibly proud of what you've created. It's exceptional.",
+    image: `${IMAGE_BASE}/cureblindnessprojectlogo.png`,
   },
   {
     name: "Rijesh Uparkoti",
