@@ -383,19 +383,19 @@ const TESTIMONIALS = [
     name: "Divya Baliyan",
     company: "Communications Manager | Cure Blindness Project",
     quote:
-      "I finally got a chance to watch the first cut, and I just have to say... its outstanding, Aayush. Even though I was there throughout the shoot and knew exactly what we had filmed, watching it come together gave me goosebumps. There were moments that genuinely made me emotional, which I honestly wasn't expecting. Aayush, you've done an incredible job. This is, without a doubt, some of the finest work I've ever seen. Every frame feels intentional, and the way you've brought the story together has exceeded all my and even our team's expectations. The emotions come through so naturally. I shared it with Harris Media and our communications team as well, and they all had the same reaction. Everyone was genuinely blown away. Seriously, congratulations to you and the entire team. You should all be incredibly proud of what you've created. It's exceptional.",
+      "I finally got a chance to watch the first cut, and it was outstanding. Even though I was there throughout the shoot, seeing everything come together gave me goosebumps and genuinely moved me. You and the entire team did an incredible job. Every frame feels intentional, and the story exceeded all our expectations. I shared it with Harris Media and our communications team, and everyone was genuinely blown away. Exceptional work. You should all be incredibly proud.",
     image: `${IMAGE_BASE}/cureblindnessprojectlogo.png`,
   },
   {
     name: "Rijesh Uparkoti",
-    company: "Gandaki Gaupalika",
+    company: "Chief Administrative Officer | Gandaki Gaupalika",
     quote:
       "Throughout the project, Orite Production exhibited a high level of professionalism, creativity, and dedication. We collaborated on three informative short films aimed at raising awareness across Gandaki Gaupalika, and their contributions significantly enhanced both the impact and reach of our campaign. Their team's ability to translate complex messages into compelling visual stories was instrumental in the project's success.",
     image: `${IMAGE_BASE}/GON.png`,
   },
   {
     name: "Nimesh Sitaula",
-    company: "Tapobhumi Travel and Tours",
+    company: "Chief Executive Officer | Tapobhumi Travel and Tours",
     quote:
       "Working with Orite Production has been a game-changer for our brand. Their team brought our travel stories to life with visually stunning videos, seamless edits, and captivating animations. The creativity and professionalism they brought to the table made the entire process effortless and effective. We're proud to have partnered with Orite and look forward to creating more magic together.",
     image: `${IMAGE_BASE}/tapobhumi.png`,
