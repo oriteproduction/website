@@ -387,7 +387,7 @@ const SHOW_TESTIMONIALS_SECTION = true
 const TESTIMONIALS = [
   {
     name: "Divya Baliyan",
-    company: "Communications Manager | Cure Blindness Project",
+    company: "Communications Manager- Asia | Cure Blindness Project",
     quote:
       "I finally got a chance to watch the first cut, and it was outstanding. Even though I was there throughout the shoot, seeing everything come together gave me goosebumps and genuinely moved me. You and the entire team did an incredible job. Every frame feels intentional, and the story exceeded all our expectations. I shared it with Harris Media and our communications team, and everyone was genuinely blown away. Exceptional work. You should all be incredibly proud.",
     image: `${IMAGE_BASE}/cureblindnessprojectlogo.png`,
@@ -689,11 +689,10 @@ function ServicesPageContent() {
                   ref={isActive ? activeTabRef : null}
                   onClick={() => handleTabChange(service.id)}
                   aria-current={isActive ? "true" : undefined}
-                  className={`group relative flex-shrink-0 px-4 py-3 rounded-xl border transition-all duration-300 md:hover:scale-105 text-sm font-medium ${
-                    isActive
+                  className={`group relative flex-shrink-0 px-4 py-3 rounded-xl border transition-all duration-300 md:hover:scale-105 text-sm font-medium ${isActive
                       ? "bg-red-600 border-red-500 text-white shadow-lg shadow-red-500/25"
                       : "bg-zinc-900/50 border-zinc-700 text-gray-300 hover:border-red-500/50 hover:bg-zinc-800/50"
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center space-x-2">
                     <div className={`transition-colors duration-300 ${isActive ? "text-white" : "text-red-500"}`}>
@@ -776,9 +775,8 @@ function ServicesPageContent() {
                   type="button"
                   onClick={() => window.open(`https://www.youtube.com/watch?v=${item.videoId}`, "_blank")}
                   aria-label={`Watch: ${item.heading}`}
-                  className={`aspect-video w-full rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl cursor-pointer ${
-                    textFirst ? "" : "order-2 lg:order-1"
-                  }`}
+                  className={`aspect-video w-full rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl cursor-pointer ${textFirst ? "" : "order-2 lg:order-1"
+                    }`}
                 >
                   <iframe
                     src={embedUrl(item.videoId, { autoplay: true, loop: true })}
@@ -871,9 +869,8 @@ function ServicesPageContent() {
                       key={slide}
                       onClick={() => setCurrentSlide(slide)}
                       aria-label={`Go to reel page ${slide + 1}`}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        currentSlide === slide ? "bg-[#F7BD3A] scale-125" : "bg-white/20"
-                      }`}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === slide ? "bg-[#F7BD3A] scale-125" : "bg-white/20"
+                        }`}
                     />
                   ))}
                 </div>

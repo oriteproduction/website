@@ -211,6 +211,14 @@ export default function PortfolioGrid({ category }: PortfolioGridProps) {
       isVideo: true,
     },
     {
+      id: 49,
+      title: "Daraz Headquarter Interior Shoot | Drone Video",
+      category: "corporate clients",
+      image: "https://raw.githubusercontent.com/oriteproduction/thumbnails/main/darazhq.png?height=600&width=800",
+      videoUrl: "https://www.youtube.com/embed/XsXMdjhloVM",
+      isVideo: true,
+    },
+    {
       id: 30,
       title: "ShreePech Esports Commericial",
       category: "commercial",
