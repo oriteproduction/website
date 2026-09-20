@@ -501,7 +501,7 @@ function ServiceContent({ id, title, description, features, videoId, showcaseVid
           {/* Main video — autoplays muted */}
           <div className="aspect-video w-full rounded-2xl overflow-hidden border border-zinc-800">
             <iframe
-              src={embedUrl(videoId, { autoplay: true })}
+              src={embedUrl(videoId, { autoplay: true, loop: true })}
               title={`${title} - Orite Production`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
