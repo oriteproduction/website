@@ -16,7 +16,7 @@ import { Video, Film, FileVideo, Plane, Camera, Palette, Play, CheckCircle, Chev
    ==========================================================================
 
    EVERYTHING YOU'LL WANT TO CHANGE IS IN THE BLOCKS BELOW, MARKED "EDIT".
-   You should never need to scroll past EDIT 6 to change a video or a photo.
+   You should never need to scroll past EDIT 7 to change a video or a photo.
 
    HOW TO GET A YOUTUBE ID
    -----------------------
@@ -38,11 +38,11 @@ const IMAGE_BASE = "https://raw.githubusercontent.com/oriteproduction/thumbnails
    EDIT 2 — SERVICES: THE TABS, THEIR TEXT, AND THEIR VIDEOS
 
    Each service has TWO optional videos:
-     videoId          → the big video at the top right (AUTOPLAYS, muted)
-     showcaseVideoId  → a second video underneath it (does NOT autoplay)
+     videoId          → the big video at the top right
+     showcaseVideoId  → a second video underneath it
 
-   Leave showcaseVideoId out entirely if a service has no second video —
-   the box simply won't appear. No more empty black rectangles.
+   Both autoplay muted and loop. Leave showcaseVideoId out entirely if a
+   service has no second video — the box simply won't appear.
    -------------------------------------------------------------------------- */
 interface Service {
   id: string
@@ -61,7 +61,7 @@ const SERVICES: Service[] = [
     description:
       "From concept to completion, our video production team delivers high-quality videos that captivate your audience. We handle every aspect of the production process, including scriptwriting, storyboarding, filming, and editing.",
     videoId: "XsXMdjhloVM",
-    showcaseVideoId: "LehSpll-XQs",// showcaseVideoId: "PUT_AN_ID_HERE",
+    showcaseVideoId: "LehSpll-XQs",
     icon: <Video className="h-8 w-8 text-red-500" />,
     features: [
       {
@@ -183,8 +183,8 @@ const SERVICES: Service[] = [
     title: "Aerial Videography",
     description:
       "Capture breathtaking perspectives with our aerial videography services. Using state-of-the-art drone technology, we provide stunning aerial footage for real estate, events, landscapes, and more.",
-    videoId: "VFr0TzEp4Bk", // ← NEW hero video (autoplays, muted)
-    showcaseVideoId: "p9d-1I4-1iY", // 
+    videoId: "VFr0TzEp4Bk",
+    showcaseVideoId: "p9d-1I4-1iY",
     icon: <Plane className="h-8 w-8 text-red-500" />,
     features: [
       {
@@ -334,7 +334,7 @@ const GALLERIES: Record<string, Array<{ file: string; title: string }>> = {
 }
 
 /* --------------------------------------------------------------------------
-   EDIT 4 — "BEHIND THE SCENES" (the two big alternating videos)
+   EDIT 4 — "BEHIND THE SCENES" (the big alternating videos)
    Add or remove entries here; the layout alternates left/right by itself.
    -------------------------------------------------------------------------- */
 const BEHIND_THE_SCENES = [
@@ -362,8 +362,10 @@ const BEHIND_THE_SCENES = [
 
 /* --------------------------------------------------------------------------
    EDIT 5 — VERTICAL REELS
-   Add or remove reels freely. Desktop shows them in a row; mobile pages
-   through them two at a time and works out the number of pages itself.
+
+   Add as many as you like. The carousel shows 4 at a time on desktop and
+   2 on phones, then pages through the rest with the side arrows. You never
+   need to change the layout when the list grows.
    -------------------------------------------------------------------------- */
 const REELS = [
   { videoId: "zxlZODIzZ-8", title: "Behind the scenes at Daraz Nepal Office" },
@@ -371,12 +373,11 @@ const REELS = [
   { videoId: "OD0gZ_HKheg", title: "Behind the scenes for BYD Contest" },
   { videoId: "P_-tHhkdojE", title: "Creative Process Behind the Scenes" },
   { videoId: "jJkanUwojYs", title: "Production Excellence" },
-
 ]
 
 /* --------------------------------------------------------------------------
    EDIT 6 — TESTIMONIALS
-   Flip SHOW_TESTIMONIALS_SECTION to true when you want this live again.
+   Flip SHOW_TESTIMONIALS_SECTION to false to hide this section.
    -------------------------------------------------------------------------- */
 const SHOW_TESTIMONIALS_SECTION = true
 
@@ -500,7 +501,7 @@ function ServiceContent({ id, title, description, features, videoId, showcaseVid
 
         {/* Videos */}
         <div className="space-y-6">
-          {/* Main video — autoplays muted */}
+          {/* Main video */}
           <div className="aspect-video w-full rounded-2xl overflow-hidden border border-zinc-800">
             <iframe
               src={embedUrl(videoId, { autoplay: true, loop: true })}
@@ -567,24 +568,14 @@ function ServiceContent({ id, title, description, features, videoId, showcaseVid
   )
 }
 
-function ReelCard({
-  videoId,
-  title,
-  size = "desktop",
-}: {
-  videoId: string
-  title: string
-  size?: "desktop" | "mobile"
-}) {
-  const isMobile = size === "mobile"
-
+// One reel card. It fills whatever grid cell the carousel puts it in.
+function ReelCard({ videoId, title }: { videoId: string; title: string }) {
   return (
     <button
       type="button"
       onClick={() => window.open(`https://www.youtube.com/watch?v=${videoId}`, "_blank")}
       aria-label={`Watch: ${title}`}
-      className={`relative aspect-[9/16] rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 text-left ${isMobile ? "w-1/2" : "w-full"
-        }`}
+      className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 text-left"
     >
       <iframe
         src={embedUrl(videoId, { autoplay: true, loop: true })}
@@ -595,15 +586,12 @@ function ReelCard({
         style={{ border: "none" }}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className={`absolute left-3 right-3 ${isMobile ? "bottom-2" : "bottom-3"}`}>
-          <h4 className={`text-white font-semibold ${isMobile ? "text-xs" : "text-sm"}`}>{title}</h4>
+        <div className="absolute left-3 right-3 bottom-2 sm:bottom-3">
+          <h4 className="text-white font-semibold text-xs sm:text-sm">{title}</h4>
         </div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div
-            className={`bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm ${isMobile ? "w-8 h-8" : "w-12 h-12"
-              }`}
-          >
-            <Play className={`text-yellow-500 fill-current ${isMobile ? "h-4 w-4" : "h-6 w-6"}`} />
+          <div className="bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm w-8 h-8 sm:w-12 sm:h-12">
+            <Play className="text-yellow-500 fill-current h-4 w-4 sm:h-6 sm:w-6" />
           </div>
         </div>
       </div>
@@ -618,10 +606,24 @@ function ServicesPageContent() {
   const [showTestimonials, setShowTestimonials] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  // Group reels into pages of two for the mobile carousel
+  // How many reels fit on screen at once: 2 on phones, 4 on everything else
+  const [perPage, setPerPage] = useState(4)
+
+  useEffect(() => {
+    const update = () => setPerPage(window.innerWidth < 768 ? 2 : 4)
+    update()
+    window.addEventListener("resize", update)
+    return () => window.removeEventListener("resize", update)
+  }, [])
+
+  // Snap back to the first page if a resize changes the number of pages
+  useEffect(() => {
+    setCurrentSlide(0)
+  }, [perPage])
+
   const reelSlides: Array<typeof REELS> = []
-  for (let i = 0; i < REELS.length; i += 2) {
-    reelSlides.push(REELS.slice(i, i + 2))
+  for (let i = 0; i < REELS.length; i += perPage) {
+    reelSlides.push(REELS.slice(i, i + perPage))
   }
 
   // Open the right tab when someone arrives at /services?tab=aerial-videography
@@ -658,15 +660,17 @@ function ServicesPageContent() {
                 key={service.id}
                 onClick={() => handleTabChange(service.id)}
                 aria-current={activeTab === service.id ? "true" : undefined}
-                className={`group relative px-4 py-3 rounded-xl border transition-all duration-300 hover:scale-105 text-sm font-medium ${activeTab === service.id
-                  ? "bg-red-600 border-red-500 text-white shadow-lg shadow-red-500/25"
-                  : "bg-zinc-900/50 border-zinc-700 text-gray-300 hover:border-red-500/50 hover:bg-zinc-800/50"
-                  }`}
+                className={`group relative px-4 py-3 rounded-xl border transition-all duration-300 hover:scale-105 text-sm font-medium ${
+                  activeTab === service.id
+                    ? "bg-red-600 border-red-500 text-white shadow-lg shadow-red-500/25"
+                    : "bg-zinc-900/50 border-zinc-700 text-gray-300 hover:border-red-500/50 hover:bg-zinc-800/50"
+                }`}
               >
                 <div className="flex items-center space-x-2">
                   <div
-                    className={`transition-colors duration-300 ${activeTab === service.id ? "text-white" : "text-red-500"
-                      }`}
+                    className={`transition-colors duration-300 ${
+                      activeTab === service.id ? "text-white" : "text-red-500"
+                    }`}
                   >
                     {React.cloneElement(service.icon as React.ReactElement, { className: "h-4 w-4" })}
                   </div>
@@ -681,7 +685,7 @@ function ServicesPageContent() {
           </div>
         </div>
 
-        {/* Only the open tab is rendered, so only one video is ever playing */}
+        {/* Only the open tab is rendered, so only one service's videos ever play */}
         <div className="min-h-[600px]">
           <ServiceContent key={activeService.id} {...activeService} />
         </div>
@@ -743,8 +747,9 @@ function ServicesPageContent() {
                   type="button"
                   onClick={() => window.open(`https://www.youtube.com/watch?v=${item.videoId}`, "_blank")}
                   aria-label={`Watch: ${item.heading}`}
-                  className={`aspect-video w-full rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl cursor-pointer ${textFirst ? "" : "order-2 lg:order-1"
-                    }`}
+                  className={`aspect-video w-full rounded-2xl overflow-hidden border-2 border-red-500/30 shadow-2xl cursor-pointer ${
+                    textFirst ? "" : "order-2 lg:order-1"
+                  }`}
                 >
                   <iframe
                     src={embedUrl(item.videoId, { autoplay: true, loop: true })}
@@ -777,7 +782,7 @@ function ServicesPageContent() {
         </div>
       </section>
 
-      {/* Reels */}
+      {/* Reels — one carousel for every screen size */}
       <section className="py-12 sm:py-16 bg-zinc-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -787,37 +792,35 @@ function ServicesPageContent() {
             </p>
           </div>
 
-          {/* Desktop: all reels in a row */}
-          <div className="hidden md:grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {REELS.map((reel) => (
-              <ReelCard key={reel.videoId} videoId={reel.videoId} title={reel.title} />
-            ))}
-          </div>
+          <div className="relative max-w-6xl mx-auto px-10 sm:px-14">
+            <div className="overflow-hidden">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {reelSlides.map((slide, slideIndex) => (
+                  <div
+                    key={slideIndex}
+                    className="w-full flex-shrink-0 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
+                  >
+                    {slide.map((reel) => (
+                      <ReelCard key={reel.videoId} videoId={reel.videoId} title={reel.title} />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          {/* Mobile: two reels per page */}
-          <div className="md:hidden">
-            <div className="relative max-w-lg mx-auto">
-              <div className="overflow-hidden rounded-2xl">
-                <div
-                  className="flex transition-transform duration-500 ease-in-out"
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                >
-                  {reelSlides.map((slide, slideIndex) => (
-                    <div key={slideIndex} className="w-full flex-shrink-0 flex space-x-4 px-4">
-                      {slide.map((reel) => (
-                        <ReelCard key={reel.videoId} videoId={reel.videoId} title={reel.title} size="mobile" />
-                      ))}
-                    </div>
-                  ))}
-                </div>
-
+            {/* Arrows and dots hide themselves when everything fits on one page */}
+            {reelSlides.length > 1 && (
+              <>
                 <button
                   onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
                   disabled={currentSlide === 0}
                   aria-label="Previous reels"
-                  className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 bg-yellow-500/80 rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 w-11 h-11 bg-yellow-500/80 hover:bg-yellow-500 rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
                 >
-                  <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
@@ -826,26 +829,27 @@ function ServicesPageContent() {
                   onClick={() => setCurrentSlide(Math.min(reelSlides.length - 1, currentSlide + 1))}
                   disabled={currentSlide === reelSlides.length - 1}
                   aria-label="Next reels"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 bg-yellow-500/80 rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 w-11 h-11 bg-yellow-500/80 hover:bg-yellow-500 rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
                 >
-                  <svg className="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
 
-                <div className="flex justify-center mt-6 space-x-2">
+                <div className="flex justify-center mt-8 space-x-2">
                   {reelSlides.map((_, slide) => (
                     <button
                       key={slide}
                       onClick={() => setCurrentSlide(slide)}
                       aria-label={`Go to reel page ${slide + 1}`}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === slide ? "bg-yellow-500 scale-125" : "bg-white/20"
-                        }`}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        currentSlide === slide ? "bg-yellow-500 scale-125" : "bg-white/20"
+                      }`}
                     />
                   ))}
                 </div>
-              </div>
-            </div>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -857,7 +861,7 @@ function ServicesPageContent() {
             <div className="max-w-3xl mx-auto text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">What Our Clients Say</h2>
               <p className="text-gray-400 mb-8">
-                Don't just take our word for it. Here's what our clients have to say about our services.
+                Don&apos;t just take our word for it. Here&apos;s what our clients have to say about our services.
               </p>
 
               {!showTestimonials && (
