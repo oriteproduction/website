@@ -4,7 +4,7 @@ import React, { Suspense } from "react"
 
 import type { ReactNode } from "react"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -43,6 +43,9 @@ const IMAGE_BASE = "https://raw.githubusercontent.com/oriteproduction/thumbnails
 
    Both autoplay muted and loop. Leave showcaseVideoId out entirely if a
    service has no second video — the box simply won't appear.
+
+   On mobile the tabs sit in one sideways-scrolling row, so the order here
+   is the order people swipe through. Put your strongest service first.
    -------------------------------------------------------------------------- */
 interface Service {
   id: string
@@ -575,7 +578,7 @@ function ReelCard({ videoId, title }: { videoId: string; title: string }) {
       type="button"
       onClick={() => window.open(`https://www.youtube.com/watch?v=${videoId}`, "_blank")}
       aria-label={`Watch: ${title}`}
-      className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden border-2 border-yellow-500/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 text-left"
+      className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden border-2 border-[#F7BD3A]/30 shadow-2xl group cursor-pointer transition-transform duration-300 hover:scale-105 text-left"
     >
       <iframe
         src={embedUrl(videoId, { autoplay: true, loop: true })}
@@ -590,8 +593,8 @@ function ReelCard({ videoId, title }: { videoId: string; title: string }) {
           <h4 className="text-white font-semibold text-xs sm:text-sm">{title}</h4>
         </div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="bg-yellow-500/20 rounded-full flex items-center justify-center backdrop-blur-sm w-8 h-8 sm:w-12 sm:h-12">
-            <Play className="text-yellow-500 fill-current h-4 w-4 sm:h-6 sm:w-6" />
+          <div className="bg-[#F7BD3A]/20 rounded-full flex items-center justify-center backdrop-blur-sm w-8 h-8 sm:w-12 sm:h-12">
+            <Play className="text-[#F7BD3A] fill-current h-4 w-4 sm:h-6 sm:w-6" />
           </div>
         </div>
       </div>
@@ -605,6 +608,10 @@ function ServicesPageContent() {
   const [activeTab, setActiveTab] = useState(SERVICES[0].id)
   const [showTestimonials, setShowTestimonials] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
+
+  // Refs for the mobile tab strip, so the selected tab scrolls into view
+  const tabStripRef = useRef<HTMLDivElement>(null)
+  const activeTabRef = useRef<HTMLButtonElement>(null)
 
   // How many reels fit on screen at once: 2 on phones, 4 on everything else
   const [perPage, setPerPage] = useState(4)
@@ -634,6 +641,16 @@ function ServicesPageContent() {
     }
   }, [searchParams])
 
+  // Centre the selected tab in the mobile strip (desktop wraps, so it's skipped)
+  useEffect(() => {
+    if (window.innerWidth >= 768) return
+    const strip = tabStripRef.current
+    const tab = activeTabRef.current
+    if (!strip || !tab) return
+    const target = tab.offsetLeft - strip.clientWidth / 2 + tab.clientWidth / 2
+    strip.scrollTo({ left: Math.max(0, target), behavior: "smooth" })
+  }, [activeTab])
+
   const handleTabChange = (value: string) => {
     setActiveTab(value)
     router.push(`/services?tab=${value}`, { scroll: false })
@@ -643,6 +660,12 @@ function ServicesPageContent() {
 
   return (
     <main className="min-h-screen bg-black text-white">
+      {/* Hides the scrollbar on the mobile tab strip without killing the scroll */}
+      <style>{`
+        .orite-tab-strip::-webkit-scrollbar { display: none; }
+        .orite-tab-strip { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
+
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
@@ -652,37 +675,43 @@ function ServicesPageContent() {
           </p>
         </div>
 
-        {/* Tab navigation */}
-        <div className="mb-12">
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {SERVICES.map((service) => (
-              <button
-                key={service.id}
-                onClick={() => handleTabChange(service.id)}
-                aria-current={activeTab === service.id ? "true" : undefined}
-                className={`group relative px-4 py-3 rounded-xl border transition-all duration-300 hover:scale-105 text-sm font-medium ${
-                  activeTab === service.id
-                    ? "bg-red-600 border-red-500 text-white shadow-lg shadow-red-500/25"
-                    : "bg-zinc-900/50 border-zinc-700 text-gray-300 hover:border-red-500/50 hover:bg-zinc-800/50"
-                }`}
-              >
-                <div className="flex items-center space-x-2">
-                  <div
-                    className={`transition-colors duration-300 ${
-                      activeTab === service.id ? "text-white" : "text-red-500"
-                    }`}
-                  >
-                    {React.cloneElement(service.icon as React.ReactElement, { className: "h-4 w-4" })}
+        {/* Tab navigation — sideways scroll strip on mobile, wrapped rows on desktop */}
+        <div className="relative mb-12">
+          <div
+            ref={tabStripRef}
+            className="orite-tab-strip flex flex-nowrap gap-2 overflow-x-auto -mx-4 px-4 pb-3 md:flex-wrap md:justify-center md:overflow-visible md:mx-0 md:px-0 md:pb-0"
+          >
+            {SERVICES.map((service) => {
+              const isActive = activeTab === service.id
+              return (
+                <button
+                  key={service.id}
+                  ref={isActive ? activeTabRef : null}
+                  onClick={() => handleTabChange(service.id)}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`group relative flex-shrink-0 px-4 py-3 rounded-xl border transition-all duration-300 md:hover:scale-105 text-sm font-medium ${
+                    isActive
+                      ? "bg-red-600 border-red-500 text-white shadow-lg shadow-red-500/25"
+                      : "bg-zinc-900/50 border-zinc-700 text-gray-300 hover:border-red-500/50 hover:bg-zinc-800/50"
+                  }`}
+                >
+                  <div className="flex items-center space-x-2">
+                    <div className={`transition-colors duration-300 ${isActive ? "text-white" : "text-red-500"}`}>
+                      {React.cloneElement(service.icon as React.ReactElement, { className: "h-4 w-4" })}
+                    </div>
+                    <span className="whitespace-nowrap">{service.title}</span>
                   </div>
-                  <span className="whitespace-nowrap">{service.title}</span>
-                </div>
 
-                {activeTab === service.id && (
-                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full"></div>
-                )}
-              </button>
-            ))}
+                  {isActive && (
+                    <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full"></div>
+                  )}
+                </button>
+              )
+            })}
           </div>
+
+          {/* Fade at the right edge, hinting there's more to swipe. Mobile only. */}
+          <div className="pointer-events-none absolute top-0 bottom-3 right-0 w-10 bg-gradient-to-l from-black to-transparent md:hidden"></div>
         </div>
 
         {/* Only the open tab is rendered, so only one service's videos ever play */}
@@ -820,7 +849,7 @@ function ServicesPageContent() {
                   aria-label="Previous reels"
                   className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
                 >
-                  <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
@@ -829,9 +858,9 @@ function ServicesPageContent() {
                   onClick={() => setCurrentSlide(Math.min(reelSlides.length - 1, currentSlide + 1))}
                   disabled={currentSlide === reelSlides.length - 1}
                   aria-label="Next reels"
-                  className="absolute right-0 top-1/2 -translate-y-1/2 w-11 h-11 bg-yellow-500/80 hover:bg-yellow-500 rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
                 >
-                  <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
@@ -843,7 +872,7 @@ function ServicesPageContent() {
                       onClick={() => setCurrentSlide(slide)}
                       aria-label={`Go to reel page ${slide + 1}`}
                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        currentSlide === slide ? "bg-yellow-500 scale-125" : "bg-white/20"
+                        currentSlide === slide ? "bg-[#F7BD3A] scale-125" : "bg-white/20"
                       }`}
                     />
                   ))}
