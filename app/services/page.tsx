@@ -792,7 +792,7 @@ function ServicesPageContent() {
             </p>
           </div>
 
-          <div className="relative max-w-6xl mx-auto px-10 sm:px-14">
+          <div className="relative max-w-7xl mx-auto px-10 sm:px-14">
             <div className="overflow-hidden">
               <div
                 className="flex transition-transform duration-500 ease-in-out"
@@ -818,7 +818,7 @@ function ServicesPageContent() {
                   onClick={() => setCurrentSlide(Math.max(0, currentSlide - 1))}
                   disabled={currentSlide === 0}
                   aria-label="Previous reels"
-                  className="absolute left-0 top-1/2 -translate-y-1/2 w-11 h-11 bg-yellow-500/80 hover:bg-yellow-500 rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-gradient-to-r from-[#F7BD3A] to-[#FCE2A6] rounded-full flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110 transition-all duration-300 z-10"
                 >
                   <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
