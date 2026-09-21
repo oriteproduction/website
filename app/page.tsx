@@ -178,7 +178,7 @@ const FEATURED = {
    -------------------------------------------------------------------------- */
 const CINEMATIC = {
   videoFile: "heroclip1.mp4", // file name in your thumbnails repo
-  subtitle: "Every frame is an opportunity to tell a story.", // leave as "" to hide it
+  subtitle: "", // leave as "" to hide it
 }
 
 /* --------------------------------------------------------------------------
