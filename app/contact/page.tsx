@@ -19,6 +19,7 @@ export default function ContactPage() {
     phone: "",
     subject: "",
     service: "",
+    otherService: "",
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -38,20 +39,28 @@ export default function ContactPage() {
   }
 
   const handleServiceChange = (value: string) => {
-    setFormData((prev) => ({ ...prev, service: value }))
+    // Clear the typed-in service if they switch away from "Other"
+    setFormData((prev) => ({
+      ...prev,
+      service: value,
+      otherService: value === "other" ? prev.otherService : "",
+    }))
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    const { name, email, phone, subject, service, message } = formData
+    const { name, email, phone, subject, service, otherService, message } = formData
+
+    // If they picked "Other", send what they typed instead of the word "other"
+    const serviceText = service === "other" ? `Other – ${otherService}` : service
 
     const whatsappMessage = `
 Hello, I'm ${name}.
 
 📧 Email: ${email}
 📞 Phone: ${phone}
-📌 Service: ${service}
+📌 Service: ${serviceText}
 📝 Subject: ${subject}
 
 ${message}
@@ -239,7 +248,7 @@ ${message}
                       Service You're Interested In
                     </label>
                     <Select value={formData.service} onValueChange={handleServiceChange}>
-                      <SelectTrigger className="bg-zinc-900 border-zinc-800">
+                      <SelectTrigger id="service" className="bg-zinc-900 border-zinc-800">
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
@@ -249,10 +258,30 @@ ${message}
                         <SelectItem value="post">Post Production</SelectItem>
                         <SelectItem value="aerial">Aerial Videography</SelectItem>
                         <SelectItem value="photography">Photography</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
+
+                {/* Only appears when "Other" is picked above */}
+                {formData.service === "other" && (
+                  <div>
+                    <label htmlFor="otherService" className="block text-sm font-medium mb-1">
+                      Tell us what you need <span className="text-red-500">*</span>
+                    </label>
+                    <Input
+                      id="otherService"
+                      name="otherService"
+                      value={formData.otherService}
+                      onChange={handleChange}
+                      required
+                      autoFocus
+                      placeholder="e.g. Music video, wedding film, podcast setup"
+                      className="bg-zinc-900 border-zinc-800"
+                    />
+                  </div>
+                )}
 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium mb-1">
